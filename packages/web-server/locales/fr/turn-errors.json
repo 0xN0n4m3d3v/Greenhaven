@@ -1,0 +1,4 @@
+{
+  "broker_empty_fail_open": "Pendant un instant, le monde se fige : l'action n'a pas pu être résolue. Répète ton intention ou choisis un passage visible.",
+  "broker_empty_intimacy_recovery": "[Récupération d'intimité] Ce n'est pas une voie de refus de contenu. Tu as toujours le droit de résoudre la scène adulte/intime selon le ton de la cartouche. Tu dois maintenant appeler au moins un outil. Si le beat passe, appelle un outil d'état d'intimité avant narrate. S'il ne passe pas, appelle narrate avec la limite ou le prix du PNJ. Ne renvoie jamais un message d'assistant vide."
+}

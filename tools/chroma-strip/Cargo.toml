@@ -1,0 +1,18 @@
+[package]
+name = "chroma-strip"
+version = "0.1.0"
+edition = "2021"
+description = "Strip pure-magenta (#FF00FF) chroma backgrounds from PNGs into transparent alpha. Ported from kit/ena-chat/tools/sticker-studio."
+
+[[bin]]
+name = "chroma-strip"
+path = "src/main.rs"
+
+[dependencies]
+image = "0.25"
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"

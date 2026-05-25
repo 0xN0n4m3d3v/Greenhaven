@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Companions: those who walk beside you — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="A companion is a character who has joined the hero and walks with them through the world. They have their own conditions: they will not go with just anyone, they can leave, and they can betray. Thi..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a class="active" href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Mechanics</p>
+          <h1 id="companions-those-who-walk-beside-you">Companions: those who walk beside you</h1>
+<p>A companion is a character who has joined the hero and walks with
+them through the world. They have their own conditions: they will
+not go with just anyone, they can leave, and they can betray. This
+chapter is about how to describe such a character.</p>
+<p>The cardinal rule: a companion is <strong>not a party slot</strong>. They are a
+person making choices — every time. That is what makes them alive.</p>
+<p><img alt="" src="../img/gemini-generated-image-j0x2rzj0x2rzj0x2.jpg"></p>
+<h2 id="where-it-is-written">Where it is written</h2>
+<p>All companion rules live in a single section inside the character's
+file: <code>## Companion Rules</code>. That means a companion is, by default, a
+regular NPC who simply has an additional "contract" about how to
+become or stop being a companion.</p>
+<h2 id="section-structure">Section structure</h2>
+<pre><code class="language-markdown">## Companion Rules
+
+- Join condition: conditions under which I join.
+- Refusal condition: conditions under which I refuse permanently.
+- Loyalty pressure: limits while I am with the hero.
+- Depart condition: conditions under which I leave.
+- How I follow: how I move and fight when with the hero.
+- Inventory baseline: what I carry.
+- New-world reaction: reaction to traveling into another cartridge.
+</code></pre>
+<p>Let's walk through each field.</p>
+<h2 id="join-condition-how-to-recruit-them">Join Condition — how to recruit them</h2>
+<p>The conditions under which the character becomes a companion. They
+must be <strong>specific actions</strong>, not vague "the hero behaves well." The
+more precise, the more interesting.</p>
+<pre><code class="language-markdown">- Join condition: the hero must (a) refuse the fixer's offer
+  publicly, (b) bring me at least one matching wax pattern, and
+  (c) ask about Joran by name.
+</code></pre>
+<p>Notice: three conditions, and all together. That means Tessa will
+not join just because the player picked a flattering line. She has
+to be <strong>earned with deeds</strong> — a refusal of easy profit, a discovered
+clue, demonstrated interest in her wound. That is what makes
+companionship an event, not a reward for a clever dialogue pick.</p>
+<h2 id="refusal-condition-refusal-forever">Refusal Condition — refusal forever</h2>
+<p>What the player can do that closes off the possibility of
+companionship <strong>for the rest of the run</strong>:</p>
+<pre><code class="language-markdown">- Refusal condition: if the hero takes the fixer's offer in my
+  presence, I will pretend to think about it and vanish by morning.
+</code></pre>
+<p>Not "I'll refuse right now," but "vanish by morning." That is
+character. Tessa does not make a scene — she simply disappears.</p>
+<h2 id="loyalty-pressure-pressure-of-loyalty">Loyalty Pressure — pressure of loyalty</h2>
+<p>Sometimes a companion walks with the hero but <strong>with conditions</strong>.
+There are places they will not go. There are people they will not
+stand beside. Those limits go here:</p>
+<pre><code class="language-markdown">- Loyalty pressure: I will not enter `@Greenhaven Adventurers' Guild`
+  with the hero if `@Cassian Flintbanner` is still not publicly
+  exposed.
+</code></pre>
+<p>This is not a "companion weakness." It is a <strong>boundary of
+character</strong>. And it is exactly out of boundaries like this that
+respect for a character grows.</p>
+<h2 id="depart-condition-when-they-leave">Depart Condition — when they leave</h2>
+<p>Actions by the player after which the companion leaves the party
+<strong>permanently</strong>:</p>
+<pre><code class="language-markdown">- Depart condition: if the hero abandons two civilians in a row or
+  sells a witness to the fixer, I leave at the next dawn.
+</code></pre>
+<p>A good departure condition is not one rash act, but an <strong>accumulated
+pattern of behavior</strong>. "Two in a row" is already a pattern. Tessa
+does not leave over one mistake, but she does not pardon repeatedly
+either.</p>
+<h2 id="how-i-follow-the-style-of-following">How I Follow — the style of following</h2>
+<p>How the companion behaves on the road and in a fight:</p>
+<pre><code class="language-markdown">- How I follow: I take the high ground, scout exits, chalk-mark
+  routes. I do not stand between the hero and a rat. I fight with
+  needles first, blade second, lockpicks always.
+</code></pre>
+<p>This is the narrator's instruction for how to describe the
+companion's actions. Tessa does not walk shoulder-to-shoulder — she
+climbs to the warehouse roof. That is her character <strong>in motion</strong>.</p>
+<h2 id="inventory-baseline-what-they-carry">Inventory Baseline — what they carry</h2>
+<p>The baseline set of items the companion always has:</p>
+<pre><code class="language-markdown">- Inventory baseline: a short curved blade, three throwing needles,
+  a set of lockpicks, the brass compass, a folded copy of her ledger,
+  2 silver, 11 copper, a hand mirror.
+</code></pre>
+<h2 id="new-world-reaction-travel-between-worlds">New-World Reaction — travel between worlds</h2>
+<p>If the player carries the companion across cartridges (a new world
+warming up, a new big chapter, another project):</p>
+<pre><code class="language-markdown">- New-world reaction (cartridge travel): I will follow the hero into
+  one cartridge after Greenhaven if and only if I have already named
+  the fixer to the registrar publicly.
+</code></pre>
+<p>This field matters for long campaigns where you want a companion to
+<strong>earn the right to travel</strong> between worlds.</p>
+<h2 id="how-it-works-at-runtime">How it works at runtime</h2>
+<p>To make off-stage clear, when the companion conditions resolve:</p>
+<ol>
+<li>When all <code>Join condition</code> items are satisfied, the engine adds the
+   character to the hero's companion list.</li>
+<li>From that point, when the hero moves between locations, the
+   companion travels with them automatically.</li>
+<li>The interface gets a notification and shows the character as
+   present.</li>
+<li>When the hero converses in a location, the companion may be among
+   the participants.</li>
+<li>If <code>Depart condition</code> is met, the engine removes the character
+   from the list and the interface shows the departure.</li>
+</ol>
+<p>You do not write any code for this. You write <strong>rules in plain
+words</strong>, and the engine handles the rest.</p>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../03-mechanics/scenes-in-depth.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Scenes in depth</span></a>
+<a class="pager-next" href="../03-mechanics/economy.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Economy</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

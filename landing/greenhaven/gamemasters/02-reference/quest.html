@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quest reference — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="In the tutorial we wrote a single quest — &quot;Tessa&#x27;s Compass.&quot; This chapter spells out every section in detail, in case you are now writing your tenth quest and have forgotten the exact word for some..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a class="active" href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Reference</p>
+          <h1 id="quest-reference">Quest reference</h1>
+<p>In the tutorial we wrote a single quest — "Tessa's Compass." This
+chapter spells out every section in detail, in case you are now writing
+your tenth quest and have forgotten the exact word for something.</p>
+<p><img alt="" src="../img/gemini-generated-image-dygb8hdygb8hdygb.jpg"></p>
+<p>The quest file lives either inside a character (<code>npc/@Name/quests/Title.md</code>)
+or inside a location (<code>@Location/quests/Title.md</code>). The file name has
+no <code>@</code>, uses spaces normally, and ends in <code>.md</code>. The level-one heading
+inside is the quest title.</p>
+<h2 id="source-origin">Source — origin</h2>
+<p><strong>Why:</strong> a short passport for the quest: who gives it, where it
+starts, and what must happen for it to become available.</p>
+<pre><code class="language-markdown">## Source
+
+- Giver: `@NPC`
+- Where it starts: description of the place
+- Triggered when: condition
+</code></pre>
+<p>The condition in <code>Triggered when</code> can be soft ("a good relationship
+with the character"), strict ("after quest X"), or specific ("after
+the hero publicly refuses the fixer").</p>
+<h2 id="hook-opening-beat">Hook — opening beat</h2>
+<p><strong>Why:</strong> a small scene of inciting incident. The text the player sees
+in chat as the quest's first message. Written in prose, like the
+opening sentence of a short story.</p>
+<h2 id="objective-the-goal">Objective — the goal</h2>
+<p><strong>Why:</strong> a short line that answers "what do they want from me?" It
+appears as the title in the player's quest log. Do not summarize the
+plot here — one clear task.</p>
+<h2 id="stages-steps">Stages — steps</h2>
+<p><strong>Why:</strong> the steps leading from the inciting incident to the end.
+Each stage is a separate list item.</p>
+<pre><code class="language-markdown">## Stages
+
+1. First stage with `@NPC` in `@Location`.
+2. Second stage.
+3. Third stage.
+4. Choice: return to `@NPC1` or sell to `@NPC2`.
+</code></pre>
+<p>A few rules:</p>
+<ul>
+<li>Stages can be numbered (<code>1.</code>, <code>1)</code>) or marked with a dash, a plus,
+  or an asterisk. The engine recognizes the start of a new stage by
+  the marker.</li>
+<li>If a line does not start with a marker, it attaches to the previous
+  stage. That is how you write longer multi-line stages.</li>
+<li>Every stage should contain <code>@</code> names — that anchors it to specific
+  people and places.</li>
+</ul>
+<h2 id="fork-in-the-stages">Fork in the stages</h2>
+<p>If at some point the player must choose, you use the <code>next_stage</code>
+construct with <code>kind: choice</code>:</p>
+<pre><code class="language-markdown">5. next_stage:
+   - kind: choice
+   - options:
+     - target_stage_id: return_to_tessa
+       label: Return it to Tessa
+     - target_stage_id: return_to_child
+       label: Return it to the child
+</code></pre>
+<p>Details in <a href="../03-mechanics/quest-branching.html">Quest branching</a>.</p>
+<h2 id="success-result-on-success">Success Result — on success</h2>
+<p><strong>Why:</strong> what good happens in the world if the quest goes well. There
+can be several branches, depending on the player's choice.</p>
+<h2 id="failure-result-on-failure">Failure Result — on failure</h2>
+<p><strong>Why:</strong> what bad happens in the case of failure or an undesired
+choice. Also can have several branches.</p>
+<h2 id="reward-and-consequence-rewards-and-long-aftermath">Reward And Consequence — rewards and long aftermath</h2>
+<p><strong>Why:</strong> what the player receives and what shifts in the world for a
+long time. Not to be confused with <code>Success Result</code>: that one is the
+immediate outcome of the scene; this one is the long tail.</p>
+<h2 id="materializes-what-appears-in-the-world">Materializes — what appears in the world</h2>
+<p><strong>Why:</strong> the concrete entities that come into being after the quest:
+new characters, opened doors, surfaced items. The format is the same
+as for characters and locations.</p>
+<p>Quest rewards that should become real inventory must also be written
+here. Use <code>Scope: hero inventory</code> for the active player, or
+<code>Scope: @NPC Name inventory</code> for an NPC/container/location holder. Add
+<code>count=N</code> in <code>Effect</code> only when the quest grants more than one item.</p>
+<p>Details in <a href="../03-mechanics/materializes.html">Materializes</a>.</p>
+<h2 id="do-not-do-here-narrator-boundaries">Do Not Do Here — narrator boundaries</h2>
+<p><strong>Why:</strong> the list of things the narrator must not do in this quest.
+For example: do not let a key clue happen offscreen, do not turn two
+characters into mirror copies of each other.</p>
+<hr>
+<h2 id="checklist">Checklist</h2>
+<ul>
+<li>[ ] <code>Source</code> with giver, location, and trigger condition</li>
+<li>[ ] <code>Hook</code> written in prose</li>
+<li>[ ] <code>Objective</code> in a single line</li>
+<li>[ ] At least three steps in <code>Stages</code></li>
+<li>[ ] Stages reference <code>@</code> entities</li>
+<li>[ ] <code>Success Result</code> and <code>Failure Result</code> are written</li>
+<li>[ ] At least one <code>Materializes</code> block</li>
+</ul>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../02-reference/npc.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">NPC</span></a>
+<a class="pager-next" href="../02-reference/scene.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Scene</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

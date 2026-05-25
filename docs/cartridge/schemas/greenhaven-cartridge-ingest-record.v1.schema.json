@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenhaven.local/schemas/greenhaven-cartridge-ingest-record.v1.schema.json",
+  "title": "Greenhaven Cartridge Ingest Record v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_id",
+    "kind",
+    "slug",
+    "operation",
+    "source_language",
+    "canonical_name",
+    "summary",
+    "tags",
+    "payload",
+    "provenance",
+    "quality"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "greenhaven.cartridge_ingest_record.v1"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^ghc:[a-z0-9][a-z0-9:-]*$"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "activity",
+        "dialogue",
+        "event",
+        "faction",
+        "item",
+        "location",
+        "person",
+        "quest",
+        "relationship",
+        "scene",
+        "world_fact"
+      ]
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "operation": {
+      "type": "string",
+      "enum": ["append", "upsert", "deprecate"]
+    },
+    "source_language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(?:-[A-Z]{2})?$"
+    },
+    "canonical_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 600
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "Kind-specific canonical content. The importer validates required fields per kind."
+    },
+    "links": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rel", "target"],
+        "properties": {
+          "rel": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "note": {
+            "type": "string",
+            "maxLength": 300
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "use", "note"],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "pattern": "^src:[a-z0-9][a-z0-9:-]*$"
+          },
+          "use": {
+            "type": "string",
+            "enum": [
+              "original",
+              "inspired_by",
+              "fact_check",
+              "public_domain_adaptation",
+              "open_license_adaptation",
+              "internal_greenhaven_canon"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_status", "playable"],
+      "properties": {
+        "review_status": {
+          "type": "string",
+          "enum": ["draft", "agent_reviewed", "human_reviewed", "rejected"]
+        },
+        "playable": {
+          "type": "boolean"
+        },
+        "density_role": {
+          "type": "string",
+          "enum": [
+            "power_center",
+            "hub_spoke",
+            "quest_site",
+            "ambient",
+            "hidden_reveal",
+            "none"
+          ]
+        },
+        "risk_flags": {
+          "type": "array",
+          "default": [],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+          }
+        }
+      }
+    }
+  }
+}

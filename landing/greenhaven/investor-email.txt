@@ -1,0 +1,54 @@
+Greenhaven Quest
+AI-agent narrative game / psychological LitRPG
+
+Subject: Greenhaven: fictional life as state, not chat context
+
+Greenhaven is a playable AI-agent narrative game where memory, relationships,
+quests, inventory, scenes, combat, and consequences live in a database-backed
+runtime.
+
+The model is not asked to pretend it remembers. The world gives the agent
+memory, tools, rules, state, specialists, and a body it can act through.
+
+Why this is investable:
+
+- Product: playable now. Backend, React client, desktop path, SSE events,
+  tools, quests, inventory, maps, and specialists already exist.
+- Architecture: world database. NPCs, items, locations, quests, scenes, and
+  coins share one object backbone.
+- Core edge: NPC memory and NPC state mutation. Relationships, wounds,
+  promises, status, private notes, and future behavior mutate through play.
+
+Greenhaven sits at the intersection of romantasy, fanfiction, manhwa, LitRPG,
+tabletop roleplay, and AI character chat.
+
+For readers:
+Slow burn, hidden routes, real memory, visible progression.
+
+For AI platforms:
+A serious testbed for durable memory, tool discipline, long-running agents,
+and emotionally coherent role reliability.
+
+For investors:
+A working product in a new category: a database-first AI-agent narrative RPG,
+not a thin chatbot wrapper.
+
+What we want:
+Strategic investors, AI platform partners, API credits, model review access,
+and technical conversations around long-running agentic fiction.
+
+Competitive frame:
+Character.AI, AI Dungeon, NovelAI, RoleForge, Friends & Fables, Inworld, and
+Convai each solve adjacent pieces. Greenhaven combines memory, tools, game
+state, specialists, and reader-facing play in one product.
+
+Full brief:
+https://greenhaven.quest/?lang=en#investors
+
+Website:
+https://greenhaven.quest/?lang=en
+
+Contact:
+author@greenhaven.quest
+
+Greenhaven Quest - founder-led from Georgia.

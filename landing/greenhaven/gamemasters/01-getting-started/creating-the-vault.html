@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creating the vault — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="Before you write your first scene, you need a place where the world will live. This is no harder than creating a new folder for documents — but I will walk you through every step so there is no &quot;an..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a class="active" href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Getting started</p>
+          <h1 id="creating-the-vault">Creating the vault</h1>
+<p>Before you write your first scene, you need a place where the world will
+live. This is no harder than creating a new folder for documents — but I
+will walk you through every step so there is no "and now what do I click?"
+left over.</p>
+<h2 id="what-you-will-need">What you will need</h2>
+<p>A single program: <strong>Obsidian</strong>. It is a free notes editor. If you do not
+have it, download it from <code>obsidian.md</code> and install it. On the surface it
+looks like a text editor with a tree of folders on the left and text on
+the right. That is all you need.</p>
+<p>The word <strong>vault</strong> in Obsidian means "storage" — just one big folder that
+the program treats as its project. Inside the vault are ordinary
+subfolders and ordinary text files with the <code>.md</code> extension. There is
+nothing magical, nothing hidden: if you open the vault in Windows
+Explorer, you will see exactly the same files.</p>
+<h2 id="step-1-create-the-vault">Step 1. Create the vault</h2>
+<ol>
+<li>Open Obsidian.</li>
+<li>On the start screen choose <strong>Open folder as vault</strong>.</li>
+<li>Create a new empty folder — for example, <code>C:\MyWorld</code> — and select it.</li>
+<li>Obsidian will create a hidden subfolder called <code>.obsidian</code> inside it.
+   Do not touch it, do not open it, do not edit it. Those are its own
+   settings. Treat it as invisible.</li>
+</ol>
+<p>That is it. The folder <code>C:\MyWorld</code> is your world. You can even feel how
+it sounds: <em>my world</em>.</p>
+<h2 id="step-2-lay-the-framework">Step 2. Lay the framework</h2>
+<p>Every cartridge starts with a folder called <code>Locations</code>. Inside it the
+structure is nested like a set of Russian dolls: first the city, then
+districts within the city, then everything inside those districts. Let's
+make it now.</p>
+<p>The left-hand panel in Obsidian shows the files. Right-click on the empty
+space, choose <strong>New folder</strong>, and name it exactly <code>Locations</code>. No <code>@</code> —
+this is a service folder, not an entity.</p>
+<p>Inside <code>Locations</code> create a folder for the city. <em>Here</em> the <code>@</code> goes on.
+For the examples I will use a fictional city called <code>@Greenhaven City</code>,
+but you can name yours anything you like: <code>@Old Highway</code>, <code>@Riverbend</code>,
+whatever fits your world. The only rule is the at-sign in front.</p>
+<pre><code>MyWorld/
+└── Locations/
+    └── @Greenhaven City/
+</code></pre>
+<p>Inside the city live the districts. Each district is a place the player
+can actually walk into. The square. The port. The guild. That is a
+<strong>location</strong> in the strict sense, and each one has its own mind file.</p>
+<p>Let's create the first district — the port:</p>
+<pre><code>MyWorld/
+└── Locations/
+    └── @Greenhaven City/
+        └── @Greenhaven Port/
+</code></pre>
+<h2 id="step-3-give-the-location-a-voice">Step 3. Give the location a voice</h2>
+<p>Each location has one main file. Its name follows a rule:
+<strong>the folder name minus the <code>@</code> and minus the spaces, plus the word
+<code>Mind</code>, plus the <code>.md</code> extension.</strong></p>
+<ul>
+<li>Folder <code>@Greenhaven Port</code> → file <code>PortMind.md</code>.</li>
+<li>Folder <code>@Thief's Market</code> → file <code>Thief'sMarketMind.md</code> (spaces removed).</li>
+<li>Folder <code>@Main Square</code> → file <code>MainSquareMind.md</code>.</li>
+</ul>
+<p>The rule is the same for every location. It exists so the engine can find
+the "main mind" of a place without confusing it with other files in the
+same folder.</p>
+<p>Create the file <code>PortMind.md</code> inside <code>@Greenhaven Port/</code>. Open it and
+write the bare minimum:</p>
+<pre><code class="language-markdown"># @Greenhaven Port
+
+@Greenhaven Port is a sunlit harbor at the foot of @Greenhaven City.
+
+## First Entry Bubble
+
+You step off the gangway onto the warm planks of the port. The wind
+smells of citrus crates and hot rope.
+</code></pre>
+<p>Let's break down what we just wrote.</p>
+<ul>
+<li><code># @Greenhaven Port</code> at the very top is a level-one heading (a single
+  hash mark). It carries the location's name with the <code>@</code> in front. This
+  is the file's "title page."</li>
+<li>After that comes an ordinary sentence describing the place.</li>
+<li><code>## First Entry Bubble</code> is a level-two heading (two hash marks). This
+  one is a service name: "the text the player sees the first time they
+  enter this place." It is in English because that is the string the
+  engine looks for. Under it you write the actual game prose — the line
+  that will appear in the player's chat when they arrive.</li>
+</ul>
+<p><code>First Entry Bubble</code> is the most important section in any location. It
+is the first impression. The next chapter goes into it in detail.</p>
+<h2 id="step-4-settle-the-first-resident-here">Step 4. Settle the first resident here</h2>
+<p>Now we add a character. The folder for people is called exactly <code>npc</code> —
+all lowercase, no <code>@</code>. It is a service name, the same kind as
+<code>Locations</code>.</p>
+<p>Inside <code>npc/</code> we create the character's folder, this time with the <code>@</code>:</p>
+<pre><code>@Greenhaven Port/
+└── npc/
+    └── @Tessa Wrenlight/
+        └── NPCMind.md
+</code></pre>
+<p><code>NPCMind.md</code> is the single file name for every character. Unlike
+locations, you do not repeat the character's name in the file name. Every
+character's "mind" is called the same thing.</p>
+<p>Fill <code>NPCMind.md</code> with the minimum:</p>
+<pre><code class="language-markdown"># @Tessa Wrenlight
+
+## Identity
+
+I am @Tessa Wrenlight, a harbor scout. I watch the gangways and I know
+every dockhand in this port by name.
+</code></pre>
+<p>Notice that the text under <code>## Identity</code> is written <strong>in the first
+person</strong>. This matters. It is Tessa's own voice. She introduces herself.
+Not "Tessa is a harbor scout" but "I am Tessa." That tunes the narrator
+to her cadence from the very first line.</p>
+<p>The next chapter, on characters, walks through the rest of the sections
+that make Tessa actually live.</p>
+<h2 id="what-you-have-now">What you have now</h2>
+<p>Open Windows Explorer and navigate to <code>C:\MyWorld</code>. You will see a tree
+like this:</p>
+<pre><code>MyWorld/
+└── Locations/
+    └── @Greenhaven City/
+        └── @Greenhaven Port/
+            ├── PortMind.md
+            └── npc/
+                └── @Tessa Wrenlight/
+                    └── NPCMind.md
+</code></pre>
+<p>This is enough for the engine to assemble your world. It will be tiny —
+one port and one scout — but real.</p>
+<h2 id="the-one-thing-to-remember">The one thing to remember</h2>
+<p>A folder name starts with <code>@</code> whenever it represents an <strong>entity</strong> in the
+world: a location, a character, an item, a scene. Service folders
+(<code>Locations</code>, <code>npc</code>, later <code>scenes</code>, <code>items</code>, <code>quests</code>) do <strong>not</strong> carry
+an <code>@</code>. The rule is simpler than it sounds: ask "does this have a name of
+its own?" If yes — <code>@</code>. If it is just "a box that holds other things" —
+no <code>@</code>.</p>
+<h2 id="whats-next">What's next</h2>
+<p>Now that the vault exists and the skeleton of a place is sitting inside
+it, let's make the port actually feel alive. Open
+<a href="../01-getting-started/your-first-location.html">Your first location</a>.</p>
+<hr>
+<h2 id="reference">Reference</h2>
+<p><strong>Minimum folder structure</strong></p>
+<pre><code>MyWorld/
+└── Locations/
+    └── @City/
+        └── @Location/
+            ├── &lt;NameWithoutSpaces&gt;Mind.md
+            ├── npc/
+            ├── items/
+            ├── scenes/
+            └── quests/
+</code></pre>
+<p><strong>Mind file names</strong></p>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>File name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Location</td>
+<td><code>&lt;NameWithoutSpacesAndWithout@&gt;Mind.md</code></td>
+</tr>
+<tr>
+<td>Character</td>
+<td><code>NPCMind.md</code></td>
+</tr>
+<tr>
+<td>Item</td>
+<td><code>ItemMind.md</code></td>
+</tr>
+<tr>
+<td>Quest</td>
+<td><code>Quest name.md</code> (spaces allowed, no <code>@</code>)</td>
+</tr>
+<tr>
+<td>Scene</td>
+<td><code>@Scene name.md</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where <code>@</code> goes and where it doesn't</strong></p>
+<ul>
+<li><strong>With <code>@</code>:</strong> names of locations, characters, items, scenes.</li>
+<li><strong>Without <code>@</code>:</strong> service folders (<code>Locations</code>, <code>npc</code>, <code>items</code>, <code>scenes</code>,
+  <code>quests</code>) and mind files (<code>PortMind.md</code>, <code>NPCMind.md</code>, etc.).</li>
+</ul>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../01-getting-started/what-is-a-cartridge.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">What is a cartridge</span></a>
+<a class="pager-next" href="../01-getting-started/your-first-location.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Your first location</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "default": "greenhaven-noir",
+  "worlds": [
+    {
+      "id": "greenhaven-noir",
+      "title": "Greenhaven Noir",
+      "path": "C:\\Greenhaven\\GreenhavenWorld\\GreenhavenNoir"
+    }
+  ]
+}

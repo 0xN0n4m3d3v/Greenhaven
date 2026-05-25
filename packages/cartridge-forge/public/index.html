@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Кузница катриджей Greenhaven</title>
+    <link rel="stylesheet" href="/comfy-adapted/litegraph.css" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar dock-node" data-dock="projects">
+        <div class="dock-head">
+          <div class="brand">
+            <div class="brand-mark">GF</div>
+            <div>
+              <h1>Кузница катриджей</h1>
+              <p>Создание миров Greenhaven</p>
+            </div>
+          </div>
+          <button class="dock-toggle" data-dock-toggle="projects" type="button">Свернуть</button>
+        </div>
+
+        <form id="project-form" class="create-row">
+          <input id="project-slug" placeholder="novyi-katridzh" autocomplete="off" />
+          <button type="submit">Создать</button>
+        </form>
+
+        <div class="section-title">Проекты</div>
+        <div id="project-list" class="project-list"></div>
+
+        <div class="section-title source-title">Источники</div>
+        <form id="source-form" class="source-form">
+          <input id="source-id" placeholder="src:forge:note" autocomplete="off" />
+          <input id="source-title" placeholder="Название источника" autocomplete="off" />
+          <button type="submit">Добавить источник</button>
+        </form>
+        <div id="source-list" class="source-list"></div>
+      </aside>
+
+      <main class="workspace">
+        <header class="toolbar">
+          <div>
+            <div id="active-project" class="eyebrow">Проект не выбран</div>
+            <h2 id="project-title">Рабочее пространство</h2>
+          </div>
+          <div class="toolbar-actions">
+            <button id="refresh-btn" type="button">Обновить</button>
+            <button id="import-current-btn" type="button">Импорт grinhaven-full</button>
+            <button id="run-workflow-btn" type="button">Запустить пайплайн</button>
+            <button id="validate-btn" type="button">Проверить</button>
+            <button id="export-btn" type="button">Экспорт</button>
+            <button id="export-sql-btn" type="button">SQL в игру</button>
+          </div>
+        </header>
+
+        <section class="flow-panel">
+          <div class="flow-node source">Источники</div>
+          <div class="flow-link"></div>
+          <div class="flow-node records">Сущности</div>
+          <div class="flow-link"></div>
+          <div class="flow-node visuals">Визуалы</div>
+          <div class="flow-link"></div>
+          <div class="flow-node validate">Проверка</div>
+          <div class="flow-link"></div>
+          <div class="flow-node export">Экспорт</div>
+        </section>
+
+        <section class="panel canvas-workbench">
+          <div class="panel-head canvas-head">
+            <div>
+              <h3>Полотно мира</h3>
+              <p id="graph-count">0 узлов / 0 связей</p>
+            </div>
+            <div class="canvas-actions">
+              <input id="entity-search" class="entity-search" placeholder="Найти сущность" autocomplete="off" />
+              <button id="clear-focus-btn" class="clear-focus-btn" type="button" hidden>Показать всё</button>
+              <button id="canvas-select-btn" type="button" class="active">Выбор</button>
+              <button id="canvas-hand-btn" type="button">Перемещение</button>
+              <button id="canvas-link-btn" type="button">Связать</button>
+              <select id="link-rel">
+                <option value="contains">содержит</option>
+                <option value="resident">житель</option>
+                <option value="participant">участник</option>
+                <option value="placed_item">предмет в сцене</option>
+                <option value="quest_hook">зацепка квеста</option>
+                <option value="related">связано</option>
+              </select>
+              <button id="fit-canvas-btn" type="button">Вписать</button>
+              <button id="validate-graph-btn" type="button">Проверить граф</button>
+            </div>
+          </div>
+          <div id="canvas-stage" class="canvas-stage lgraphcanvas" tabindex="0">
+            <div id="canvas-grid" class="canvas-grid">
+              <svg id="canvas-edges" class="canvas-edges" aria-hidden="true"></svg>
+              <div id="canvas-nodes" class="canvas-nodes"></div>
+            </div>
+            <div id="selection-toolbox" class="selection-toolbox" hidden>
+              <button type="button" data-canvas-action="quest">Квест</button>
+              <button type="button" data-canvas-action="visual">Визуал</button>
+            </div>
+            <div id="context-menu" class="context-menu" role="menu" hidden></div>
+          </div>
+          <div id="graph-list" class="graph-list compact"></div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel records-panel dock-node" data-dock="records">
+            <div class="panel-head">
+              <div>
+                <h3>Записи мира</h3>
+                <p id="record-count">0 записей</p>
+              </div>
+              <div class="panel-tools">
+                <select id="kind-filter">
+                  <option value="">Все типы</option>
+                </select>
+                <button class="dock-toggle" data-dock-toggle="records" type="button">Свернуть</button>
+              </div>
+            </div>
+
+            <form id="record-form" class="record-form">
+              <select id="record-kind"></select>
+              <input id="record-slug" placeholder="slug-zapisi" autocomplete="off" />
+              <input id="record-name" placeholder="Название" autocomplete="off" />
+              <button type="submit">Добавить</button>
+            </form>
+
+            <div id="record-list" class="record-list"></div>
+          </div>
+
+          <div class="panel log-panel dock-node" data-dock="log">
+            <div class="panel-head">
+              <div>
+                <h3>Проверка и выполнение</h3>
+                <p>Схема, игровые проверки, статус экспорта</p>
+              </div>
+              <button class="dock-toggle" data-dock-toggle="log" type="button">Свернуть</button>
+            </div>
+            <div id="status-log" class="status-log"></div>
+            <div class="section-title execution-title">История запусков</div>
+            <div id="execution-list" class="execution-list"></div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="inspector">
+        <div class="panel inspector-panel dock-node" data-dock="inspector">
+          <div class="panel-head">
+            <div>
+              <h3>Карточка сущности</h3>
+              <p id="inspector-subtitle">Выберите запись</p>
+            </div>
+            <div class="panel-tools">
+              <button id="ai-fill-btn" type="button">ИИ-заполнение</button>
+              <button class="dock-toggle" data-dock-toggle="inspector" type="button">Свернуть</button>
+            </div>
+          </div>
+
+          <div class="field-stack">
+            <div class="inspector-grid">
+              <label>
+                Тип
+                <select id="inspector-kind" class="inspector-field" disabled></select>
+              </label>
+              <label>
+                Операция
+                <select id="inspector-operation" class="inspector-field" disabled>
+                  <option value="append">append</option>
+                  <option value="upsert">upsert</option>
+                  <option value="deprecate">deprecate</option>
+                </select>
+              </label>
+              <label>
+                Slug
+                <input id="inspector-slug" class="inspector-field" disabled />
+              </label>
+              <label>
+                Record ID
+                <input id="inspector-record-id" class="inspector-field" disabled />
+              </label>
+              <label>
+                Язык
+                <input id="inspector-source-language" class="inspector-field" disabled />
+              </label>
+              <label>
+                Название
+                <input id="inspector-name" class="inspector-field" disabled />
+              </label>
+            </div>
+            <label>
+              Полное описание
+              <textarea id="summary-input" class="inspector-field" rows="12" disabled></textarea>
+            </label>
+            <label>
+              Теги
+              <input id="tags-input" class="inspector-field" disabled />
+            </label>
+            <section class="entity-connections">
+              <div class="section-title">Связи</div>
+              <div id="connection-panel" class="connection-panel"></div>
+              <div class="connection-add">
+                <select id="connection-rel">
+                  <option value="related">связано</option>
+                  <option value="quest_hook">зацепка квеста</option>
+                  <option value="quest_giver">квестодатель</option>
+                  <option value="participant">участник</option>
+                  <option value="resident">житель</option>
+                  <option value="location">локация</option>
+                  <option value="holder">владелец</option>
+                  <option value="uses_item">использует предмет</option>
+                </select>
+                <select id="connection-target"></select>
+                <button id="connection-add-btn" type="button">Связать</button>
+              </div>
+            </section>
+            <section class="structured-editor">
+              <div class="section-title">Игровые поля</div>
+              <div id="structured-fields" class="structured-fields"></div>
+            </section>
+            <details class="technical-json">
+              <summary>Технические данные</summary>
+              <label>
+                Payload JSON
+                <textarea id="payload-input" class="inspector-field code-field" rows="16" spellcheck="false" disabled></textarea>
+              </label>
+              <label>
+                Links JSON
+                <textarea id="links-input" class="inspector-field code-field" rows="8" spellcheck="false" disabled></textarea>
+              </label>
+              <label>
+                Provenance JSON
+                <textarea id="provenance-input" class="inspector-field code-field" rows="8" spellcheck="false" disabled></textarea>
+              </label>
+              <label>
+                Quality JSON
+                <textarea id="quality-input" class="inspector-field code-field" rows="8" spellcheck="false" disabled></textarea>
+              </label>
+            </details>
+            <div class="inline-actions">
+              <button id="save-record-btn" type="button">Сохранить</button>
+              <span id="autosave-status" class="autosave-status">Автосохранение готово</span>
+              <button id="new-quest-btn" type="button">Создать квест</button>
+              <button id="new-visual-btn" type="button">Создать визуал</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel visual-panel dock-node" data-dock="visuals">
+          <div class="panel-head">
+            <div>
+              <h3>Визуальные наборы</h3>
+              <p id="visual-count">0 наборов</p>
+            </div>
+            <div class="panel-tools">
+              <button id="attach-visual-btn" type="button">Прикрепить</button>
+              <button class="dock-toggle" data-dock-toggle="visuals" type="button">Свернуть</button>
+            </div>
+          </div>
+          <div id="visual-list" class="visual-list"></div>
+        </div>
+      </aside>
+    </div>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

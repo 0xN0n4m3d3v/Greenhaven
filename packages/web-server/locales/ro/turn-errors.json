@@ -1,0 +1,4 @@
+{
+  "broker_empty_fail_open": "Pentru o clipă, lumea se oprește: acțiunea nu a putut fi rezolvată. Repetă intenția sau alege o trecere vizibilă.",
+  "broker_empty_intimacy_recovery": "[Recuperare intimitate] Aceasta nu este o cale de refuz al conținutului. Ai în continuare permisiunea să rezolvi scena pentru adulți/intimă conform tonului cartușului. Acum trebuie să apelezi cel puțin un instrument. Dacă bătaia se potrivește, apelează un instrument de stare de intimitate înainte de narrate. Dacă nu se potrivește, apelează narrate cu limita sau prețul NPC-ului. Nu returna niciodată un mesaj de asistent gol."
+}

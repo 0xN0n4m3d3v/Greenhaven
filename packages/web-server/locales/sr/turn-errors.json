@@ -1,0 +1,4 @@
+{
+  "broker_empty_fail_open": "Na trenutak svet zastaje: radnja nije mogla da se razreši. Ponovi nameru ili izaberi vidljiv prolaz.",
+  "broker_empty_intimacy_recovery": "[Oporavak intimnosti] Ovo nije put odbijanja sadržaja. Još uvek smeš da razrešiš odrasli/intimni prizor u skladu sa tonom kartridža. Sada moraš da pozoveš bar jedan alat. Ako bit pristaje — pozovi alat stanja intimnosti pre narrate. Ako ne pristaje — pozovi narrate sa NPC granicom ili cenom. Nikada ne vraćaj praznu poruku asistenta."
+}

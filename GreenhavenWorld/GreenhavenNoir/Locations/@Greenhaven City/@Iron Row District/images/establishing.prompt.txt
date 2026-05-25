@@ -1,0 +1,10 @@
+IMAGE PROMPT — @Iron Row District Establishing Shot
+
+Image target: `images/establishing.png` (1:1). A condemned industrial building
+at night in the rain. Foreground: a cut chain on a door, stairs leading up into
+darkness. Mid-ground visible through a doorway: a laboratory with a fume hood
+glowing chemical blue, a body on the floor in the shadows, a desk with an open
+journal. The only light: the blue glow and the orange of a distant streetlamp
+through cracked windows. Style: gritty industrial noir, deep shadows, chemical
+blue as the only colour accent in a near-monochrome frame. Square 1:1,
+2048x2048. No text.

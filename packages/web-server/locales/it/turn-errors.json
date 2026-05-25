@@ -1,0 +1,4 @@
+{
+  "broker_empty_fail_open": "Per un istante, il mondo si blocca: l'azione non è stata risolta. Ripeti l'intento o scegli un passaggio visibile.",
+  "broker_empty_intimacy_recovery": "[Recupero d'intimità] Questo non è un percorso di rifiuto dei contenuti. Ti è ancora permesso risolvere la scena adulta/intima secondo il tono della cartuccia. Ora devi chiamare almeno uno strumento. Se il beat passa, chiama uno strumento di stato d'intimità prima di narrate. Se non passa, chiama narrate con il limite o il prezzo dell'NPC. Non restituire mai un messaggio assistente vuoto."
+}

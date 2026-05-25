@@ -1,0 +1,4 @@
+interface:
+  display_name: "Greenhaven World Author"
+  short_description: "Create human-editable Greenhaven Obsidian world notes."
+  default_prompt: "Create a new Greenhaven world note from this request, place it in the human vault, and preserve canonical @mentions."

@@ -1,0 +1,6 @@
+PORTRAIT PROMPT — @Dorn
+
+Portrait target: portraits/default.png (1:1). Fifties, stocky build, grey overalls with the transit authority patch on the
+shoulder. Face lined from twenty-two years of tunnel air. Hands callused from
+wrenches and valves. Eyes red from crying and lack of sleep. He has not been
+home in three days. Style: painterly noir realism, desaturated palette. Square 1:1, 2048x2048. No text.

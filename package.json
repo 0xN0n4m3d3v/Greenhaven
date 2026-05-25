@@ -1,0 +1,44 @@
+{
+  "name": "greenhaven",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Greenhaven game runtime, desktop build, web server, web UI, cartridge tools, and bundled demo worlds.",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:server": "npm --prefix packages/web-server run dev",
+    "dev:ui": "npm --prefix packages/web-ui run dev",
+    "build:shared": "npm --prefix packages/shared run build",
+    "build:server": "npm --prefix packages/web-server run build",
+    "build:ui": "npm --prefix packages/web-ui run build",
+    "build:desktop": "npm --prefix packages/desktop-electron run build:ts-only",
+    "build:forge": "npm --prefix packages/cartridge-forge run build",
+    "build": "npm run build:shared && npm run build:server && npm run build:ui && npm run build:desktop && npm run build:forge",
+    "typecheck": "npm --prefix packages/shared run typecheck && npm --prefix packages/web-server run typecheck && npm --prefix packages/cartridge-forge run typecheck && npm --prefix packages/web-ui run build && npm --prefix packages/desktop-electron run build:ts-only",
+    "test": "npm --prefix packages/web-server run test",
+    "prepare:greenhaven-cartridge": "npm --prefix packages/web-server run cartridge:default:build -- --no-fail-on-warnings && npm --prefix packages/web-server run cartridge:i18n:check",
+    "prepare:greenhaven-desktop-assets": "npm --prefix packages/web-server run build && npm --prefix packages/web-ui run build && npm --prefix packages/desktop-electron run prepare:assets",
+    "build:greenhaven-desktop:prepared": "npm --prefix packages/desktop-electron run build:ts-only",
+    "build:greenhaven-desktop:raw": "npm --prefix packages/web-server run build && npm --prefix packages/web-ui run build && npm --prefix packages/desktop-electron run build",
+    "build:greenhaven-desktop": "npm run prepare:greenhaven-cartridge && npm run build:greenhaven-desktop:raw",
+    "dist:greenhaven-win:prepared": "npm --prefix packages/desktop-electron run dist:win:prepared",
+    "dist:greenhaven-win:raw": "npm --prefix packages/desktop-electron run dist:win",
+    "dist:greenhaven-win": "npm run prepare:greenhaven-cartridge && npm run dist:greenhaven-win:raw",
+    "dist:greenhaven-win-dir:prepared": "npm --prefix packages/desktop-electron run dist:win-dir:prepared",
+    "dist:greenhaven-win-dir:raw": "npm --prefix packages/desktop-electron run dist:win-dir",
+    "dist:greenhaven-win-dir": "npm run prepare:greenhaven-cartridge && npm run dist:greenhaven-win-dir:raw",
+    "cartridge:default:build": "npm --prefix packages/web-server run cartridge:default:build",
+    "cartridge:default:precompile-db": "npm --prefix packages/web-server run cartridge:default:precompile-db",
+    "cartridge:default:install-smoke": "npm --prefix packages/web-server run cartridge:default:install-smoke",
+    "cartridge:i18n:check": "npm --prefix packages/web-server run cartridge:i18n:check",
+    "forge": "npm --prefix packages/cartridge-forge run forge --"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "tsx": "^4.20.6",
+    "typescript": "^6.0.3"
+  }
+}

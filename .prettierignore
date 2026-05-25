@@ -1,0 +1,17 @@
+**/.git
+**/node_modules
+**/dist
+**/build
+**/release
+**/coverage
+**/generated
+**/pgdata
+**/pgdata-*
+GreenhavenWorld/.greenhaven-agent-manual/generated
+GreenhavenWorld/.greenhaven-agent-manual/local
+*.tsbuildinfo
+*.log
+*.jsonl
+.DS_Store
+Thumbs.db
+junit.xml

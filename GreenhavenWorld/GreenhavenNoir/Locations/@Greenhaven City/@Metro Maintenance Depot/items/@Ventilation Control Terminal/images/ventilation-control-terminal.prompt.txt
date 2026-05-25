@@ -1,0 +1,3 @@
+ITEM ICON PROMPT — Ventilation Control Terminal
+
+An old CRT-style maintenance terminal mounted on a concrete wall in a subway control room. The green monochrome screen displays: "ENTER MAINTENANCE CODE: _ _ _ _ _ _" with a blinking cursor. A scratched note taped to the side reads: "Code changed monthly. See Chief Engineer." The terminal casing is beige plastic, yellowed with age, industrial buttons beneath the screen. Emergency lights pulse green off-frame, casting the scene in subterranean glow. Style: retro-industrial noir, the green screen as the sole colour accent. Square 1:1, 2048x2048. No text except what naturally appears on screen and note.

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Item reference — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="An item is anything in the world: a coin, a knife, a note, a warehouse door. The file lives at Locations/.../items/@Name/ItemMind.md. The folder name carries an @. The file is always called ItemMin..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a class="active" href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Reference</p>
+          <h1 id="item-reference">Item reference</h1>
+<p>An item is anything in the world: a coin, a knife, a note, a
+warehouse door. The file lives at
+<code>Locations/.../items/@Name/ItemMind.md</code>. The folder name carries an
+<code>@</code>. The file is always called <code>ItemMind.md</code>.</p>
+<h2 id="item-canon-passport-of-the-item">Item Canon — passport of the item</h2>
+<p><strong>Why:</strong> the item's type, where it sits, whether it can be taken,
+whether it is visible immediately or hidden.</p>
+<p><strong>Required:</strong> yes.</p>
+<h2 id="description-description">Description — description</h2>
+<p><strong>Why:</strong> the game prose the player sees when they examine the item.
+Not a memo to yourself — text for the world.</p>
+<p><strong>Required:</strong> yes.</p>
+<h2 id="usage-how-to-use-it">Usage — how to use it</h2>
+<p><strong>Why:</strong> what the item gives the hero when applied. Concrete actions
+and consequences, not vague language.</p>
+<p><strong>Required:</strong> yes.</p>
+<h2 id="visual-brief-icon-brief">Visual Brief — icon brief</h2>
+<p><strong>Why:</strong> the brief to the art generator for the item's icon. What it
+looks like, in what light, on what background.</p>
+<p>Details in <a href="../03-mechanics/images.html">Images</a>.</p>
+<p>The main icon should live here:</p>
+<pre><code class="language-text">items/@Rat Lantern/
+|-- ItemMind.md
+`-- images/
+    `-- icon.png
+</code></pre>
+<p>You may use <code>png</code>, <code>jpg</code>, <code>jpeg</code>, <code>webp</code>, <code>gif</code>, <code>svg</code>, or an animated
+square <code>webm</code> / <code>mp4</code>. Extra images can live beside the icon if a
+quest or scene needs them.</p>
+<h2 id="media-note-items-do-not-auto-play-music">Media note — items do not auto-play music</h2>
+<p>The importer can read media files and a <code>Media Script</code> from an item
+note, but ordinary item focus does not automatically fire music in the
+same way locations, scenes, and NPC dialogue do. If using an item
+should change music, put the music script on the scene, NPC, or
+location that opens after the item is used.</p>
+<h2 id="materializes-what-appears-from-use">Materializes — what appears from use</h2>
+<p>Inventory note: this section can make another item appear in a real
+inventory. Use <code>Scope: hero inventory</code> to grant the active hero an
+item, or <code>Scope: @NPC Name inventory</code> to place the item into an NPC,
+container, or location holder. Use <code>count=N</code> only as a machine token
+when more than one item should appear.</p>
+<p><strong>Why:</strong> if using the item opens a door, activates a quest, or calls
+in a character, describe it here. Format — four fields.</p>
+<h2 id="do-not-do-here-narrator-boundaries">Do Not Do Here — narrator boundaries</h2>
+<p><strong>Why:</strong> what cannot be done with this item. For example: do not
+allow the chest to be opened without a key, do not describe the door
+as "already wide open."</p>
+<hr>
+<h2 id="special-items-currency">Special items: currency</h2>
+<p>Coins in Greenhaven follow a special rule. Their names are
+<strong>hard-coded</strong>, and the engine searches for exactly these strings:</p>
+<ul>
+<li><code>@Copper coin</code> — copper</li>
+<li><code>@Silver coin</code> — silver</li>
+<li><code>@Gold coin</code> — gold</li>
+</ul>
+<p>They cannot be named anything else: not <code>@CopperPiece</code>, not
+<code>@Copper</code>, not <code>@Coin</code>. Otherwise the compiler will not understand
+that money is being discussed, and trade will break.</p>
+<p>The exchange rate: one silver equals one hundred copper; one gold
+equals one hundred silver.</p>
+<p>Currency files live in a dedicated economy folder, not in locations:</p>
+<pre><code>GreenHavenWorld/
+└── Economy/
+    └── items/
+        ├── @Copper coin/
+        │   ├── CopperCoinMind.md
+        │   └── images/icon.png
+        ├── @Silver coin/
+        └── @Gold coin/
+</code></pre>
+<p>Details in the <a href="../03-mechanics/economy.html">Economy chapter</a>.</p>
+<hr>
+<h2 id="checklist">Checklist</h2>
+<ul>
+<li>[ ] <code>Item Canon</code> with type and placement</li>
+<li>[ ] <code>Description</code> written as game prose</li>
+<li>[ ] <code>Usage</code> describes concrete actions</li>
+<li>[ ] If the item needs an icon, <code>Visual Brief</code> is filled</li>
+<li>[ ] Inventory rewards use <code>Materializes</code> with <code>hero inventory</code> or
+      <code>@Name inventory</code></li>
+<li>[ ] <code>images/icon.*</code> exists if the item appears as a card or reward</li>
+<li>[ ] Currency names are exactly <code>@Copper coin</code>, <code>@Silver coin</code>,
+      <code>@Gold coin</code></li>
+</ul>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../02-reference/location.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Location</span></a>
+<a class="pager-next" href="../03-mechanics/materializes.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Materializes</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

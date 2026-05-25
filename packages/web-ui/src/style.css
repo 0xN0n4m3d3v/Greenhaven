@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+html {
+    /* iOS Safari sometimes auto-resizes text on rotation. Pin it. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+html, body {
+    /* Same palette as the visual shell. Painting it on the document
+       root with background-attachment: fixed guarantees that no
+       transparent layer above (scroll container, panels, sub-pixel
+       gaps) ever exposes a flat brown to the user. The fixed
+       attachment stops the gradient from being clipped to the
+       viewport edge during scroll. */
+    background:
+        radial-gradient(circle at 20% 12%,  rgba(243, 183, 85, 0.20), transparent 36%),
+        radial-gradient(circle at 82% 4%,   rgba(64, 172, 147, 0.20), transparent 38%),
+        radial-gradient(circle at 18% 52%,  rgba(243, 183, 85, 0.12), transparent 44%),
+        radial-gradient(circle at 84% 56%,  rgba(64, 172, 147, 0.12), transparent 44%),
+        radial-gradient(circle at 30% 92%,  rgba(243, 183, 85, 0.14), transparent 40%),
+        radial-gradient(circle at 78% 96%,  rgba(64, 172, 147, 0.16), transparent 42%),
+        linear-gradient(135deg, #160f0b 0%, #22140d 30%, #1a1812 60%, #0d1718 100%);
+    background-attachment: fixed;
+    color: hsl(var(--foreground));
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-ui);
+    /* On mobile, the visual viewport (vh) includes the address bar even
+       when it's visible, leaving the bottom of fixed-height layouts
+       hidden. dvh tracks the *dynamic* viewport so it shrinks/grows
+       as the chrome reveals. We keep min-height: 100vh as a fallback
+       for older browsers — there it'll just be slightly too tall. */
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* Stop pull-to-refresh / rubber-band from bouncing the whole
+       document when the user scrolls inside .message-flow. */
+    overscroll-behavior-y: none;
+    /* Telegram-like shell: the document itself never scrolls — the rail
+       and the message-flow each own their independent scroll containers
+       inside the fixed-height game-shell grid. Without this, a tall
+       rail (many locations) pushes the body past 100dvh and the whole
+       window gains a scrollbar instead of just the rail. */
+    overflow: hidden;
+}
+
+#app {
+    /* dvh > svh > vh fallback — see body comment. */
+    height: 100vh;
+    height: 100dvh;
+}
+
+/* iOS auto-zooms when you focus an input whose font-size < 16px. We
+   set 16px on every interactive text input so users don't get yanked
+   into a zoomed-in viewport. The composer input has its own size in
+   App.css; this is the safety net for any future input/textarea. */
+input,
+textarea,
+select {
+    font-size: 16px;
+}
+
+/* Default tap-highlight rectangles on iOS are blue-grey and ugly on
+   our gold/teal palette. Buttons handle their own :active feedback. */
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Spec 31 — typography for narrative surfaces.
+   Story prose uses EB Garamond; UI chrome uses Inter. */
+.message-flow .bubble.narrator,
+.message-flow .bubble.npc,
+.message-flow .bubble-content {
+    font-family: var(--font-serif-prose);
+    font-size: 17px;
+    line-height: var(--prose-line-height);
+}
+
+/* Drop-cap on narrator paragraphs — first letter of the first
+   paragraph in a narrator bubble renders larger in display face,
+   ember color. Skips short bubbles (< 60 chars) via the @supports
+   trick — only triggers when the bubble has enough content. */
+.message-flow .bubble.narrator > p:first-child::first-letter,
+.message-flow .bubble.narrator > div > p:first-child::first-letter {
+    font: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    float: none;
+    margin: 0;
+    color: inherit;
+    font-weight: inherit;
+    initial-letter: normal;
+}
+
+/* Subtle parchment tint on narrator bubbles; brighter accent rim. */
+.message-flow .bubble.narrator {
+    background: linear-gradient(180deg,
+        hsl(var(--card) / 0.92),
+        hsl(var(--card) / 0.96));
+    border: 1px solid hsl(var(--border) / 0.8);
+    box-shadow:
+        inset 0 0 18px hsl(var(--background) / 0.3),
+        0 2px 8px hsl(var(--background) / 0.5);
+}
+
+/* NPC bubbles get the persona hue rim. */
+.message-flow .bubble.npc {
+    border-left: 2px solid hsl(var(--persona-hue-default) / 0.6);
+}
+
+/* Spec 31 — streaming hint on the pending bubble. While text grows
+   character-by-character we add a subtle right-edge fade + warm glow
+   so the player sees the prose IS being written (not stalled). */
+.message-flow .bubble.pending::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        transparent 70%,
+        hsl(var(--ember) / 0.08) 90%,
+        hsl(var(--ember) / 0) 100%);
+    border-radius: inherit;
+    animation: streaming-shimmer 1.6s ease-in-out infinite;
+}
+@keyframes streaming-shimmer {
+    0%, 100% { opacity: 0.6; }
+    50%      { opacity: 1.0; }
+}
+.message-flow .bubble.pending {
+    box-shadow:
+        0 0 0 1px hsl(var(--ember) / 0.18),
+        0 4px 24px hsl(var(--ember) / 0.06);
+}
+@media (prefers-reduced-motion: reduce) {
+    .message-flow .bubble.pending::after { animation: none; opacity: 0.6; }
+}
+
+/* Polish the typing indicator dots with the ember palette. */
+.typing-indicator span {
+    background: hsl(var(--ember) / 0.7);
+}
+.section-title,
+.brand-block h1,
+.npc-card h3 {
+    font-family: var(--font-serif-display);
+    font-variant-caps: small-caps;
+    letter-spacing: 0.06em;
+}
+.dialogue-banner strong {
+    font-family: var(--font-serif-display);
+}
+code, pre, .mono,
+.npc-card span[style*="font-family: var(--font-mono)"] {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+}

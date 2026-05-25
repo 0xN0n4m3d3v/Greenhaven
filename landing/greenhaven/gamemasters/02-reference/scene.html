@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scene reference — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="A scene is a staged moment. Most of the time the world improvises: the narrator picks what to say. But sometimes you want to set a specific moment to fire at a particular instant. That is a scene." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a class="active" href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Reference</p>
+          <h1 id="scene-reference">Scene reference</h1>
+<p>A scene is a staged moment. Most of the time the world improvises:
+the narrator picks what to say. But sometimes you want to set a
+<strong>specific moment</strong> to fire at a particular instant. That is a scene.</p>
+<p>Scenes come in two kinds:</p>
+<ul>
+<li><strong>Character-owned scene</strong> — lives in <code>npc/@Name/scenes/@Title.md</code>.
+  It belongs to this specific person: first meeting, confession,
+  betrayal, duel.</li>
+<li><strong>Location-owned scene</strong> — lives in <code>@Location/scenes/@Title.md</code>.
+  It belongs to the place: a fight at the port, a row on the square,
+  a hearing at the guild — any suitable character can be drawn into
+  it.</li>
+</ul>
+<p>The file name carries an <code>@</code>. The level-one heading inside is the
+scene's name with an <code>@</code>.</p>
+<h2 id="where-and-when-where-and-when">Where And When — where and when</h2>
+<p><strong>Why:</strong> the condition under which the scene "comes alive." Who owns
+it, where it happens, when it becomes visible.</p>
+<pre><code class="language-markdown">## Where And When
+
+- Owner: `@Tessa Wrenlight`
+- Location: `@Greenhaven Port`
+- Visibility: triggers after `@Dockside Accusation` first beat
+</code></pre>
+<p>The condition in <code>Visibility</code> must be <strong>specific</strong>: "after the first
+beat of scene X," "when the hero approaches the object for the
+second time," "when quest Y moves to its third stage." Not
+"sometimes" and not "when it seems appropriate."</p>
+<h2 id="hook-opening-beat">Hook — opening beat</h2>
+<p><strong>Why:</strong> what the player sees in the moment the scene fires. Short
+prose.</p>
+<h2 id="beat-by-beat-beat-by-beat-script">Beat By Beat — beat-by-beat script</h2>
+<p><strong>Why:</strong> the beats that make up the scene. Each beat is one narrator
+turn.</p>
+<pre><code class="language-markdown">## Beat By Beat
+
+1. The hero notices her. She does not look away.
+2. If the hero greets her, she answers with an observation, not a
+   name.
+3. She gestures at `@Missing Passenger Notice` — or at
+   `@Blue Warehouse Cellar Door`, if the hero is listening for the
+   cellar.
+4. She lets the hero decide whether to continue the conversation.
+</code></pre>
+<p>Critical rule: beats are a <strong>skeleton</strong>, not rails. The player can
+leave, interrupt, or do something unexpected — the narrator is not
+obliged to drag them through all four beats if the scene has broken
+on its own.</p>
+<h2 id="player-choices-players-choices">Player Choices — player's choices</h2>
+<p><strong>Why:</strong> the options the player has in this scene. This is not an
+exhaustive list (the player can do something else); it is a <strong>hint</strong>
+to the narrator: "here are the main moves, and here is how the
+character reacts to each one."</p>
+<pre><code class="language-markdown">## Player Choices
+
+- Insist: ask her name. She gives it.
+- Ask about the port: she answers briefly.
+- Walk past: she watches and remembers.
+- Pay for information: she refuses.
+</code></pre>
+<h2 id="success-result-and-failure-result">Success Result and Failure Result</h2>
+<p><strong>Why:</strong> the different outcomes the scene can have. A scene can have
+many outcomes, not only two. What matters is to describe what
+separates "went well" from "went badly."</p>
+<h2 id="memory-and-string-changes">Memory And String Changes</h2>
+<p><strong>Why:</strong> what the character will remember and which relationships
+will shift.</p>
+<pre><code class="language-markdown">## Memory And String Changes
+
+`@Tessa Wrenlight` writes down the first thing the hero said in her
+mental ledger. This is the first +string or -string entry.
+</code></pre>
+<h2 id="materializes-what-appears-after-the-scene">Materializes — what appears after the scene</h2>
+<p><strong>Why:</strong> a scene, too, can change the world — open a passage, leave a
+clue, launch a quest.</p>
+<p>Details in <a href="../03-mechanics/materializes.html">Materializes</a>.</p>
+<h2 id="scene-image-brief-scene-card-or-event-card">Scene Image Brief — scene card or event card</h2>
+<p><strong>Why:</strong> a scene can have its own image or short loop separate from the
+location card and NPC portrait. Use this for fights, confessions,
+discoveries, gates opening, a clue under a lantern, or a mass scene on
+the square.</p>
+<p>Put scene media beside the scene file:</p>
+<pre><code class="language-text">scenes/@Arrival With A Revolver/
+|-- SceneMind.md
+`-- images/
+    `-- arrival-with-a-revolver.webm
+</code></pre>
+<p>Use a square image or square <code>webm</code> when the card should fit beside
+NPC and location cards.</p>
+<h2 id="media-script-scene-music-and-transitions">Media Script — scene music and transitions</h2>
+<p><strong>Why:</strong> a scene script fires when the authored scene opens. This is
+the right place for combat music, mystery tension, romance music, a
+short reveal sting, or a transition from ordinary location ambience to
+a focused dramatic track.</p>
+<pre><code class="language-markdown">## Media Script
+
+switch_music(&quot;music_arrival_with_a_revolver&quot;, label=&quot;Arrival With A Revolver&quot;, loop=true, volume=0.66)
+</code></pre>
+<p>Scene scripts override the current location or NPC atmosphere when
+they run. When the scene ends, the next location or NPC focus can
+switch music again.</p>
+<h2 id="do-not-do-here-narrator-boundaries">Do Not Do Here — narrator boundaries</h2>
+<p><strong>Why:</strong> what cannot be done in this scene. If it matters that a
+specific clue be shown, not mentioned offstage, write it here.</p>
+<hr>
+<h2 id="checklist">Checklist</h2>
+<ul>
+<li>[ ] <code>Where And When</code> with a specific condition</li>
+<li>[ ] <code>Hook</code> written in prose</li>
+<li>[ ] <code>Beat By Beat</code> — at least 3 beats</li>
+<li>[ ] <code>Player Choices</code> — options with reactions</li>
+<li>[ ] <code>Success Result</code> and <code>Failure Result</code> are written</li>
+<li>[ ] <code>Memory And String Changes</code> is written</li>
+<li>[ ] <code>Scene Image Brief</code> exists if the scene has its own card</li>
+<li>[ ] <code>Media Script</code> exists if the scene changes music or plays a sting</li>
+</ul>
+<p>The deep guide to scenes lives in
+<a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a>.</p>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../02-reference/quest.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Quest</span></a>
+<a class="pager-next" href="../02-reference/location.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Location</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

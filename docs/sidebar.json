@@ -1,0 +1,112 @@
+[
+  {
+    "label": "Greenhaven",
+    "items": [
+      {
+        "label": "Start",
+        "items": [
+          { "label": "Docs hub", "slug": "docs" },
+          { "label": "Overview", "slug": "docs/00-overview" },
+          { "label": "Architecture", "slug": "docs/01-architecture" },
+          { "label": "Runtime stack", "slug": "docs/02-runtime-stack" }
+        ]
+      },
+      {
+        "label": "Server",
+        "items": [
+          { "label": "Turn pipeline", "slug": "docs/server/turn-pipeline" },
+          {
+            "label": "Session lifecycle",
+            "slug": "docs/server/session-lifecycle"
+          },
+          { "label": "Tool system", "slug": "docs/server/tool-system" },
+          { "label": "SSE events", "slug": "docs/server/sse-events" },
+          {
+            "label": "DB & migrations",
+            "slug": "docs/server/db-and-migrations"
+          }
+        ]
+      },
+      {
+        "label": "Agents",
+        "items": [
+          { "label": "Overview", "slug": "docs/agents/00-overview" },
+          { "label": "Base adapter", "slug": "docs/agents/base-adapter" },
+          { "label": "Combat Director", "slug": "docs/agents/combat-director" },
+          {
+            "label": "Intimacy Coordinator",
+            "slug": "docs/agents/intimacy-coordinator"
+          },
+          { "label": "Quest Watcher", "slug": "docs/agents/quest-watcher" },
+          {
+            "label": "Adventure Materializer",
+            "slug": "docs/agents/adventure-materializer"
+          },
+          { "label": "Voice Warden", "slug": "docs/agents/voice-warden" },
+          { "label": "Movement Warden", "slug": "docs/agents/movement-warden" }
+        ]
+      },
+      {
+        "label": "Tools & Data",
+        "items": [
+          { "label": "Tool overview", "slug": "docs/tools/00-overview" },
+          { "label": "Tool reference", "slug": "docs/tools/reference" },
+          { "label": "World sensing", "slug": "docs/tools/world-sensing" },
+          { "label": "Batch mutation", "slug": "docs/tools/batch-mutation" },
+          { "label": "DB schema", "slug": "docs/db/schema" },
+          { "label": "Runtime fields", "slug": "docs/db/runtime-fields" },
+          { "label": "Quest schema", "slug": "docs/db/quest-schema" },
+          { "label": "Inventory", "slug": "docs/db/inventory" }
+        ]
+      },
+      {
+        "label": "Content",
+        "items": [
+          {
+            "label": "Cartridge authoring",
+            "slug": "docs/cartridge/authoring-guide"
+          },
+          { "label": "Quest recipes", "slug": "docs/cartridge/quest-recipes" },
+          {
+            "label": "Persona & voice",
+            "slug": "docs/cartridge/persona-and-voice"
+          },
+          { "label": "Prompt system", "slug": "docs/prompts/greenhaven-md" },
+          {
+            "label": "Specialist prompts",
+            "slug": "docs/prompts/specialist-prompts"
+          }
+        ]
+      },
+      {
+        "label": "Frontend",
+        "items": [
+          { "label": "Architecture", "slug": "docs/web-ui/architecture" },
+          {
+            "label": "UI/UX Agent Guide",
+            "slug": "docs/web-ui/ui-ux-agent-guide"
+          },
+          { "label": "Components", "slug": "docs/web-ui/components" },
+          { "label": "SSE flow", "slug": "docs/web-ui/sse-flow" },
+          { "label": "Event cards", "slug": "docs/web-ui/event-cards" },
+          { "label": "Adventure cards", "slug": "docs/web-ui/adventure-cards" }
+        ]
+      },
+      {
+        "label": "Ops",
+        "items": [
+          { "label": "Run locally", "slug": "docs/ops/run-locally" },
+          {
+            "label": "Desktop distribution",
+            "slug": "docs/ops/desktop-distribution"
+          },
+          { "label": "Reset & seed", "slug": "docs/ops/reset-and-seed" },
+          { "label": "Telemetry", "slug": "docs/ops/cost-and-telemetry" },
+          { "label": "Diagnostics", "slug": "docs/ops/developer-diagnostics" },
+          { "label": "Support smoke", "slug": "docs/ops/support-smoke" },
+          { "label": "Multilingual", "slug": "docs/ops/multilingual" }
+        ]
+      }
+    ]
+  }
+]

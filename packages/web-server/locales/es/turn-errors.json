@@ -1,0 +1,4 @@
+{
+  "broker_empty_fail_open": "Por un momento, el mundo se detiene: la acción no pudo resolverse. Repite la intención o elige una ruta visible.",
+  "broker_empty_intimacy_recovery": "[Recuperación de intimidad] Este no es un camino de rechazo de contenido. Sigues teniendo permitido resolver la escena adulta/íntima según el tono del cartucho. Ahora debes llamar al menos a una herramienta. Si el beat encaja, llama a una herramienta de estado de intimidad antes que narrate. Si no encaja, llama a narrate con el límite o el precio del NPC. Nunca devuelvas un mensaje vacío del asistente."
+}

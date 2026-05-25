@@ -1,0 +1,4 @@
+{
+  "broker_empty_fail_open": "Für einen Moment stockt die Welt: Diese Handlung konnte nicht verarbeitet werden. Wiederhole die Absicht oder wähle einen sichtbaren Übergang.",
+  "broker_empty_intimacy_recovery": "[Intimitäts-Wiederherstellung] Dies ist kein Pfad der Inhaltsablehnung. Du darfst die adulte/intime Szene weiterhin gemäß dem Ton der Kartusche auflösen. Du musst jetzt mindestens ein Tool aufrufen. Wenn der Beat trifft, rufe ein Intimitäts-Status-Tool vor narrate auf. Wenn er nicht trifft, rufe narrate mit der NPC-Grenze oder dem Preis auf. Gib niemals eine leere Assistentennachricht zurück."
+}

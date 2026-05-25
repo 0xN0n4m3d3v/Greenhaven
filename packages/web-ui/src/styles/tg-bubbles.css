@@ -1,0 +1,1062 @@
+/*
+ * tg-bubbles.css — polished messenger bubble system (max version).
+ *
+ * Single source of truth for the chat bubble visuals. Loaded LAST in
+ * main.tsx after every legacy stylesheet has had its turn. The legacy
+ * App.css spec-38 chrome + inkglass.css have been deleted / disabled, so
+ * this file no longer fights `!important` wars — selector specificity is
+ * enough.
+ *
+ * Three visible roles only:
+ *   .role-player    — your own messages, right-aligned navy
+ *   .role-npc       — anyone with an authorId, left-aligned graphite
+ *   .role-narrator  — world voice (tone='narrator' AND no authorId),
+ *                     warm parchment with a subtle dot pattern
+ *   .role-system    — narrow center pill
+ *
+ * Design language:
+ *   - Subtle vertical gradient on bubble fill (depth, not flat)
+ *   - Hairline 1px border in same hue, brighter — gives the bubble an edge
+ *   - Inset 1px highlight on top → soft "specular" line
+ *   - Drop shadow with two layers: tight 1px + soft 8px → real depth
+ *   - Avatar floats outside bubble bottom-left/right (TG/iMessage pattern)
+ *   - Avatar has 2px ring in surface color for separation from wallpaper
+ *   - Author label compact, persona-tinted, NO uppercase / small-caps
+ *   - Body sans-serif 14.5px line-height 1.5
+ *   - Border-radius 18px with one corner cut to 6px on the speaker side
+ *
+ * Avatar approach: PersonaBubble sets data-author-initial. NPC bubble
+ * shows the real Portrait via absolute positioning of the .bubble-author
+ * first child. Player bubble synthesises an avatar via ::after using the
+ * data attribute (player never has a Portrait component).
+ */
+
+/* ─── Reset legacy bubble chrome ─────────────────────────────────────── */
+
+.message-flow .bubble {
+  all: revert;
+  display: block !important;
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 14.5px !important;
+  line-height: 1.5 !important;
+  color: hsl(220 14% 92%) !important;
+  max-width: 100% !important;
+  width: auto !important;
+  text-shadow: none !important;
+  text-align: left !important;
+}
+
+.message-flow .bubble::before,
+.message-flow .bubble::after {
+  content: none;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Drop legacy ::first-letter drop caps. */
+.message-flow .bubble .message-rich p:first-of-type::first-letter,
+.message-flow .bubble .message-rich::first-letter,
+.message-flow .bubble.narrator > p:first-child::first-letter,
+.message-flow .bubble.narrator > div > p:first-child::first-letter,
+.message-flow .bubble.role-narrator > p:first-child::first-letter,
+.message-flow .bubble.role-narrator > div > p:first-child::first-letter {
+  font: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  initial-letter: normal !important;
+}
+
+.message-flow .bubble p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.message-flow .bubble p + p {
+  margin-top: 8px !important;
+}
+
+.message-flow .bubble + .bubble {
+  margin-top: 6px !important;
+}
+.message-flow .bubble.role-npc + .bubble.role-npc,
+.message-flow .bubble.role-player + .bubble.role-player {
+  margin-top: 2px !important;
+}
+
+/* ─── Author label (shared) ─────────────────────────────────────────── */
+
+.message-flow .bubble .bubble-author {
+  font-family: var(--font-sans) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-variant-caps: normal !important;
+  margin: 0 0 4px 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  line-height: 1.2 !important;
+}
+
+/* Default body rich-text styling — sans 14.5px, no italic. */
+.message-flow .bubble .message-rich {
+  font-family: var(--font-sans) !important;
+  font-size: 14.5px !important;
+  line-height: 1.5 !important;
+  font-style: normal !important;
+}
+
+/* Mention chip — soft inline highlight, no clash. */
+.message-flow .bubble .mention-chip,
+.message-flow .bubble a[data-mention],
+.message-flow .bubble [class*='mention'] {
+  background: hsl(0 0% 100% / 0.12) !important;
+  color: inherit !important;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 0 4px !important;
+  font-family: inherit !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  text-decoration: none !important;
+}
+
+/* ─── Shared bubble look ─────────────────────────────────────────────
+ * Both player AND npc share the SAME background, border, shadow,
+ * padding, max-width, and font. Only alignment + tail-cut corner +
+ * avatar side differs. Per operator: "сделать их одинаковыми". */
+
+.message-flow .bubble.role-npc,
+.message-flow .bubble.role-player {
+  max-width: min(480px, 70%) !important;
+  padding: 9px 13px 10px !important;
+  background: linear-gradient(
+    180deg,
+    hsl(220 13% 22%) 0%,
+    hsl(220 14% 18%) 100%
+  ) !important;
+  border: 1px solid hsl(220 12% 28%) !important;
+  box-shadow:
+    inset 0 1px 0 hsl(220 14% 32% / 0.5),
+    0 1px 1px hsl(0 0% 0% / 0.25),
+    0 6px 14px hsl(0 0% 0% / 0.18) !important;
+  color: hsl(220 14% 92%) !important;
+}
+
+/* ─── ROLE: NPC ─────────────────────────────────────────────────────── */
+
+.message-flow .bubble.role-npc {
+  align-self: flex-start !important;
+  margin: 0 0 0 52px !important; /* room for avatar on the left */
+  border-radius: 18px 18px 18px 6px !important; /* tail bottom-left */
+}
+
+.message-flow .bubble.role-npc .bubble-author {
+  color: hsl(212 70% 70%) !important;
+}
+
+/* Float the Portrait avatar OUTSIDE the bubble on the left. */
+.message-flow .bubble.role-npc .bubble-author > *:first-child,
+.message-flow .bubble.role-npc .bubble-author > img,
+.message-flow .bubble.role-npc .bubble-author > div:first-child,
+.message-flow .bubble.role-npc .bubble-author > figure {
+  display: flex !important;
+  position: absolute !important;
+  left: -44px !important;
+  top: 0 !important;
+  width: 36px !important;
+  height: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  border: 2px solid hsl(220 14% 14%) !important;
+  box-shadow: 0 1px 3px hsl(0 0% 0% / 0.4) !important;
+  overflow: hidden !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  line-height: 1 !important;
+}
+
+.message-flow .bubble.role-npc .bubble-author > *:first-child > * {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+
+/* "Продолжить" — flat text-button, no chrome. */
+.message-flow .bubble.role-npc .bubble-continue {
+  margin: 10px 0 0 -3px !important;
+  background: transparent !important;
+  border: none !important;
+  color: hsl(212 70% 70%) !important;
+  border-radius: 0 !important;
+  padding: 2px 0 !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  box-shadow: none !important;
+  font-family: var(--font-sans) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  opacity: 0.85 !important;
+  transition: opacity 140ms ease !important;
+}
+.message-flow .bubble.role-npc .bubble-continue:hover {
+  opacity: 1 !important;
+}
+.message-flow .bubble.role-npc .bubble-continue svg {
+  display: inline !important;
+  width: 12px !important;
+  height: 12px !important;
+}
+
+/* ─── ROLE: PLAYER ──────────────────────────────────────────────────── */
+
+.message-flow .bubble.role-player {
+  align-self: flex-end !important;
+  margin: 0 52px 0 0 !important; /* room for avatar on the right */
+  border-radius: 18px 18px 6px 18px !important; /* tail bottom-right */
+}
+
+.message-flow .bubble.role-player .bubble-author {
+  color: hsl(212 70% 70%) !important; /* same header tint as NPC */
+}
+
+/* Hide the legacy MessageCircle icon next to the author label in the
+   player bubble (the avatar is rendered via ::after instead). */
+.message-flow .bubble.role-player .bubble-author > *:first-child,
+.message-flow .bubble.role-player .bubble-author > svg,
+.message-flow .bubble.role-player .bubble-author > img {
+  display: none !important;
+}
+
+/* Synthesise an avatar disc with the player's initial. */
+.message-flow .bubble.role-player::after {
+  content: attr(data-author-initial);
+  position: absolute;
+  right: -44px;
+  top: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    hsl(212 65% 50%) 0%,
+    hsl(212 62% 36%) 100%
+  );
+  border: 2px solid hsl(220 14% 14%);
+  color: hsl(220 35% 98%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  box-shadow: 0 1px 3px hsl(0 0% 0% / 0.4);
+}
+
+/* Mentions look the same on both bubbles since the bubble bg is now
+   identical. Default mention rule above already applies. */
+
+/* ─── ROLE: NARRATOR (world voice, no author) ───────────────────────── */
+
+.message-flow .bubble.role-narrator {
+  align-self: flex-start !important;
+  max-width: min(560px, 80%) !important;
+  margin: 4px 0 4px 12px !important;
+  padding: 12px 16px 14px !important;
+
+  background-color: hsl(30 14% 13%) !important;
+  background-image: radial-gradient(
+    hsl(30 18% 19%) 1px,
+    transparent 1.3px
+  ) !important;
+  background-size: 12px 12px !important;
+  background-position: 0 0 !important;
+
+  border: 1px solid hsl(30 22% 22%) !important;
+  border-radius: 14px !important;
+  box-shadow:
+    inset 0 1px 0 hsl(30 22% 22% / 0.5),
+    0 4px 12px hsl(0 0% 0% / 0.25) !important;
+
+  color: hsl(30 18% 88%) !important;
+  font-family: var(--font-serif-prose) !important;
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+}
+
+.message-flow .bubble.role-narrator .message-rich,
+.message-flow .bubble.role-narrator .message-rich p {
+  font-family: var(--font-serif-prose) !important;
+  color: hsl(30 18% 88%) !important;
+}
+
+.message-flow .bubble.role-narrator::before {
+  content: 'narrator';
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: hsl(38 50% 60%);
+  margin-bottom: 6px;
+  font-style: normal;
+}
+
+.message-flow .bubble.role-narrator:has(.bubble-author)::before {
+  content: none;
+}
+.message-flow .bubble.role-narrator .bubble-author {
+  color: hsl(38 50% 60%) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+}
+
+/* ─── ROLE: SYSTEM / DICE ───────────────────────────────────────────── */
+
+.message-flow .bubble.role-system,
+.message-flow .bubble.role-dice {
+  align-self: center !important;
+  background: hsl(var(--msg-surface) / 0.7) !important;
+  border: 1px solid hsl(var(--msg-divider)) !important;
+  color: hsl(var(--msg-ink-soft)) !important;
+  border-radius: 999px !important;
+  padding: 3px 12px !important;
+  font-size: 11.5px !important;
+  line-height: 1.4 !important;
+  max-width: 80% !important;
+  text-align: center !important;
+  box-shadow: none !important;
+}
+
+.message-flow .bubble.role-system .bubble-author,
+.message-flow .bubble.role-dice .bubble-author {
+  display: none !important;
+}
+
+/* ─── Pending / typing ───────────────────────────────────────────────── */
+
+.message-flow .bubble.pending {
+  align-self: flex-start !important;
+  margin: 0 0 0 52px !important;
+  padding: 10px 14px !important;
+  background: linear-gradient(
+    180deg,
+    hsl(220 13% 22%) 0%,
+    hsl(220 14% 18%) 100%
+  ) !important;
+  border: 1px solid hsl(220 12% 28%) !important;
+  border-radius: 18px 18px 18px 6px !important;
+  box-shadow:
+    inset 0 1px 0 hsl(220 14% 32% / 0.5),
+    0 1px 1px hsl(0 0% 0% / 0.25) !important;
+}
+
+.message-flow .bubble.pending .typing-indicator span {
+  background: hsl(212 70% 70%) !important;
+  box-shadow: 0 0 6px hsl(212 70% 50% / 0.4) !important;
+}
+
+/* ─── Message flow root ──────────────────────────────────────────────── */
+
+.message-flow {
+  background: transparent !important;
+  background-image: none !important;
+  padding: 16px 20px 24px !important;
+  gap: 6px !important;
+}
+
+/* ─── Composer reply preview chip + Bubble quote card (spec 139 v2) ─── *
+ * The chip is shown above the composer input when the draft starts with
+ * a quote prefix (built by GameScreen on Reply tap). The bubble quote
+ * card renders the same quote as a styled block inside the bubble
+ * above the body text. Both consume the same parseQuotePrefix helper. */
+
+.composer-reply-preview {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.composer-reply-icon {
+  color: hsl(212 70% 70%);
+  flex: none;
+  margin-top: 3px;
+}
+
+.composer-reply-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.composer-reply-author {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: hsl(212 70% 70%);
+}
+
+.composer-reply-snippet {
+  font-size: 12.5px;
+  color: hsl(var(--msg-ink-soft));
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.4;
+}
+
+.composer-reply-cancel {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: hsl(var(--msg-ink));
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  align-self: flex-start;
+  margin-top: -2px;
+  transition:
+    color 140ms ease,
+    background-color 140ms ease;
+}
+.composer-reply-cancel svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.4;
+}
+.composer-reply-cancel:hover {
+  background: hsl(220 14% 26%);
+}
+
+/* Bubble quote card — TG-style reply preview inside a message. */
+.bubble-quote-card {
+  margin: 0 0 6px;
+  padding: 6px 10px;
+  background: hsl(220 14% 24% / 0.6);
+  border-left: 3px solid hsl(212 70% 60%);
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: default;
+}
+
+.bubble-quote-author {
+  font-size: 11px;
+  font-weight: 600;
+  color: hsl(212 70% 70%);
+  letter-spacing: 0;
+}
+
+.bubble-quote-text {
+  font-size: 12.5px;
+  color: hsl(var(--msg-ink-soft));
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+/* Inside player bubble (navy), tint the quote card lighter for contrast. */
+.message-flow .bubble.role-player .bubble-quote-card {
+  background: hsl(212 65% 30%);
+  border-left-color: hsl(212 80% 80%);
+}
+.message-flow .bubble.role-player .bubble-quote-author {
+  color: hsl(212 80% 88%);
+}
+.message-flow .bubble.role-player .bubble-quote-text {
+  color: hsl(220 35% 92%);
+}
+
+/* ─── Bubble reply hover-icon (spec 139 v2) ─────────────────────────── *
+ * Small circular icon in the top-right of NPC bubbles that appears on
+ * hover. Click pre-fills the composer with a quote of this message.
+ * Native text selection + browser right-click menu stay intact. */
+
+.message-flow .bubble {
+  /* Restore native selection that any prior style might have suppressed. */
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+.message-flow .bubble .bubble-reply-action {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: hsl(220 14% 24%);
+  border: 1px solid hsl(220 12% 32%);
+  color: hsl(var(--msg-ink-soft));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease,
+    background-color 140ms ease;
+  box-shadow: 0 1px 2px hsl(0 0% 0% / 0.35);
+}
+
+.message-flow .bubble:hover .bubble-reply-action,
+.message-flow .bubble:focus-within .bubble-reply-action {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.message-flow .bubble .bubble-reply-action:hover {
+  background: hsl(212 62% 36%);
+  color: hsl(220 35% 96%);
+}
+
+/* Hide reply icon on player bubble — you don't reply to yourself. */
+.message-flow .bubble.role-player .bubble-reply-action {
+  display: none;
+}
+
+/* ─── NPC first-encounter Polaroid photo (spec 139 v2) ───────────────── *
+ * Fires once per NPC. A photo-card with white camera-flash burst on
+ * mount + shimmer-loader behind the image while it's loading + portrait
+ * fade-in. Separate from the small avatar (Portrait.tsx) which always
+ * shows on bubble / rail. */
+
+.npc-photo-card {
+  align-self: center;
+  width: min(320px, 70%);
+  margin: 12px auto 8px;
+  perspective: 600px;
+}
+
+.npc-photo-frame {
+  background: linear-gradient(180deg, hsl(40 12% 92%), hsl(40 8% 84%));
+  border: 1px solid hsl(40 10% 70% / 0.6);
+  border-radius: 6px;
+  padding: 10px 10px 14px;
+  box-shadow:
+    0 1px 0 hsl(0 0% 100% / 0.4) inset,
+    0 14px 30px hsl(0 0% 0% / 0.55),
+    0 2px 4px hsl(0 0% 0% / 0.35);
+  transform: rotate(-0.6deg);
+}
+
+.npc-photo-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.05;
+  overflow: hidden;
+  border-radius: 2px;
+  background: hsl(220 14% 14%);
+  box-shadow: inset 0 0 0 1px hsl(0 0% 0% / 0.4);
+}
+
+.npc-photo-image-wrap img,
+.npc-photo-image-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 400ms ease 220ms; /* fade in after flash recedes */
+}
+
+.npc-photo-initial {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(220 35% 96%);
+  font-family: var(--font-sans);
+  font-size: 64px;
+  font-weight: 600;
+}
+
+/* Shimmer-loader stripe behind the image while it's loading. */
+.npc-photo-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    hsl(220 14% 18%) 0%,
+    hsl(220 14% 28%) 45%,
+    hsl(220 14% 18%) 90%
+  );
+  background-size: 220% 100%;
+  animation: npc-photo-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes npc-photo-shimmer {
+  0% {
+    background-position: 220% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+/* Camera flash white burst overlaid on the photo for one moment. */
+.npc-photo-flash {
+  position: absolute;
+  inset: 0;
+  background: hsl(0 0% 100% / 0.96);
+  border-radius: 2px;
+  animation: npc-photo-flash 420ms cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes npc-photo-flash {
+  0% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.npc-photo-caption {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.npc-photo-label {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: hsl(40 18% 38%);
+}
+
+.npc-photo-name {
+  font-family: var(--font-serif-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: hsl(40 12% 18%);
+  border-bottom: 2px solid hsl(212 50% 36%);
+  padding-bottom: 3px;
+  width: fit-content;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .npc-photo-flash {
+    animation: none;
+    opacity: 0;
+  }
+  .npc-photo-shimmer {
+    animation: none;
+    background: hsl(220 14% 22%);
+  }
+  .npc-photo-card {
+    transform: none;
+  }
+  .npc-photo-frame {
+    transform: none;
+  }
+  .npc-photo-image-wrap img,
+  .npc-photo-image-wrap video {
+    transition: none;
+    opacity: 1 !important;
+  }
+}
+
+/* ─── Typing pulse — dots-only pill (spec 139 v2) ────────────────────── *
+ * Three small dots bouncing in sequence, pinned bottom-left of the chat
+ * scroll. No author / verb / icon — operator wants the silent indicator. */
+
+.typing-pulse.dots-only {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 7px 12px !important;
+  margin: 4px 0 8px 16px !important;
+  align-self: flex-start !important;
+  background: hsl(220 13% 18%) !important;
+  border: 1px solid hsl(220 12% 26%) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 1px 2px hsl(0 0% 0% / 0.3) !important;
+  width: fit-content !important;
+}
+
+.typing-pulse.dots-only .typing-pulse-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: hsl(212 70% 70%);
+  opacity: 0.35;
+  animation: gh-typing-dot 1.2s infinite ease-in-out both;
+}
+
+.typing-pulse.dots-only .typing-pulse-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.typing-pulse.dots-only .typing-pulse-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes gh-typing-dot {
+  0%,
+  70%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typing-pulse.dots-only .typing-pulse-dot {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+.typing-pulse.dots-only.queued {
+  opacity: 0.5;
+}
+
+/* ─── Event cards — centered soft-rectangle card ─────────────────────── *
+ * Was a flat full-width banner (pill on multiline = ugly). Now: centered
+ * card, max-width 60% on desktop, padding 10px 14px, soft 12px radius,
+ * header on its own line above content, content in slightly smaller
+ * font, action buttons row at the bottom. */
+
+.event-card {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  margin: 6px auto !important;
+  /* All event cards share a SINGLE fixed width — looks like a series
+     of consistent system rows, not random pills of varying size. */
+  width: min(420px, 70%) !important;
+  max-width: 420px !important;
+  min-width: 0 !important;
+  padding: 10px 14px 11px !important;
+  background: hsl(220 13% 18%) !important;
+  border: 1px solid hsl(220 12% 26%) !important;
+  border-radius: 12px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0 !important;
+  text-shadow: none !important;
+  text-transform: none !important;
+  box-shadow: 0 1px 2px hsl(0 0% 0% / 0.3) !important;
+  animation: none !important;
+  color: hsl(var(--msg-ink)) !important;
+  align-self: center !important;
+}
+
+.event-card-strip {
+  display: none !important;
+} /* old gold strip — gone */
+
+.event-card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  padding: 0 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.event-card-header {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  font-variant-caps: normal !important;
+  text-shadow: none !important;
+  color: hsl(var(--msg-ink-dim)) !important;
+}
+
+.event-card-header svg {
+  width: 12px !important;
+  height: 12px !important;
+  color: hsl(212 70% 70%) !important;
+  opacity: 0.85;
+}
+
+.event-card-label {
+  white-space: nowrap !important;
+}
+
+.event-card-content {
+  font-family: var(--font-sans) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: hsl(var(--msg-ink)) !important;
+  display: block !important;
+}
+
+.event-card-content > p {
+  display: block;
+  margin: 0 !important;
+}
+.event-card-content > p + p {
+  margin-top: 4px !important;
+}
+.event-card-content > p + p::before {
+  content: none !important;
+}
+
+.event-card-actor,
+.event-card-title {
+  color: hsl(var(--msg-ink)) !important;
+  font-weight: 600 !important;
+}
+.event-card-meta {
+  opacity: 0.65 !important;
+  font-size: 11px !important;
+  font-style: normal !important;
+}
+
+.event-card-quote {
+  display: block !important;
+  margin: 4px 0 0 !important;
+  padding: 6px 10px !important;
+  border-left: 2px solid hsl(212 70% 60% / 0.5) !important;
+  background: hsl(0 0% 0% / 0.18) !important;
+  font-family: var(--font-sans) !important;
+  font-style: normal !important;
+  font-size: 12.5px !important;
+  color: hsl(var(--msg-ink-soft)) !important;
+  white-space: normal !important;
+  border-radius: 0 6px 6px 0 !important;
+}
+
+.event-card-actions {
+  display: flex !important;
+  gap: 8px !important;
+  margin: 6px 0 0 0 !important;
+  flex-wrap: wrap !important;
+}
+.event-card-actions button {
+  background: hsl(212 62% 36%) !important;
+  border: none !important;
+  color: hsl(220 35% 98%) !important;
+  border-radius: 8px !important;
+  padding: 6px 14px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  font-family: var(--font-sans) !important;
+  transition: background-color 140ms ease;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+.event-card-actions button:hover:not(:disabled) {
+  background: hsl(212 65% 44%) !important;
+}
+.event-card-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Adventure hooks are offers spoken into the chat, not system cards.
+   The durable gui_event stays the source of truth; the UI presents it
+   as an NPC-style bubble with a small action menu below. */
+.adventure-hook-thread {
+  align-self: stretch !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  margin: 8px 0 !important;
+}
+
+.message-flow .bubble.adventure-hook-bubble {
+  margin-bottom: 0 !important;
+}
+
+.message-flow .bubble.adventure-hook-bubble .adventure-hook-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px solid hsl(220 12% 30% / 0.75);
+  color: hsl(var(--msg-ink-soft));
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+
+.adventure-hook-title {
+  min-width: 0;
+  max-width: 100%;
+  color: hsl(var(--msg-ink));
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.adventure-hook-danger,
+.adventure-hook-reward {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid hsl(var(--msg-divider));
+  background: hsl(220 14% 24% / 0.65);
+  color: hsl(var(--msg-ink-soft));
+  white-space: nowrap;
+}
+
+.adventure-hook-danger-safe {
+  color: hsl(var(--msg-success));
+  border-color: hsl(var(--msg-success) / 0.45);
+}
+
+.adventure-hook-danger-risky {
+  color: hsl(var(--msg-warn));
+  border-color: hsl(var(--msg-warn) / 0.5);
+}
+
+.adventure-hook-danger-deadly {
+  color: hsl(var(--msg-danger));
+  border-color: hsl(var(--msg-danger) / 0.55);
+}
+
+.adventure-hook-actions {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-left: 52px !important;
+  max-width: min(480px, 70%) !important;
+}
+
+.adventure-hook-actions button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  min-height: 32px !important;
+  padding: 6px 12px !important;
+  border: 1px solid hsl(var(--msg-divider)) !important;
+  border-radius: 999px !important;
+  background: hsl(220 14% 18%) !important;
+  color: hsl(var(--msg-ink)) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  cursor: pointer;
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease;
+}
+
+.adventure-hook-actions button:first-child {
+  background: hsl(212 62% 36%) !important;
+  border-color: hsl(212 62% 44%) !important;
+  color: hsl(220 35% 98%) !important;
+}
+
+.adventure-hook-actions button:hover:not(:disabled) {
+  background: hsl(220 14% 24%) !important;
+  border-color: hsl(212 70% 50% / 0.55) !important;
+}
+
+.adventure-hook-actions button:first-child:hover:not(:disabled) {
+  background: hsl(212 65% 44%) !important;
+}
+
+.adventure-hook-actions button:disabled {
+  opacity: 0.52;
+  cursor: not-allowed;
+}
+
+.adventure-hook-status {
+  color: hsl(var(--msg-ink-soft));
+  font-size: 12px;
+}
+
+.adventure-hook-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, hsl(160 38% 34%), hsl(160 42% 24%));
+  color: hsl(160 30% 94%);
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .adventure-hook-actions {
+    max-width: calc(100% - 52px) !important;
+  }
+}

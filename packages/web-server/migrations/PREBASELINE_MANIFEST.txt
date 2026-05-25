@@ -1,0 +1,156 @@
+# packages/web-server/migrations/PREBASELINE_MANIFEST.txt
+#
+# FEAT-ENGINE-BASELINE-3 — list of historical migration files that
+# represent the schema/state captured by
+# `packages/web-server/baseline/0001_engine_baseline.sql`. The runtime
+# migration runner skips every file named here on a fresh database
+# bootstrap: the baseline lands once, and the active migration scan
+# only picks up post-baseline deltas (any `*.sql` file in
+# `packages/web-server/migrations/` whose basename is NOT listed
+# below).
+#
+# The files themselves stay on disk for two reasons:
+#   1. Migration invariant tests in
+#      `packages/web-server/src/__tests__/migrations/` still apply the
+#      historical chain via `withPristineDb()` to exercise per-
+#      migration body behavior.
+#   2. Legacy local dev databases that recorded these names in
+#      `schema_migrations` before the baseline cutover still resolve
+#      cleanly — `runMigrations()` detects the legacy shape and skips
+#      the baseline (the DB already has the same content).
+#
+# Lines starting with `#` are comments. Blank lines are ignored. One
+# migration filename per line; no path prefixes. Append-only — new
+# post-baseline migrations DO NOT belong in this list.
+#
+# Generated 2026-05-17 from the inventory at
+# docs/db/engine-baseline-migration-inventory.md (128 entries).
+
+0001_cartridge.sql
+0002_litrpg.sql
+0003_seed_quickgrin.sql
+0004_sequence_fix.sql
+0005_fix_payment_recipe.sql
+0006_location_exits.sql
+0007_dialogue_mode.sql
+0008_entity_aliases.sql
+0009_npc_hp.sql
+0010_npc_stats.sql
+0011_ability_checks.sql
+0012_dice_cooldowns.sql
+0013_status_effects.sql
+0014_player_status.sql
+0015_turn_telemetry.sql
+0016_telemetry_player.sql
+0017_i18n.sql
+0018_cartridge_meta.sql
+0019_quiet_lantern_inn.sql
+0020_full_npc_reset.sql
+0021_world_entity.sql
+0022_world_adult_tone.sql
+0023_item_i18n.sql
+0024_entity_i18n.sql
+0026_conditions_field.sql
+0027_strings_field.sql
+0028_sex_moves_and_trauma.sql
+0029_quest_schema.sql
+0030_quest_mechanics_examples.sql
+0031_player_profile_schema.sql
+0032_class_profile_and_stats.sql
+0033_npc_portraits_and_world_atmosphere.sql
+0034_surfaces_and_inspiration.sql
+0035_memory_salience.sql
+0036_npc_initiative_profile.sql
+0037_combat_state.sql
+0038_inventory_categories.sql
+0039_scripted_intimacy_rules.sql
+0040_i18n_translations.sql
+0041_xp_levels.sql
+0042_save_slots.sql
+0043_dialogue_partner_and_extensions.sql
+0044_persona_registry.sql
+0045_directive_tags_audio_quotes.sql
+0046_inventory_consolidation.sql
+0047_noticed_directive.sql
+0048_origin_templates.sql
+0049_examiner_classes.sql
+0050_fix_borek_sex_move_effect_args.sql
+0051_turn_telemetry_session_id_text.sql
+0052_drop_default_player_display_name.sql
+0053_gui_event_outbox.sql
+0054_turn_ingress_queue.sql
+0055_turn_telemetry_presentation_slots.sql
+0056_gui_event_release_sequence.sql
+0057_adventure_queue.sql
+0058_intimacy_runtime_field_cleanup.sql
+0059_world_fact_ownership_metadata.sql
+0060_performance_events.sql
+0061_local_telemetry_lake.sql
+0062_core_mechanic_i18n_packs.sql
+0063_remaining_mechanic_i18n_packs.sql
+0064_loading_quote_i18n_packs.sql
+0065_core_entity_i18n_packs.sql
+0066_examiner_class_hook_i18n_normalization.sql
+0067_item_entity_i18n_packs.sql
+0068_world_location_scene_i18n_packs.sql
+0069_npc_entity_i18n_packs.sql
+0070_quest_entity_i18n_packs.sql
+0071_examiner_class_i18n_packs.sql
+0072_origin_template_i18n_packs.sql
+0073_dynamic_item_materialization.sql
+0074_delivery_quest_item_links.sql
+0075_implicit_delivery_quest_items.sql
+0076_turn_error_text_encoding.sql
+0077_velvet_booths_runtime_fields.sql
+0078_robot_empty_world_cartridge.sql
+0079_robot_quest_completion_runtime_patches.sql
+0080_robot_scene_first_turn_guidance.sql
+0081_restore_quickgrin_active_cartridge.sql
+0082_grinhaven_full_dataset_cartridge.sql
+0083_activate_grinhaven_full_cartridge.sql
+0084_forge_grinhaven_full_current_patch.sql
+0085_memory_palace_loop_packets.sql
+0086_living_world_location_memory.sql
+0087_memory_threads_contract_parity.sql
+0088_location_first_entry_bubbles_all_languages.sql
+0089_ai_location_intro_bubbles_ale_and_eats.sql
+0090_meow_meow_paradise_presence_patch.sql
+0091_recompute_location_density_runtime_links.sql
+0092_filter_density_ids_by_kind.sql
+0093_strict_local_density_and_transitive_rollup.sql
+0094_district_name_topology_repair.sql
+0095_nectar_presence_patch.sql
+0096_grinhaven_market_square_demo_start.sql
+0097_grinhaven_map_topography.sql
+0098_npc_memory_witness_and_private.sql
+0099_mikka_companion_offer.sql
+0100_test_bench_items.sql
+0101_mikka_portrait_set.sql
+0101a_memory_threads_fk_prerepair.sql
+0102_fk_fixes.sql
+0103_forge_upsert_protected_fields.sql
+0104_density_rebuild_function.sql
+0105_normalize_entity_profile_phase1_add_columns.sql
+0106_normalize_entity_profile_phase3_reader_cleanup.sql
+0107_density_caps_parameterized.sql
+0108_density_depth_cap_diagnostics.sql
+0109_density_depth_cap_diagnostics_guard.sql
+0110_safe_jsonb_array_helper.sql
+0111_turn_ingress_queue_unique_idx.sql
+0112_normalize_quest_advance_on.sql
+0113_canonical_display_name_mentions.sql
+0114_adventure_queue_counters.sql
+0115_cartridge_world_clock_meta.sql
+0116_player_recovery_code_prefix.sql
+0117_obsidian_world_patch.sql
+0118_session_tokens.sql
+0119_inventory_surface_columns.sql
+0120_player_journal_entries.sql
+0121_character_state_progression.sql
+0122_obsidian_world_patch_v2.sql
+0123_normalize_entity_profile_phase4_drop_legacy_keys.sql
+0124_normalize_entity_profile_phase4_enforce_cartridge_scope.sql
+0125_cartridge_library.sql
+0126_cartridge_import_preview_jobs.sql
+0127_cartridge_import_apply_jobs.sql
+0128_cartridge_playthrough_launch.sql

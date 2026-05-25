@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quest branching: real choices — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="The biggest difference between a &quot;quest&quot; in an ordinary game and a quest in Greenhaven is the real choice. Not &quot;pick one of two lines and nothing changes&quot; but &quot;choose, and the world goes a differen..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a class="active" href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Mechanics</p>
+          <h1 id="quest-branching-real-choices">Quest branching: real choices</h1>
+<p>The biggest difference between a "quest" in an ordinary game and a
+quest in Greenhaven is the <strong>real choice</strong>. Not "pick one of two
+lines and nothing changes" but "choose, and the world goes a
+different way." This chapter is about how to describe those forks.</p>
+<h2 id="stages-the-foundation">Stages — the foundation</h2>
+<p>Every quest is built out of stages. A stage is a step. If stages run
+one after another, the quest is linear:</p>
+<pre><code class="language-markdown">## Stages
+
+1. Talk to `@Bram Caskbright`.
+2. Find evidence in `@Blue Warehouse Row`.
+3. Bring the evidence to `@Tessa Wrenlight`.
+</code></pre>
+<p>The player walks through 1, then 2, then 3, and the quest closes. That
+is fine for service quests and short side-stories. But when you want
+to give the player a <strong>fork</strong>, you need a different construct.</p>
+<h2 id="choice-the-point-of-decision">Choice — the point of decision</h2>
+<p>If at some stage the player must make a decision, the last stage is
+replaced with a special <code>next_stage</code> block typed as <code>choice</code>:</p>
+<pre><code class="language-markdown">## Stages
+
+1. Find a companion.
+2. Choose a route to the port.
+3. next_stage:
+   - kind: choice
+   - options:
+     - target_stage_id: harbour_route
+       label: Take the harbor route (faster, more dangerous)
+     - target_stage_id: street_route
+       label: Take the street route (slower, safer)
+</code></pre>
+<p>Let's unpack it. When the player arrives at stage 2, the engine
+presents two buttons: "harbor route" and "street route." Whichever the
+player clicks, the quest follows that branch.</p>
+<p>Two important fields inside each option:</p>
+<ul>
+<li><code>target_stage_id</code> is the internal name of the stage to jump to. Any
+  short English string without spaces: <code>harbour_route</code>,
+  <code>return_to_tessa</code>, <code>sell_to_fixer</code>. The name is for the engine — the
+  player does not see it.</li>
+<li><code>label</code> is the text on the button. The player sees this. Write it
+  in plain language: "Take the harbor route (faster, more dangerous)."</li>
+</ul>
+<p>In the compiled quest, the stages a choice points to <strong>must exist</strong>.
+Otherwise the engine has nowhere to jump and the validator will flag
+the error.</p>
+<h2 id="prerequisites-conditions-on-an-option">Prerequisites — conditions on an option</h2>
+<p>Sometimes you want an option to be <strong>visible</strong> but only <strong>available</strong>
+to someone who has earned it. For example, "quietly pick the lock" is
+only available to a character with lockpicking.</p>
+<p>This is solved through <code>prerequisites</code> — a list of conditions that
+must be met:</p>
+<pre><code class="language-markdown">## Stages
+
+1. Find the entry to the cellar.
+2. next_stage:
+   - kind: choice
+   - options:
+     - target_stage_id: stealth_entry
+       label: Quietly pick the lock
+       prerequisites:
+         - type: skill_check
+           skill: lockpicking
+           dc: 14
+     - target_stage_id: force_entry
+       label: Kick the door in
+       prerequisites:
+         - type: skill_check
+           skill: athletics
+           dc: 12
+</code></pre>
+<p><code>dc</code> is the <em>difficulty class</em> — the level of the check. Higher is
+harder. The player sees both options, but if their lockpicking is
+not enough, the "quietly pick the lock" button is disabled.</p>
+<h2 id="timers-pressure-of-time">Timers — pressure of time</h2>
+<p>Some stages have a meaning bound to time. For example: "find the
+evidence before the fixer notices the tail." Technically this is
+written:</p>
+<pre><code class="language-markdown">## Stages
+
+1. Find the evidence before the fixer notices the tail.
+   - turns_remaining: 5
+   - timeout_action: advance_to
+   - timeout_target: fixer_disappears
+</code></pre>
+<p>Three fields:</p>
+<ul>
+<li><code>turns_remaining</code> — how many turns the player has.</li>
+<li><code>timeout_action</code> — what to do if time runs out. <code>advance_to</code> means
+  "jump to a stage."</li>
+<li><code>timeout_target</code> — which stage to jump to on timeout.</li>
+</ul>
+<p>In this example: if the player has not finished the stage in five
+turns, the quest automatically jumps to <code>fixer_disappears</code> — a branch
+in which the fixer leaves and the evidence is lost. This is <strong>not a
+failure</strong> of the quest; it is <strong>another branch</strong>, with its own tasks.</p>
+<h2 id="success-and-failure-at-the-quest-level">Success and failure at the quest level</h2>
+<p>In addition to the overall <code>Success Result</code> and <code>Failure Result</code>,
+each branch of a fork can carry its own outcome. In simple cases the
+general ones are enough:</p>
+<pre><code class="language-markdown">## Success Result
+
+If returned to Tessa: positive strings, unlock of the follow-up quest.
+
+## Failure Result
+
+If sold to the fixer: negative strings, an entry in the ledger.
+</code></pre>
+<p>In more elaborate quests with many branches you can write outcomes
+<strong>inside the branch</strong>, in the stage itself.</p>
+<h2 id="when-the-quest-ends-on-its-own">When the quest ends on its own</h2>
+<p>If the quest reaches its last stage and has nowhere left to go
+(<code>next_stage</code> not specified), it closes automatically and rewards and
+consequences apply.</p>
+<p>Even if the last stage carries no concrete objectives, the quest
+still closes. This is handled by a fix in the engine (tagged
+internally as GH-BUG-096, for reference).</p>
+<h2 id="a-few-last-rules">A few last rules</h2>
+<ul>
+<li>Every <code>target_stage_id</code> must correspond to a real stage in the
+  <code>Stages</code> list. A reference "into nothing" is flagged by the
+  compiler.</li>
+<li>Do not leave orphan stages — stages no path leads to. They are
+  unreachable and only add noise.</li>
+<li>Timers decrement by one each player turn.</li>
+<li><code>prerequisites</code> are re-checked every time the engine recomputes
+  option availability.</li>
+</ul>
+<p>If a choice should change not only the next stage but <strong>the world
+itself</strong>, attach a <code>Materializes</code> block describing what appears after
+the choice. For example: "when the hero chooses the harbor route,
+materialize an encounter with the harbor watch." That is what makes
+Greenhaven not merely a game with branching but <strong>a world with
+memory</strong>.</p>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../03-mechanics/materializes.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Materializes</span></a>
+<a class="pager-next" href="../03-mechanics/scenes-in-depth.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Scenes in depth</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Images: how the world shows itself — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="This chapter covers visual cards. Cartridge title screens, cartridge boot posters, videos, and music are covered in Media: title screens, cards, video, and music." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a class="active" href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Mechanics</p>
+          <h1 id="images-how-the-world-shows-itself">Images: how the world shows itself</h1>
+<p>This chapter covers visual cards. Cartridge title screens, cartridge boot
+posters, videos, and music are covered in
+<a href="../03-mechanics/media.html">Media: title screens, cards, video, and music</a>.</p>
+<p>Greenhaven is not text alone. Every character can have a portrait,
+every location a view, every item an icon, every key scene a plate.
+You can produce them with an image generator that reads your notes,
+or you can drop in pictures you painted yourself. Either way works —
+the engine cares only that the files end up in the right folders with
+the right names.</p>
+<p>There is <strong>one hard constraint</strong> on every image: it must be <strong>square</strong>
+— a 1:1 aspect ratio. Style, palette, technique, mood, level of
+realism — all of that is yours to decide for your own world. Saturated
+adventure fantasy, ink-wash noir, painterly storybook, glitched
+sci-fi, soft watercolor: anything works, as long as the canvas is
+square.</p>
+<h2 id="what-kinds-of-image-exist">What kinds of image exist</h2>
+<table>
+<thead>
+<tr>
+<th>What it is</th>
+<th>Where it lives</th>
+<th>Format</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Character portrait</td>
+<td><code>npc/@Name/portraits/default.png</code></td>
+<td>square PNG / JPG / WEBM</td>
+<td>The character's face in dialogue and the UI</td>
+</tr>
+<tr>
+<td>Location view</td>
+<td><code>@Location/images/establishing.png</code></td>
+<td>square PNG / JPG / WEBM</td>
+<td>The wide impression of the location</td>
+</tr>
+<tr>
+<td>Item icon</td>
+<td><code>items/@Name/images/icon.png</code></td>
+<td>square PNG / JPG / WEBM</td>
+<td>The item in inventory and the UI</td>
+</tr>
+<tr>
+<td>Scene plate</td>
+<td><code>scenes/@Scene/images/key.png</code> or <code>npc/@Name/images/&lt;scene-slug&gt;.png</code></td>
+<td>square PNG / JPG / WEBM</td>
+<td>A key moment of a scene</td>
+</tr>
+</tbody>
+</table>
+<p>For cartridge startup atmosphere, use <code>GreenHavenWorld/media/boot/</code>.
+A poster such as <code>01.png</code>, a video such as <code>01.webm</code>, and music such
+as <code>01.mp3</code> form one boot bundle. The main menu can then show that
+cartridge's own title art and play its own title music.</p>
+<p>The <code>portraits/</code> and <code>images/</code> folders are created by hand inside the
+entity's folder. The file names must be exactly the ones above —
+otherwise the engine will not find the picture.</p>
+<p>Animated cards use the same slots. A <code>default.webm</code> portrait, an
+<code>establishing.webm</code> location view, an <code>icon.webm</code> item card, or a
+scene-named <code>.webm</code> plate is treated as that entity's card and rendered as
+muted looping video in the UI. Put music and other audio under <code>media/</code>,
+<code>music/</code>, or <code>audio/</code> and control it through <code>## Media Script</code>; see
+<code>03-mechanics/Media.md</code>.</p>
+<p>Recommended dimensions: anywhere from <strong>1024×1024</strong> to <strong>2048×2048</strong>
+pixels. Larger files take longer to load and are usually pointless
+for a UI image. Smaller files lose detail. Either PNG or JPG is
+acceptable. Use PNG when transparency or sharp edges matter (icons,
+portraits on transparent backgrounds), JPG when you have a busy
+illustrated scene and want a smaller file.</p>
+<h2 id="style-is-yours">Style is yours</h2>
+<p>There is no locked style for Greenhaven cartridges. The engine does
+not check the look of an image; it only checks that the file is
+present and that its name matches. Your world's visual language is
+entirely your decision.</p>
+<p>That said, a few craft notes that apply to any style:</p>
+<ul>
+<li><strong>Consistency inside one cartridge.</strong> Pick a single style for the
+  world and stay with it across portraits, locations, and icons.
+  Mixing painted portraits with photographic locations and pixel-art
+  icons makes a world feel fragmented. One look, one world.</li>
+<li><strong>A square canvas.</strong> Compose for the square from the start. Faces
+  centered, items centered, scenes built around a clear focal point.
+  If you crop a wide landscape into a square, the result often loses
+  its mid-ground; better to compose for 1:1 directly.</li>
+<li><strong>Readability at small sizes.</strong> The UI displays portraits and icons
+  small. A great image at 1024×1024 that turns into mud at 128×128
+  is a half-win. Test your image at a small thumbnail; if you can
+  still tell <strong>who</strong> or <strong>what</strong> it is at a glance, it works.</li>
+</ul>
+<h2 id="how-an-image-gets-into-the-world-two-paths">How an image gets into the world — two paths</h2>
+<p>You have two ways of getting an image into the right place. They are
+not mutually exclusive — you can mix them inside the same cartridge.</p>
+<h3 id="path-a-generated-from-a-brief">Path A — generated from a brief</h3>
+<p>Inside each entity file there is an optional section that holds a
+<strong>brief</strong> for an image generator. You write a short, concrete
+description; an art agent reads it, produces the image, and saves
+it to the correct path with the correct name. You never touch the
+file system.</p>
+<p>The brief sections are:</p>
+<ul>
+<li><code>## Appearance For Portrait</code> — in a character file.</li>
+<li><code>## Establishing Image Brief</code> — in a location file.</li>
+<li><code>## Visual Brief</code> — in an item file.</li>
+<li><code>## Scene Image Brief</code> — in a scene file (optional; many scenes do
+  not need their own plate).</li>
+</ul>
+<p>If a section is present, an agent will pick it up on the next image
+pass. If a section is absent, no image is generated for that entity
+— the world simply runs without that picture.</p>
+<h3 id="path-b-drop-the-file-in-yourself">Path B — drop the file in yourself</h3>
+<p>If you have your own art — drawn by hand, commissioned, or generated
+elsewhere — you can place the file directly. Open the entity's
+folder in Windows Explorer (or any file manager) and put the picture
+at the path the engine expects:</p>
+<pre><code>Locations/@Greenhaven City/@Greenhaven Port/
+└── npc/
+    └── @Tessa Wrenlight/
+        ├── NPCMind.md
+        └── portraits/
+            └── default.png         ← put it here
+</code></pre>
+<p>For a location:</p>
+<pre><code>Locations/@Greenhaven City/@Greenhaven Port/
+├── PortMind.md
+└── images/
+    └── establishing.png            ← put it here
+</code></pre>
+<p>For an item:</p>
+<pre><code>items/@Brass Compass/
+├── ItemMind.md
+└── images/
+    └── icon.png                    ← put it here
+</code></pre>
+<p>For a scene plate, two layouts are accepted. Either inside the
+scene's own folder:</p>
+<pre><code>scenes/@First Word On The Pier/
+├── @First Word On The Pier.md
+└── images/
+    └── key.png
+</code></pre>
+<p>Or next to the owning character, with a slug that matches the scene
+title:</p>
+<pre><code>npc/@Tessa Wrenlight/
+├── NPCMind.md
+└── images/
+    └── first-word-on-the-pier.png
+</code></pre>
+<p>When the cartridge is compiled, the engine walks these folders, sees
+the picture, and links it to the right entity. Nothing else is
+required.</p>
+<h2 id="writing-a-portrait-brief">Writing a portrait brief</h2>
+<p>In the character file, under <code>## Appearance For Portrait</code>. This is a
+technical brief — what the artist sees, not what the narrator says.
+Image generators understand English best, so even if your prose
+language is something else, the brief itself is usually written in
+English:</p>
+<pre><code class="language-markdown">## Appearance For Portrait
+
+Portrait target: `portraits/default.png` (1:1). A tall lean half-elf
+woman, sun-tanned deep brown skin, silver-streaked dark hair tied
+back with a faded teal cord, pale gray-green eyes, sharp watchful
+expression. Sun-faded teal coat over hardened leather, fingerless
+gloves, sea-worn boots, an old brass smuggler's compass on a cord at
+her chest. Warm side light, deep blue background. Centered head and
+shoulders, clear silhouette. No text, no UI.
+</code></pre>
+<p>Anatomy of a brief:</p>
+<ul>
+<li><strong>The target line.</strong> Where to save and the aspect ratio. Always
+  start with this — it removes ambiguity for any agent or human
+  reader.</li>
+<li><strong>The subject.</strong> A condensed version of <code>Appearance</code> — the
+  essentials of who is in the frame.</li>
+<li><strong>Light and background.</strong> "Warm side light, deep blue background."
+  Pick lighting that suits your world, not someone else's.</li>
+<li><strong>Composition for square.</strong> "Centered head and shoulders," "clear
+  silhouette." These directions keep the portrait readable at the
+  small sizes the UI uses.</li>
+<li><strong>Negatives.</strong> "No text, no UI" — useful, because generators will
+  sometimes invent captions or interface elements if you do not
+  forbid them.</li>
+</ul>
+<h2 id="writing-a-location-view-brief">Writing a location view brief</h2>
+<p>In the location file, under <code>## Establishing Image Brief</code>:</p>
+<pre><code class="language-markdown">## Establishing Image Brief
+
+Image target: `images/establishing.png` (1:1). A bright harbor view
+from waist height on the central planks. Mid-ground: a tall white
+skyship descending, a cargo crane lifting a turquoise net, the
+colored awning of the customs hut. Foreground: porters in red
+sashes, a rival team near crates, a young woman in a green coat at
+the notice post. Strong sun, optimistic but not safe. Square
+composition with a clear focal point in the center.
+</code></pre>
+<p>Notice the layered structure: foreground, mid-ground, background.
+That gives the image depth even at 1:1. Concrete details — "porters
+in red sashes," "young woman in green coat" — turn a landscape into
+a small living scene.</p>
+<p>When you compose a wide place for a square frame, think in terms of
+<strong>a single focal point</strong> with supporting elements around it. A
+sprawling panorama loses the square; a centered tableau owns it.</p>
+<h2 id="writing-an-item-icon-brief">Writing an item icon brief</h2>
+<p>In the item file, under <code>## Visual Brief</code>:</p>
+<pre><code class="language-markdown">## Visual Brief
+
+Image target: `images/icon.png` (1:1). A small straw-wrapped brass
+compass, lid open, the letter J engraved on the inner cover. Wood
+grain visible under it. Soft side light, warm muted background, no
+strong cast shadow. Clear silhouette, recognizable at thumbnail
+size. No text legible enough to read.
+</code></pre>
+<p>Icons must be <strong>recognizable at a glance</strong>. The brief therefore
+prioritizes clarity, contrast, and silhouette. A common trap with
+icons is too much detail: a complex icon at 64×64 turns into a
+smudge. State the silhouette first and let the artist (or the
+generator) carry the rest.</p>
+<h2 id="writing-a-scene-plate-brief">Writing a scene plate brief</h2>
+<p>In the scene file, under <code>## Scene Image Brief</code> (optional — most
+scenes do not need one):</p>
+<pre><code class="language-markdown">## Scene Image Brief
+
+Image target: `images/key.png` (1:1). The moment the compass leaves
+Tessa's hand into the hero's. Two pairs of hands, close-up, the
+brass catches the warm low sunlight off the harbor water. Background
+softly out of focus: the blue of distant water. Centered hands,
+square crop. No faces required, no text.
+</code></pre>
+<p>A good scene plate is <strong>one frame, one moment</strong> — the way a film
+director picks the single still that represents the scene. Resist
+the urge to cram the whole sequence into one image.</p>
+<h2 id="what-happens-at-compile-time">What happens at compile time</h2>
+<p>To make the off-stage clear:</p>
+<ol>
+<li>You either have a <code>## ... Brief</code> in the entity file (an agent
+   will draw it), or you have already placed the image manually at
+   the correct path.</li>
+<li>When the cartridge is assembled, the compiler walks the folders,
+   finds the picture by its expected name, and links it to the entity
+   in the compiled cartridge.</li>
+<li>The runtime serves the image to the game interface when the
+   entity comes on screen.</li>
+</ol>
+<p>If a picture is missing, the engine falls back to a placeholder.
+Nothing crashes; the world simply runs without that image until you
+add one.</p>
+<h2 id="a-short-checklist">A short checklist</h2>
+<ul>
+<li>[ ] Every image is <strong>square</strong> (1:1).</li>
+<li>[ ] File names match exactly: <code>portraits/default.png</code>,
+      <code>images/establishing.png</code>, <code>images/icon.png</code>, scene image at
+      <code>images/key.png</code> or <code>images/&lt;scene-slug&gt;.png</code>.</li>
+<li>[ ] Boot/title media, if used, lives under <code>GreenHavenWorld/media/boot/</code>.</li>
+<li>[ ] One consistent style across the whole cartridge.</li>
+<li>[ ] Briefs (if used) include a <code>target:</code> line, subject, light,
+      composition, and a "no text, no UI" negative.</li>
+<li>[ ] The image is readable at thumbnail size.</li>
+</ul>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../03-mechanics/economy.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Economy</span></a>
+<a class="pager-next" href="../03-mechanics/media.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Media</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

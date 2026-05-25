@@ -1,0 +1,1345 @@
+/*
+ * Greenhaven unified skin v2.
+ *
+ * Direction: shadcn/Radix-style dark product UI. This file is loaded last and
+ * deliberately owns visual appearance across old feature slices. Legacy class
+ * names remain for behavior, but parchment, ornate gold panels, oversized
+ * book typography, and patterned chat wallpaper are not part of the active UI.
+ */
+
+:root {
+  color-scheme: dark;
+
+  --font-serif-prose: var(--font-ui);
+  --font-serif-display: var(--font-ui);
+  --font-serif: var(--font-ui);
+  --font-mono: var(--font-ui);
+
+  --gh-bg-0: 222 47% 4%;
+  --gh-bg-1: 222 36% 6%;
+  --gh-bg-2: 221 30% 8%;
+  --gh-surface-0: 222 28% 7%;
+  --gh-surface-1: 222 22% 10%;
+  --gh-surface-2: 221 18% 14%;
+  --gh-surface-3: 220 16% 18%;
+  --gh-elevated: 222 18% 12%;
+  --gh-text: 220 18% 96%;
+  --gh-text-strong: 0 0% 100%;
+  --gh-muted: 220 12% 68%;
+  --gh-faint: 220 10% 48%;
+  --gh-border: 220 14% 25%;
+  --gh-border-strong: 220 14% 34%;
+  --gh-accent: 38 92% 56%;
+  --gh-accent-soft: 39 95% 72%;
+  --gh-accent-2: 199 89% 58%;
+  --gh-success: 142 56% 46%;
+  --gh-warning: 32 95% 56%;
+  --gh-danger: 0 72% 61%;
+  --gh-shadow: 222 60% 2%;
+
+  --radius: 0px;
+  --gh-radius-panel: 0px;
+  --gh-radius-control: 0px;
+  --gh-radius-pill: 0px;
+  --gh-panel-bg: hsl(var(--gh-surface-1) / 0.92);
+  --gh-panel-border: hsl(var(--gh-border) / 0.82);
+  --gh-panel-shadow: none;
+  --gh-control-bg: hsl(var(--gh-surface-2) / 0.92);
+  --gh-control-bg-hover: hsl(var(--gh-surface-3) / 0.96);
+  --gh-control-border: hsl(var(--gh-border) / 0.9);
+  --gh-ring: 0 0 0 3px hsl(var(--gh-accent-2) / 0.22);
+
+  --background: var(--gh-bg-0);
+  --foreground: var(--gh-text);
+  --card: var(--gh-surface-1);
+  --card-foreground: var(--gh-text);
+  --popover: var(--gh-elevated);
+  --popover-foreground: var(--gh-text);
+  --primary: var(--gh-accent);
+  --primary-foreground: var(--gh-bg-0);
+  --secondary: var(--gh-surface-2);
+  --secondary-foreground: var(--gh-text);
+  --muted: var(--gh-surface-2);
+  --muted-foreground: var(--gh-muted);
+  --accent: var(--gh-accent-2);
+  --accent-foreground: var(--gh-text-strong);
+  --destructive: var(--gh-danger);
+  --destructive-foreground: var(--gh-text-strong);
+  --border: var(--gh-border);
+  --input: var(--gh-surface-2);
+  --ring: var(--gh-accent-2);
+
+  --msg-wallpaper: var(--gh-bg-0);
+  --msg-wallpaper-dot: var(--gh-bg-0);
+  --msg-surface: var(--gh-surface-1);
+  --msg-surface-2: var(--gh-surface-2);
+  --msg-bubble-other: var(--gh-surface-2);
+  --msg-bubble-self: 222 18% 18%;
+  --msg-bubble-self-edge: 222 20% 14%;
+  --msg-ink: var(--gh-text);
+  --msg-ink-soft: var(--gh-muted);
+  --msg-ink-dim: var(--gh-faint);
+  --msg-divider: var(--gh-border);
+  --msg-link: var(--gh-accent-2);
+  --msg-success: var(--gh-success);
+  --msg-warn: var(--gh-warning);
+  --msg-danger: var(--gh-danger);
+}
+
+html,
+body {
+  color: hsl(var(--gh-text));
+  background: hsl(var(--gh-bg-0));
+}
+
+body,
+button,
+input,
+textarea,
+select,
+.game-shell,
+.cart-lib,
+.creator-overlay,
+.message-flow .bubble,
+.message-flow .message-rich {
+  font-family: var(--font-ui) !important;
+  letter-spacing: 0 !important;
+}
+
+/* App wallpaper: let cartridge media show, but make chrome neutral. */
+.game-shell,
+.game-shell::before,
+.game-shell::after {
+  background: hsl(var(--gh-bg-0)) !important;
+  background-image: none !important;
+}
+
+.message-flow {
+  background: hsl(var(--gh-bg-0)) !important;
+  background-image: none !important;
+  padding: 18px 24px 24px !important;
+}
+
+/* Panels */
+.contact-rail,
+.chat-header,
+.action-dock,
+.settings-modal,
+.bubble-menu,
+.title-modal,
+.boot-settings,
+.boot-setup,
+.language-picker-card,
+.event-card,
+.dialogue-banner,
+.city-map-modal,
+.city-map-overlay,
+.modal,
+.cart-lib__col,
+.cart-lib__gateway,
+.cart-lib__wizard,
+.cart-lib__folder-browser,
+.cart-lib__creator-frame,
+.creator-page,
+.creator-review-frame,
+.creator-sheet,
+.creator-review {
+  background: var(--gh-panel-bg) !important;
+  background-image: none !important;
+  border: 1px solid var(--gh-panel-border) !important;
+  border-radius: var(--gh-radius-panel) !important;
+  box-shadow: var(--gh-panel-shadow) !important;
+  color: hsl(var(--gh-text)) !important;
+  text-shadow: none !important;
+}
+
+.contact-rail,
+.chat-header,
+.action-dock {
+  box-shadow: none !important;
+}
+
+.contact-rail {
+  background: hsl(var(--gh-bg-1) / 0.98) !important;
+}
+
+.chat-header {
+  min-height: 56px !important;
+  padding: 10px 18px !important;
+  border-bottom-color: hsl(var(--gh-border) / 0.9) !important;
+}
+
+.chat-header h2,
+.chatlist-row-name,
+.cart-lib__head-title h1,
+.cart-lib__col-heading,
+.cart-lib__wizard-head h2,
+.settings-modal h2,
+.title-modal__head h2,
+.event-card-title,
+.event-card-actor,
+.creator-page-header h1,
+.creator-sheet h1,
+.creator-review-frame .creator-hero-name,
+.creator-review-frame .examiner-edit-header h2 {
+  color: hsl(var(--gh-text-strong)) !important;
+  font-family: var(--font-ui) !important;
+  font-weight: 650 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-variant-caps: normal !important;
+  text-shadow: none !important;
+}
+
+.cart-lib__head-title h1,
+.settings-modal h2,
+.title-modal__head h2,
+.cart-lib__wizard-head h2,
+.creator-page-header h1 {
+  font-size: clamp(22px, 2.2vw, 30px) !important;
+  line-height: 1.1 !important;
+}
+
+.chat-header-subtitle,
+.chatlist-row-sub,
+.title-menu__btn-hint,
+.title-menu__tagline,
+.title-modal__body,
+.settings-hint,
+.boot-settings__header p,
+.boot-settings__section p,
+.cart-lib__head-title p,
+.cart-lib__placeholder,
+.cart-lib__card-meta,
+.cart-lib__gateway-slot small,
+.creator-page-subtitle,
+.creator-step-hint,
+.creator-textfield-counter,
+.creator-review-frame .creator-hero-meta,
+.creator-review-frame .examiner-hint,
+.creator-review-frame .stat-budget-state,
+.creator-review-frame .stat-budget-aside,
+.creator-review-frame .skill-sigil-rationale,
+.creator-sign-flavour {
+  color: hsl(var(--gh-muted)) !important;
+  font-family: var(--font-ui) !important;
+  font-style: normal !important;
+}
+
+/* Buttons and clickable rows */
+.title-menu__btn,
+.boot-lang__arrow,
+.boot-lang__current,
+.boot-key button,
+.boot-settings__back,
+.boot-settings__key-button,
+.settings-language-buttons button,
+.settings-select,
+.settings-signout,
+.bubble-menu-action,
+.dialogue-banner button,
+.event-card-actions button,
+.cart-lib__btn,
+.cart-lib__card,
+.cart-lib__folder-browser-row,
+.language-button,
+.contact-rail .rail-menu-button,
+.chat-header-menu-trigger,
+.chat-header-menu-popover button,
+.modal-close,
+.creator-page-nav,
+.creator-tool,
+.creator-bind,
+.creator-primary,
+.creator-review-frame .examiner-primary,
+.creator-review-frame .examiner-presets button,
+.creator-review-frame .stat-step {
+  background: var(--gh-control-bg) !important;
+  background-image: none !important;
+  border: 1px solid var(--gh-control-border) !important;
+  border-radius: var(--gh-radius-control) !important;
+  color: hsl(var(--gh-text)) !important;
+  box-shadow: none !important;
+  font-family: var(--font-ui) !important;
+  font-weight: 560 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease,
+    transform 120ms ease;
+}
+
+.title-menu__btn:hover:not(:disabled),
+.boot-lang__arrow:hover:not(:disabled),
+.boot-lang__current:hover:not(:disabled),
+.boot-settings__key-button:hover:not(:disabled),
+.settings-language-buttons button:hover,
+.settings-signout:hover,
+.bubble-menu-action:hover,
+.dialogue-banner button:hover,
+.event-card-actions button:hover:not(:disabled),
+.cart-lib__btn:hover:not(:disabled),
+.cart-lib__card:hover,
+.cart-lib__folder-browser-row:hover:not(:disabled),
+.language-button:hover:not(:disabled),
+.contact-rail .rail-menu-button:hover,
+.chat-header-menu-trigger:hover,
+.chat-header-menu-popover button:hover,
+.creator-page-nav:hover:not(:disabled),
+.creator-tool:hover:not(:disabled),
+.creator-bind:hover:not(:disabled),
+.creator-primary:hover:not(:disabled),
+.creator-review-frame .examiner-primary:hover:not(:disabled),
+.creator-review-frame .examiner-presets button:hover,
+.creator-review-frame .stat-step:hover:not(:disabled) {
+  background: var(--gh-control-bg-hover) !important;
+  border-color: hsl(var(--gh-border-strong) / 0.92) !important;
+  color: hsl(var(--gh-text-strong)) !important;
+  transform: none !important;
+}
+
+.title-menu__btn:focus-visible,
+.boot-lang__arrow:focus-visible,
+.boot-lang__current:focus-visible,
+.boot-settings__key-button:focus-visible,
+.settings-language-buttons button:focus-visible,
+.settings-select:focus,
+.settings-signout:focus-visible,
+.bubble-menu-action:focus-visible,
+.dialogue-banner button:focus-visible,
+.event-card-actions button:focus-visible,
+.cart-lib__btn:focus-visible,
+.cart-lib__card:focus-visible,
+.language-button:focus-visible,
+.creator-page-nav:focus-visible,
+.creator-tool:focus-visible,
+.creator-bind:focus-visible,
+.creator-primary:focus-visible {
+  outline: 2px solid hsl(var(--gh-cyan) / 0.34) !important;
+  outline-offset: 0 !important;
+  box-shadow: var(--gh-ring) !important;
+}
+
+.title-menu__btn--primary,
+.boot-key button,
+.boot-settings__key-button:not(.boot-settings__key-button--ghost),
+.bubble-menu-action.primary,
+.cart-lib__btn--primary,
+.cart-lib__btn--enter,
+.language-button.picking,
+.settings-language-buttons button.active,
+.creator-page-nav.next,
+.creator-page-nav.next.final,
+.creator-bind,
+.creator-primary,
+.creator-review-frame .examiner-primary,
+.creator-review-frame .examiner-presets button.active {
+  background: hsl(var(--gh-accent)) !important;
+  border-color: hsl(var(--gh-accent) / 0.95) !important;
+  color: hsl(var(--gh-bg-0)) !important;
+  font-weight: 700 !important;
+}
+
+.title-menu__btn--primary:hover:not(:disabled),
+.boot-key button:hover:not(:disabled),
+.cart-lib__btn--primary:hover:not(:disabled),
+.cart-lib__btn--enter:hover:not(:disabled),
+.creator-page-nav.next:hover:not(:disabled),
+.creator-bind:hover:not(:disabled),
+.creator-primary:hover:not(:disabled),
+.creator-review-frame .examiner-primary:hover:not(:disabled) {
+  background: hsl(var(--gh-accent-soft)) !important;
+  border-color: hsl(var(--gh-accent-soft)) !important;
+  color: hsl(var(--gh-bg-0)) !important;
+}
+
+.cart-lib__btn--danger,
+.bubble-menu-action.danger,
+.settings-row.danger .settings-signout,
+.settings-signout {
+  border-color: hsl(var(--gh-danger) / 0.42) !important;
+  color: hsl(var(--gh-text)) !important;
+}
+
+/* Inputs */
+.settings-modal input,
+.settings-modal textarea,
+.boot-key input,
+.boot-settings__key-row input,
+.cart-lib__field input,
+.cart-lib__field select,
+.cart-lib__field-row input,
+.creator-field input,
+.creator-field textarea,
+.creator-textfield textarea,
+.creator-step.threshold .creator-name-field input,
+.creator-review-frame .examiner-field input,
+.creator-review-frame .examiner-field textarea,
+.creator-review-frame .examiner-section select,
+.creator-review-frame .examiner-chips input,
+.creator-review-frame .stat-cell-value,
+.composer textarea,
+.composer input {
+  background: hsl(var(--gh-bg-0) / 0.86) !important;
+  background-image: none !important;
+  border: 1px solid hsl(var(--gh-border) / 0.9) !important;
+  border-radius: var(--gh-radius-control) !important;
+  color: hsl(var(--gh-text)) !important;
+  font-family: var(--font-ui) !important;
+  font-size: 15px !important;
+  font-style: normal !important;
+  line-height: 1.5 !important;
+  box-shadow: none !important;
+}
+
+.settings-modal input::placeholder,
+.settings-modal textarea::placeholder,
+.boot-key input::placeholder,
+.cart-lib__field input::placeholder,
+.creator-field input::placeholder,
+.creator-field textarea::placeholder,
+.creator-textfield textarea::placeholder,
+.creator-step.threshold .creator-name-field input::placeholder,
+.creator-review-frame .examiner-field input::placeholder,
+.creator-review-frame .examiner-field textarea::placeholder,
+.creator-review-frame .examiner-chips input::placeholder {
+  color: hsl(var(--gh-muted) / 0.54) !important;
+  font-style: normal !important;
+}
+
+.settings-modal input:focus,
+.settings-modal textarea:focus,
+.boot-key input:focus,
+.boot-settings__key-row input:focus,
+.cart-lib__field input:focus,
+.cart-lib__field select:focus,
+.cart-lib__field-row input:focus,
+.creator-field input:focus,
+.creator-field textarea:focus,
+.creator-textfield textarea:focus,
+.creator-step.threshold .creator-name-field input:focus,
+.creator-review-frame .examiner-field input:focus,
+.creator-review-frame .examiner-field textarea:focus,
+.creator-review-frame .examiner-section select:focus,
+.creator-review-frame .examiner-chips input:focus,
+.creator-review-frame .stat-cell-value:focus,
+.composer textarea:focus,
+.composer input:focus {
+  outline: 2px solid hsl(var(--gh-cyan) / 0.34) !important;
+  outline-offset: 0 !important;
+  border-color: hsl(var(--gh-accent-2) / 0.72) !important;
+  box-shadow: var(--gh-ring) !important;
+}
+
+/* Backdrops */
+.title-modal__backdrop,
+.settings-modal-backdrop,
+.bubble-menu-backdrop,
+.cart-lib__wizard-backdrop,
+.modal-backdrop {
+  background: hsl(var(--gh-bg-0) / 0.74) !important;
+  backdrop-filter: blur(10px) saturate(112%) !important;
+}
+
+.cart-lib__wizard-backdrop--hero {
+  align-items: flex-start !important;
+  overflow-y: auto !important;
+  padding: 16px !important;
+}
+
+.cart-lib__wizard-backdrop--creator {
+  padding: 14px 16px !important;
+}
+
+/* Title menu */
+.title-menu__panel {
+  width: min(360px, calc(100vw - 40px)) !important;
+}
+
+.title-menu__list {
+  display: grid !important;
+  gap: 8px !important;
+  padding: 10px !important;
+  border: 1px solid hsl(var(--gh-border) / 0.72) !important;
+  border-radius: 14px !important;
+  background: hsl(var(--gh-bg-1) / 0.74) !important;
+  box-shadow: 0 24px 70px hsl(var(--gh-shadow) / 0.5) !important;
+  backdrop-filter: blur(14px) saturate(108%) !important;
+}
+
+.title-menu__btn {
+  min-height: 46px !important;
+  padding: 11px 13px !important;
+  justify-items: start !important;
+  text-align: left !important;
+  font-size: 14px !important;
+}
+
+.title-menu__btn--primary {
+  background: hsl(var(--gh-surface-2) / 0.94) !important;
+  border-color: hsl(var(--gh-accent) / 0.55) !important;
+  color: hsl(var(--gh-accent-soft)) !important;
+}
+
+.title-menu__btn--primary .title-menu__btn-label,
+.title-menu__btn-label {
+  font-family: var(--font-ui) !important;
+  font-size: 15px !important;
+  font-weight: 650 !important;
+}
+
+/* Worlds & Heroes */
+.cart-lib {
+  background: transparent !important;
+  color: hsl(var(--gh-text)) !important;
+  font-family: var(--font-ui) !important;
+  padding: 18px 22px 22px !important;
+}
+
+.cart-lib__head {
+  border-bottom-color: hsl(var(--gh-border) / 0.72) !important;
+}
+
+.cart-lib__head-title h1 {
+  font-size: 24px !important;
+  letter-spacing: 0 !important;
+}
+
+.cart-lib__grid {
+  gap: 12px !important;
+}
+
+.cart-lib__col,
+.cart-lib__gateway {
+  padding: 12px !important;
+}
+
+.cart-lib__col-heading {
+  font-size: 12px !important;
+  color: hsl(var(--gh-muted)) !important;
+}
+
+.cart-lib__card {
+  padding: 12px !important;
+}
+
+.cart-lib__card--selected {
+  background: hsl(var(--gh-accent-2) / 0.1) !important;
+  border-color: hsl(var(--gh-accent-2) / 0.48) !important;
+}
+
+.cart-lib__badge,
+.cart-lib__pill,
+.chatlist-band-chip,
+.chatlist-status-pip,
+.event-card-tag,
+.event-card-delta,
+.title-modal__links span,
+.settings-language-code,
+.boot-lang__code {
+  border-radius: var(--gh-radius-pill) !important;
+  font-family: var(--font-ui) !important;
+  letter-spacing: 0 !important;
+}
+
+/* Creator wizard */
+.cart-lib__wizard--creator {
+  width: min(980px, calc(100vw - 32px)) !important;
+  min-width: 0 !important;
+  max-height: calc(100dvh - 28px) !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  overflow: hidden !important;
+}
+
+.cart-lib__wizard--creator .cart-lib__wizard-head {
+  min-height: 56px !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid hsl(var(--gh-border) / 0.72) !important;
+}
+
+.cart-lib__wizard--creator .cart-lib__wizard-head h2 {
+  font-size: 18px !important;
+}
+
+.cart-lib__wizard--creator .cart-lib__wizard-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+.cart-lib__creator-frame {
+  height: min(72dvh, 700px) !important;
+  min-height: min(520px, calc(100dvh - 104px)) !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.cart-lib__creator-frame .creator-overlay--embedded {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  background: transparent !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+.cart-lib__creator-frame .creator-overlay--embedded .creator-chrome,
+.creator-chrome--embedded {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+
+.creator-overlay {
+  background: hsl(var(--gh-bg-0)) !important;
+  color: hsl(var(--gh-text)) !important;
+  font-family: var(--font-ui) !important;
+}
+
+.creator-chrome-vignette {
+  display: none !important;
+}
+
+.creator-bookmark {
+  padding: 10px 12px !important;
+}
+
+.creator-bookmark ol {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  border-left: 0 !important;
+}
+
+.creator-bookmark li {
+  min-height: 30px !important;
+  padding: 6px 10px !important;
+  color: hsl(var(--gh-faint)) !important;
+  font-family: var(--font-ui) !important;
+  font-size: 13px !important;
+  font-variant-caps: normal !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  border: 1px solid hsl(var(--gh-border) / 0.72) !important;
+  border-radius: var(--gh-radius-pill) !important;
+  background: hsl(var(--gh-surface-2) / 0.42) !important;
+}
+
+.creator-bookmark li::before {
+  display: none !important;
+}
+
+.creator-bookmark li.active,
+.creator-bookmark li.active .num,
+.creator-bookmark li.past {
+  color: hsl(var(--gh-text)) !important;
+}
+
+.creator-bookmark li.active {
+  border-color: hsl(var(--gh-accent-2) / 0.58) !important;
+  background: hsl(var(--gh-accent-2) / 0.12) !important;
+}
+
+.creator-bookmark li.active::before {
+  background: hsl(var(--gh-accent)) !important;
+}
+
+.creator-bookmark .num,
+.creator-bookmark .title {
+  font-family: var(--font-ui) !important;
+  letter-spacing: 0 !important;
+}
+
+.creator-page {
+  min-height: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  padding: 22px 24px 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  border: 0 !important;
+  border-top: 1px solid hsl(var(--gh-border) / 0.72) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.creator-page::before,
+.creator-name-underline,
+.creator-review-frame .creator-hero-divider,
+.creator-review-frame .creator-hero-divider::before,
+.creator-review-frame .creator-hero-divider::after {
+  display: none !important;
+}
+
+.creator-page-header {
+  margin-bottom: 16px !important;
+}
+
+.creator-page-header .creator-page-kicker,
+.creator-kicker,
+.creator-review-frame .creator-hero-eyebrow,
+.creator-review-frame .examiner-field > span,
+.creator-review-frame .stat-budget-label,
+.creator-review-frame .examiner-section legend,
+.cart-lib__field span,
+.cart-lib__card-meta dt,
+.cart-lib__compat-meta dt {
+  color: hsl(var(--gh-muted)) !important;
+  font-family: var(--font-ui) !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  font-variant-caps: normal !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+}
+
+.creator-step,
+.creator-step.synthesis.intro,
+.creator-step.synthesis.review {
+  gap: 12px !important;
+}
+
+.creator-step-prompt {
+  color: hsl(var(--gh-text)) !important;
+  font-family: var(--font-ui) !important;
+  font-size: 15px !important;
+  font-style: normal !important;
+  line-height: 1.5 !important;
+}
+
+.creator-step.threshold .creator-name-field input {
+  height: 44px !important;
+  padding: 10px 12px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+.creator-textfield textarea {
+  min-height: 220px !important;
+  padding: 16px 18px !important;
+  font-size: 16px !important;
+}
+
+.creator-textfield-actions {
+  margin-top: 10px !important;
+}
+
+.creator-tool,
+.creator-page-nav,
+.creator-bind {
+  min-height: 38px !important;
+  padding: 8px 13px !important;
+  font-size: 13px !important;
+}
+
+.creator-page-footer,
+.creator-review-frame .examiner-edit-footer {
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 5 !important;
+  border-top: 1px solid hsl(var(--gh-border) / 0.72) !important;
+  padding: 12px 0 16px !important;
+  margin-top: 16px !important;
+  background: hsl(var(--gh-surface-1) / 0.96) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.creator-review-frame {
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.creator-review-frame .examiner-edit-panel {
+  color: hsl(var(--gh-text)) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  gap: 16px !important;
+}
+
+.creator-review-frame .examiner-section,
+.creator-review-frame .stat-budget,
+.creator-review-frame .stat-cell,
+.creator-review-frame .skill-sigil,
+.creator-review-frame .examiner-skill,
+.creator-review-frame .examiner-chip,
+.creator-review-frame .examiner-paragraph,
+.creator-review-frame .examiner-paragraph-tappable,
+.creator-review-frame .examiner-synthesis-panel pre,
+.creator-review-frame .creator-hero-band {
+  background: hsl(var(--gh-surface-2) / 0.58) !important;
+  background-image: none !important;
+  border: 1px solid hsl(var(--gh-border) / 0.78) !important;
+  border-radius: var(--gh-radius-control) !important;
+  color: hsl(var(--gh-text)) !important;
+  box-shadow: none !important;
+}
+
+.creator-review-frame .creator-hero-band {
+  text-align: left !important;
+  padding: 14px 16px !important;
+}
+
+.creator-review-frame .creator-hero-name {
+  font-size: 28px !important;
+}
+
+.creator-review-frame .skill-sigil.chosen,
+.creator-review-frame .examiner-skill.checked {
+  background: hsl(var(--gh-accent-2) / 0.12) !important;
+  border-color: hsl(var(--gh-accent-2) / 0.48) !important;
+}
+
+.creator-review-frame .stat-budget-pip {
+  background: hsl(var(--gh-bg-0) / 0.9) !important;
+  border-color: hsl(var(--gh-border) / 0.9) !important;
+  box-shadow: none !important;
+}
+
+.creator-review-frame .stat-budget-pip.filled {
+  background: hsl(var(--gh-accent) / 0.9) !important;
+  border-color: hsl(var(--gh-accent) / 0.9) !important;
+}
+
+.creator-review-frame .stat-budget-pip.overflow.filled,
+.creator-review-frame .stat-budget-warn,
+.creator-page-error,
+.creator-error {
+  color: hsl(var(--gh-danger)) !important;
+}
+
+/* Chat bubbles */
+.message-flow .bubble,
+.message-flow .bubble.role-npc,
+.message-flow .bubble.role-player,
+.message-flow .bubble.role-narrator,
+.message-flow .bubble.narrator,
+.message-flow .bubble.npc,
+.message-flow .bubble.player,
+.message-flow .bubble.self,
+.bubble-parchment {
+  background: hsl(var(--gh-surface-1) / 0.96) !important;
+  background-image: none !important;
+  border: 1px solid hsl(var(--gh-border) / 0.82) !important;
+  border-radius: 14px !important;
+  color: hsl(var(--gh-text)) !important;
+  box-shadow: 0 10px 24px hsl(var(--gh-shadow) / 0.18) !important;
+  font-family: var(--font-ui) !important;
+}
+
+.message-flow .bubble.role-player,
+.message-flow .bubble.player,
+.message-flow .bubble.self {
+  background: hsl(var(--gh-surface-2) / 0.96) !important;
+}
+
+.message-flow .bubble.role-narrator {
+  max-width: min(640px, 76%) !important;
+}
+
+.message-flow .bubble .message-rich,
+.message-flow .bubble.role-narrator .message-rich,
+.message-flow .bubble.role-narrator .message-rich p {
+  color: hsl(var(--gh-text)) !important;
+  font-family: var(--font-ui) !important;
+  font-size: 15px !important;
+  font-style: normal !important;
+  line-height: 1.55 !important;
+}
+
+.message-flow .bubble .message-rich p:first-of-type::first-letter,
+.message-flow .bubble .message-rich::first-letter,
+.message-flow .bubble.narrator > p:first-child::first-letter,
+.message-flow .bubble.narrator > div > p:first-child::first-letter,
+.message-flow .bubble.role-narrator > p:first-child::first-letter,
+.message-flow .bubble.role-narrator > div > p:first-child::first-letter {
+  font: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  initial-letter: normal !important;
+}
+
+.message-flow .bubble .bubble-author,
+.message-flow .bubble.role-npc .bubble-author,
+.message-flow .bubble.role-player .bubble-author,
+.message-flow .bubble.role-narrator .bubble-author {
+  color: hsl(var(--gh-accent-soft)) !important;
+  font-family: var(--font-ui) !important;
+}
+
+.event-card {
+  background: hsl(var(--gh-surface-1) / 0.94) !important;
+}
+
+.event-card-strip,
+.event-card-quest .event-card-strip,
+.event-card-memory .event-card-strip,
+.event-card-string .event-card-strip,
+.event-card-damage .event-card-strip,
+.event-card-xp .event-card-strip,
+.event-card-inspiration .event-card-strip,
+.event-card-adventure .event-card-strip,
+.event-card-dialogue .event-card-strip,
+.event-card-dice .event-card-strip,
+.event-card-reveal .event-card-strip {
+  box-shadow: none !important;
+}
+
+/* Lists, rows, and chips */
+.chatlist-row,
+.location-card,
+.nearby-strip button,
+.action-dock button {
+  border-radius: var(--gh-radius-control) !important;
+}
+
+.chatlist-row:hover,
+.chatlist-row:focus-visible,
+.location-card:hover:not(:disabled),
+.nearby-strip button:hover:not(:disabled),
+.action-dock button:hover:not(:disabled) {
+  background: hsl(var(--gh-surface-2) / 0.88) !important;
+}
+
+.chatlist-band-chip,
+.chatlist-status-pip,
+.cart-lib__badge,
+.cart-lib__pill,
+.event-card-tag,
+.event-card-delta {
+  background: hsl(var(--gh-surface-2) / 0.86) !important;
+  border: 1px solid hsl(var(--gh-border) / 0.78) !important;
+  color: hsl(var(--gh-muted)) !important;
+}
+
+/* Old RPG ornaments should never leak into the product skin. */
+.rpg-frame,
+.rpg-card,
+.rpg-band,
+.rpg-divider,
+.parchment-edge {
+  background-image: none !important;
+  border-color: hsl(var(--gh-border)) !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 900px) {
+  .cart-lib__creator-frame .creator-overlay--embedded .creator-chrome {
+    grid-template-columns: 1fr !important;
+    padding: 12px !important;
+  }
+
+  .creator-bookmark {
+    display: none !important;
+  }
+
+  .creator-page {
+    padding: 22px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .settings-modal,
+  .bubble-menu,
+  .title-modal,
+  .cart-lib__wizard {
+    width: min(100%, calc(100vw - 20px)) !important;
+    max-height: calc(100dvh - 20px) !important;
+  }
+
+  .message-flow {
+    padding: 12px !important;
+  }
+}
+
+/*
+ * Square system pass.
+ *
+ * The active Greenhaven UI is now a strict rectangular product shell:
+ * no pills, no parchment cards, no circular chrome, no mixed serif UI.
+ * Old feature CSS still exists underneath, so this layer deliberately
+ * wins the cascade for geometry, fonts, and shared panel rhythm.
+ */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+  letter-spacing: 0 !important;
+}
+
+html,
+body,
+#root,
+#app,
+.game-shell,
+.cart-lib,
+.creator-overlay,
+.message-flow,
+.title-screen,
+.boot-settings-screen {
+  font-family: var(--font-ui) !important;
+  background-color: hsl(var(--gh-bg-0)) !important;
+}
+
+*::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  border-radius: 0 !important;
+}
+
+img,
+video,
+canvas,
+.avatar,
+[class*='avatar'],
+[class*='portrait'],
+[class*='Portrait'],
+.chatlist-channel-icon,
+.npc-profile-avatar,
+.portrait-media {
+  border-radius: 0 !important;
+}
+
+.title-screen::before,
+.title-screen::after,
+.title-screen__vignette,
+.cart-lib .title-screen__vignette,
+.game-shell::before,
+.game-shell::after {
+  background-image: none !important;
+}
+
+.title-screen__wordmark {
+  position: absolute !important;
+  left: 24px !important;
+  top: 20px !important;
+  margin: 0 !important;
+  font-family: var(--font-ui) !important;
+  font-size: clamp(22px, 4vw, 44px) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: hsl(var(--gh-text-strong)) !important;
+  text-shadow: 0 1px 2px hsl(var(--gh-shadow) / 0.55) !important;
+}
+
+.title-screen__prompt,
+.title-menu__panel,
+.title-menu__list,
+.boot-settings-card,
+.boot-settings__panel,
+.settings-modal,
+.bubble-menu,
+.title-modal,
+.cart-lib__col,
+.cart-lib__gateway,
+.cart-lib__wizard,
+.city-map-modal,
+.npc-profile,
+.event-card,
+.contact-rail,
+.chat-stage,
+.message-flow .bubble,
+.composer-shell,
+.composer,
+.action-dock,
+.nearby-strip,
+.location-card {
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.title-menu__panel {
+  width: min(360px, calc(100vw - 48px)) !important;
+  padding: 0 !important;
+}
+
+.title-menu__list {
+  gap: 0 !important;
+  padding: 0 !important;
+  border: 1px solid hsl(var(--gh-border) / 0.92) !important;
+  background: hsl(var(--gh-surface-1) / 0.88) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+.title-menu__btn,
+.title-menu__item,
+.title-menu button,
+.boot-settings button,
+.settings-modal button,
+.cart-lib button,
+.creator-page button,
+.bubble-menu button {
+  min-height: 40px !important;
+  border-radius: 0 !important;
+  font-family: var(--font-ui) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.title-menu__btn,
+.title-menu__item {
+  border-width: 0 0 1px 0 !important;
+  border-color: hsl(var(--gh-border) / 0.72) !important;
+  background: transparent !important;
+  color: hsl(var(--gh-text)) !important;
+  justify-content: center !important;
+}
+
+.title-menu__btn:last-child,
+.title-menu__item:last-child {
+  border-bottom-width: 0 !important;
+}
+
+.cart-lib {
+  padding: 16px 18px 18px !important;
+  gap: 12px !important;
+}
+
+.cart-lib__head {
+  min-height: 54px !important;
+  padding: 0 0 12px !important;
+  border-bottom: 1px solid hsl(var(--gh-border) / 0.72) !important;
+}
+
+.cart-lib__head-title h1,
+.cart-lib__col-heading,
+.creator-page-header h1,
+.settings-modal h2,
+.title-modal h2,
+.npc-profile h2,
+.npc-profile h2 {
+  font-family: var(--font-ui) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.cart-lib__grid {
+  gap: 10px !important;
+}
+
+.cart-lib__col {
+  padding: 10px !important;
+  background: hsl(var(--gh-surface-1) / 0.86) !important;
+  border: 1px solid hsl(var(--gh-border) / 0.82) !important;
+}
+
+.cart-lib__list {
+  gap: 0 !important;
+}
+
+.cart-lib__card {
+  margin: 0 !important;
+  border-width: 0 0 1px 0 !important;
+  border-color: hsl(var(--gh-border) / 0.68) !important;
+  background: transparent !important;
+  padding: 10px 8px !important;
+}
+
+.cart-lib__card:hover,
+.cart-lib__card:focus-visible {
+  background: hsl(var(--gh-surface-2) / 0.86) !important;
+}
+
+.cart-lib__card--selected {
+  background: hsl(var(--gh-accent-2) / 0.13) !important;
+  border-color: hsl(var(--gh-accent-2) / 0.55) !important;
+}
+
+.cart-lib__badge,
+.cart-lib__pill,
+.event-card-tag,
+.event-card-delta,
+.chatlist-band-chip,
+.chatlist-status-pip,
+.chatlist-row-badge,
+.npc-profile-status-badge,
+.npc-profile-band,
+.city-map-npc-band,
+.city-map-npc-status {
+  height: auto !important;
+  min-height: 18px !important;
+  border-radius: 0 !important;
+  background: hsl(var(--gh-surface-2) / 0.86) !important;
+  border: 1px solid hsl(var(--gh-border) / 0.78) !important;
+  color: hsl(var(--gh-muted)) !important;
+}
+
+.cart-lib__wizard--creator {
+  width: min(1000px, calc(100vw - 44px)) !important;
+  height: min(720px, calc(100dvh - 44px)) !important;
+  background: hsl(var(--gh-surface-1) / 0.98) !important;
+  border: 1px solid hsl(var(--gh-border-strong) / 0.82) !important;
+}
+
+.cart-lib__wizard--creator .cart-lib__wizard-body,
+.cart-lib__creator-frame,
+.cart-lib__creator-frame .creator-overlay--embedded,
+.cart-lib__creator-frame .creator-overlay--embedded .creator-chrome {
+  background: hsl(var(--gh-surface-1)) !important;
+}
+
+.creator-bookmark {
+  padding: 0 !important;
+  border-bottom: 1px solid hsl(var(--gh-border) / 0.78) !important;
+  background: hsl(var(--gh-bg-1) / 0.94) !important;
+}
+
+.creator-bookmark ol {
+  gap: 0 !important;
+  padding: 0 !important;
+}
+
+.creator-bookmark li {
+  min-width: 112px !important;
+  min-height: 44px !important;
+  justify-content: center !important;
+  border-width: 0 1px 0 0 !important;
+  border-color: hsl(var(--gh-border) / 0.62) !important;
+  background: transparent !important;
+}
+
+.creator-bookmark li.active {
+  background: hsl(var(--gh-accent-2) / 0.14) !important;
+  color: hsl(var(--gh-text-strong)) !important;
+}
+
+.creator-page {
+  background: hsl(var(--gh-surface-1)) !important;
+  border-top: 0 !important;
+}
+
+.creator-page-header {
+  padding-bottom: 14px !important;
+  border-bottom: 1px solid hsl(var(--gh-border) / 0.68) !important;
+}
+
+.creator-page-footer,
+.creator-review-frame .examiner-edit-footer {
+  background: hsl(var(--gh-surface-1)) !important;
+  backdrop-filter: none !important;
+}
+
+.creator-textfield textarea,
+.creator-step.threshold .creator-name-field input,
+.cart-lib input,
+.cart-lib textarea,
+.settings-modal input,
+.settings-modal textarea,
+.settings-modal select,
+.composer textarea,
+.composer-input,
+.message-composer textarea {
+  background: hsl(var(--gh-bg-0) / 0.92) !important;
+  border: 1px solid hsl(var(--gh-border) / 0.85) !important;
+  color: hsl(var(--gh-text)) !important;
+  box-shadow: none !important;
+}
+
+.creator-textfield textarea:focus,
+.creator-step.threshold .creator-name-field input:focus,
+.cart-lib input:focus,
+.cart-lib textarea:focus,
+.settings-modal input:focus,
+.settings-modal textarea:focus,
+.settings-modal select:focus,
+.composer textarea:focus,
+.composer-input:focus,
+.message-composer textarea:focus {
+  border-color: hsl(var(--gh-accent-2) / 0.86) !important;
+  outline: 2px solid hsl(var(--gh-accent-2) / 0.24) !important;
+  outline-offset: 0 !important;
+}
+
+.message-flow {
+  padding: 18px 18px 22px !important;
+}
+
+.message-flow .bubble,
+.message-flow .bubble.role-npc,
+.message-flow .bubble.role-player,
+.message-flow .bubble.role-narrator,
+.message-flow .bubble.narrator,
+.message-flow .bubble.npc,
+.message-flow .bubble.player,
+.message-flow .bubble.self,
+.bubble-parchment {
+  background: hsl(var(--gh-surface-1) / 0.96) !important;
+  border: 1px solid hsl(var(--gh-border) / 0.76) !important;
+  box-shadow: none !important;
+}
+
+.message-flow .bubble.role-player,
+.message-flow .bubble.player,
+.message-flow .bubble.self {
+  background: hsl(var(--gh-surface-2) / 0.94) !important;
+}
+
+.message-flow .bubble.role-narrator,
+.message-flow .bubble.narrator,
+.bubble-parchment {
+  max-width: min(700px, 82%) !important;
+  border-left: 3px solid hsl(var(--gh-accent-2) / 0.64) !important;
+}
+
+.chatlist,
+.contact-rail,
+.chat-stage,
+.chat-header,
+.action-dock,
+.nearby-strip {
+  background-image: none !important;
+  font-family: var(--font-ui) !important;
+}
+
+.chatlist-row,
+.chatlist-selfprofile,
+.nearby-strip button,
+.action-dock button,
+.location-card {
+  border-radius: 0 !important;
+  border: 1px solid transparent !important;
+}
+
+.chatlist-row:hover,
+.chatlist-row:focus-visible,
+.chatlist-selfprofile:hover,
+.nearby-strip button:hover,
+.nearby-strip button:focus-visible,
+.action-dock button:hover,
+.action-dock button:focus-visible,
+.location-card:hover:not(:disabled),
+.location-card:focus-visible {
+  border-color: hsl(var(--gh-border) / 0.72) !important;
+  background: hsl(var(--gh-surface-2) / 0.78) !important;
+}
+
+.modal-backdrop,
+.settings-modal__backdrop,
+.cart-lib__wizard-backdrop,
+.title-modal__backdrop {
+  background: hsl(var(--gh-bg-0) / 0.72) !important;
+  backdrop-filter: blur(2px) !important;
+}

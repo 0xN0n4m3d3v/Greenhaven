@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      data-i18n-attr="content:meta.description"
+      content="Greenhaven is a living fantasy RPG novel engine where relationships, quests, inventory, locations, secrets, trauma, and consequences persist as real game state. Support the author on Patreon and download the new build."
+    />
+    <title>Greenhaven - A Fantasy RPG Novel That Remembers</title>
+    <link rel="icon" href="assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="assets/favicon-32.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css?v=20260518-gamemasters" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip.content"
+      >Skip to content</a
+    >
+
+    <header class="site-header" data-header>
+      <a
+        class="brand"
+        href="#top"
+        aria-label="Greenhaven home"
+        data-i18n-attr="aria-label:brand.home"
+      >
+        <img src="assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Open navigation"
+        data-i18n-attr="aria-label:nav.open"
+        aria-expanded="false"
+        data-nav-toggle
+      >
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" data-nav>
+        <a href="#why" data-i18n="nav.why">Why it works</a>
+        <a href="#mechanics" data-i18n="nav.mechanics">Mechanics</a>
+        <a href="#players" data-i18n="nav.players">Players</a>
+        <a href="#gms" data-i18n="nav.gms">Game Masters</a>
+        <a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a>
+        <a href="#investors" data-i18n="nav.investors">For Investors</a>
+        <div
+          class="language-switcher"
+          aria-label="Site language"
+          data-i18n-attr="aria-label:language.aria"
+        >
+          <button type="button" data-lang-switch="en" aria-pressed="true">
+            EN
+          </button>
+          <button type="button" data-lang-switch="es" aria-pressed="false">
+            ES
+          </button>
+          <button type="button" data-lang-switch="de" aria-pressed="false">
+            DE
+          </button>
+          <button type="button" data-lang-switch="fr" aria-pressed="false">
+            FR
+          </button>
+          <button type="button" data-lang-switch="ru" aria-pressed="false">
+            RU
+          </button>
+          <button type="button" data-lang-switch="uk" aria-pressed="false">
+            UK
+          </button>
+          <button type="button" data-lang-switch="ja" aria-pressed="false">
+            JA
+          </button>
+        </div>
+        <a
+          class="nav-cta"
+          href="https://www.patreon.com/cw/greenhavenquest"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-i18n="nav.patreon"
+          >Patreon build</a
+        >
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <img class="hero-media" src="assets/hero.jpg" alt="" />
+        <div class="hero-scrim"></div>
+        <div class="hero-content">
+          <p class="eyebrow" data-i18n="hero.eyebrow">
+            Support the author on Patreon
+          </p>
+          <h1 id="hero-title" data-i18n="hero.title">
+            Play a fantasy RPG novel that remembers everything.
+          </h1>
+          <p class="hero-copy" data-i18n="hero.copy">
+            Greenhaven turns chat into durable game state: relationships,
+            wounds, coins, quests, rooms, secrets, inventory, hidden routes, and
+            emotional consequences survive after the scene ends. Patreon members
+            support development and can download the new game build.
+          </p>
+          <div
+            class="hero-actions"
+            aria-label="Primary links"
+            data-i18n-attr="aria-label:hero.actions"
+          >
+            <a
+              class="button primary"
+              href="https://www.patreon.com/cw/greenhavenquest"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="hero.primary"
+              >Support and download</a
+            >
+            <a class="button secondary" href="#players" data-i18n="hero.secondary"
+              >See what you get</a
+            >
+          </div>
+          <div
+            class="hero-signals"
+            aria-label="Greenhaven highlights"
+            data-i18n-attr="aria-label:hero.highlights"
+          >
+            <span data-i18n="hero.signal.romance">Persistent romance</span>
+            <span data-i18n="hero.signal.inventory">Durable inventory</span>
+            <span data-i18n="hero.signal.worlds">Author-built worlds</span>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="market-strip"
+        aria-label="Greenhaven product fit"
+        data-i18n-attr="aria-label:market.aria"
+      >
+        <article>
+          <strong data-i18n="market.solo.title">For solo players</strong>
+          <span data-i18n="market.solo.copy"
+            >A private RPG life, not a disposable chat scene.</span
+          >
+        </article>
+        <article>
+          <strong data-i18n="market.writers.title">For writers</strong>
+          <span data-i18n="market.writers.copy"
+            >Readable world notes become places, NPCs, shops, and quests.</span
+          >
+        </article>
+        <article>
+          <strong data-i18n="market.romance.title">For romance fans</strong>
+          <span data-i18n="market.romance.copy"
+            >Trust, fear, jealousy, attraction, promises, and fallout
+            persist.</span
+          >
+        </article>
+        <article>
+          <strong data-i18n="market.gms.title">For game masters</strong>
+          <span data-i18n="market.gms.copy"
+            >Rules stay close enough to matter without killing prose flow.</span
+          >
+        </article>
+      </section>
+
+      <section class="intro band" id="why">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="promise.eyebrow">
+            The product promise
+          </p>
+          <h2 data-i18n="promise.title">
+            Not a chat toy. Not a wiki. A playable story with memory.
+          </h2>
+        </div>
+        <div class="promise-grid">
+          <article>
+            <span class="kicker">01</span>
+            <h3 data-i18n="promise.words.title">Your words become gameplay</h3>
+            <p data-i18n="promise.words.copy">
+              Say what you do in plain language. The world can turn it into
+              travel, combat, trade, secrets, romance, damage, rewards, and
+              permanent changes.
+            </p>
+          </article>
+          <article>
+            <span class="kicker">02</span>
+            <h3 data-i18n="promise.relationships.title">
+              Relationships have history
+            </h3>
+            <p data-i18n="promise.relationships.copy">
+              NPCs can remember gifts, threats, flirting, promises, debts,
+              jealousy, trust, fear, attraction, and the moments that changed
+              the bond.
+            </p>
+          </article>
+          <article>
+            <span class="kicker">03</span>
+            <h3 data-i18n="promise.writers.title">Writers can make worlds</h3>
+            <p data-i18n="promise.writers.copy">
+              Game masters create locations, NPCs, quests, shops, hidden routes,
+              scenes, portraits, prices, and rules the game can actually use.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="outcome-section" aria-labelledby="outcome-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="outcomes.eyebrow">
+            Why players come back
+          </p>
+          <h2 id="outcome-title" data-i18n="outcomes.title">
+            Every scene can leave evidence the world has to respect.
+          </h2>
+        </div>
+        <div class="outcome-grid">
+          <article>
+            <span class="icon outcome-icon" aria-hidden="true">
+              <img src="assets/state/bond.png" alt="" />
+            </span>
+            <span class="outcome-label" data-i18n="outcomes.romance.label"
+              >Romance</span
+            >
+            <h3 data-i18n="outcomes.romance.title">
+              The relationship remembers the awkward parts.
+            </h3>
+            <p data-i18n="outcomes.romance.copy">
+              Gifts, jealousy, comfort, rejection, fear, attraction, secrets,
+              and promises can change how an NPC treats the player later.
+            </p>
+          </article>
+          <article>
+            <span class="icon outcome-icon" aria-hidden="true">
+              <img src="assets/mechanics/quest.png" alt="" />
+            </span>
+            <span class="outcome-label" data-i18n="outcomes.adventure.label"
+              >Adventure</span
+            >
+            <h3 data-i18n="outcomes.adventure.title">
+              Side choices become new routes, debts, and enemies.
+            </h3>
+            <p data-i18n="outcomes.adventure.copy">
+              Move an object, pay a bribe, ignore a job, betray a patron, or
+              rent a room. The game can keep the consequence instead of
+              resetting the stage.
+            </p>
+          </article>
+          <article>
+            <span class="icon outcome-icon" aria-hidden="true">
+              <img src="assets/state/level.png" alt="" />
+            </span>
+            <span class="outcome-label" data-i18n="outcomes.progression.label"
+              >Progression</span
+            >
+            <h3 data-i18n="outcomes.progression.title">
+              The hero becomes someone specific.
+            </h3>
+            <p data-i18n="outcomes.progression.copy">
+              Level, XP, skills, gear, injuries, reputation, bonds, and titles
+              give the story a LitRPG spine without turning it into paperwork.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="mechanics" id="mechanics">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="mechanics.eyebrow">Core mechanics</p>
+          <h2 data-i18n="mechanics.title">
+            The engine handles the rules so the story can feel real.
+          </h2>
+        </div>
+
+        <div class="mechanic-grid">
+          <article class="mechanic-card reveal">
+            <span class="icon" aria-hidden="true">
+              <img src="assets/mechanics/memory.png" alt="" />
+            </span>
+            <h3 data-i18n="mechanics.memory.title">Memory as game state</h3>
+            <p data-i18n="mechanics.memory.copy">
+              The game can remember who liked you, who feared you, who paid you,
+              what you promised, which door opened, and which secret should not
+              be forgotten.
+            </p>
+          </article>
+          <article class="mechanic-card reveal">
+            <span class="icon" aria-hidden="true">
+              <img src="assets/mechanics/quest.png" alt="" />
+            </span>
+            <h3 data-i18n="mechanics.quest.title">Quest engine</h3>
+            <p data-i18n="mechanics.quest.copy">
+              Follow the main plot, chase a side romance, ignore a job, betray a
+              patron, or come back later. Quests track what happened instead of
+              pretending every path is the same.
+            </p>
+          </article>
+          <article class="mechanic-card reveal">
+            <span class="icon" aria-hidden="true">
+              <img src="assets/mechanics/dice.png" alt="" />
+            </span>
+            <h3 data-i18n="mechanics.dice.title">Dice and consequences</h3>
+            <p data-i18n="mechanics.dice.copy">
+              Sneak, fight, lie, charm, bargain, investigate, or run. Risky
+              actions can produce visible checks, scars, rewards, trouble, and
+              lasting world effects.
+            </p>
+          </article>
+          <article class="mechanic-card reveal">
+            <span class="icon" aria-hidden="true">
+              <img src="assets/mechanics/inventory.png" alt="" />
+            </span>
+            <h3 data-i18n="mechanics.inventory.title">
+              Inventory and economy
+            </h3>
+            <p data-i18n="mechanics.inventory.copy">
+              Gear, coins, clothing, weapons, rooms, services, shop prices, and
+              paid favors are treated as real possessions, not flavor text that
+              vanishes next turn.
+            </p>
+          </article>
+          <article class="mechanic-card reveal">
+            <span class="icon" aria-hidden="true">
+              <img src="assets/mechanics/specialists.png" alt="" />
+            </span>
+            <h3 data-i18n="mechanics.scenes.title">Scene systems</h3>
+            <p data-i18n="mechanics.scenes.copy">
+              Combat, romance, travel, merchants, quests, environment, and
+              narration can each follow their own rules so characters stay in
+              character when pressure rises.
+            </p>
+          </article>
+          <article class="mechanic-card reveal">
+            <span class="icon" aria-hidden="true">
+              <img src="assets/mechanics/language.png" alt="" />
+            </span>
+            <h3 data-i18n="mechanics.language.title">Multilingual play</h3>
+            <p data-i18n="mechanics.language.copy">
+              Write a world in one language, play in another, and keep important
+              names, links, places, items, and NPC mentions stable.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="split-section" id="players">
+        <div class="split-copy">
+          <p class="eyebrow" data-i18n="players.eyebrow">For players</p>
+          <h2 data-i18n="players.title">
+            Be the main character, not the audience.
+          </h2>
+          <p data-i18n="players.copy">
+            Greenhaven is for players who want a private fantasy life with
+            stakes: dangerous quests, messy romance, loyal companions, enemies
+            who remember, rooms you rent, secrets you uncover, and a hero who
+            grows through experience.
+          </p>
+          <div class="feature-tabs" data-tabs>
+            <div
+              class="tab-list"
+              role="tablist"
+              aria-label="Player features"
+              data-i18n-attr="aria-label:tabs.aria"
+            >
+              <button
+                role="tab"
+                aria-selected="true"
+                data-tab="inventory"
+                data-i18n="tabs.inventory"
+              >
+                Inventory
+              </button>
+              <button
+                role="tab"
+                aria-selected="false"
+                data-tab="quests"
+                data-i18n="tabs.quests"
+              >
+                Quests
+              </button>
+              <button
+                role="tab"
+                aria-selected="false"
+                data-tab="state"
+                data-i18n="tabs.state"
+              >
+                Character State
+              </button>
+              <button
+                role="tab"
+                aria-selected="false"
+                data-tab="notices"
+                data-i18n="tabs.notices"
+              >
+                Notices
+              </button>
+            </div>
+            <div
+              class="tab-panel"
+              data-panel="inventory"
+              data-i18n="tabs.inventory.copy"
+            >
+              A dedicated inventory for clothes, weapons, keepsakes, coins,
+              rooms, services, merchant prices, and the things your character
+              actually owns.
+            </div>
+            <div
+              class="tab-panel hidden"
+              data-panel="quests"
+              data-i18n="tabs.quests.copy"
+            >
+              A quest dashboard for main plots, romance threads, favors, debts,
+              rewards, stalled leads, completed stories, and party objectives.
+            </div>
+            <div
+              class="tab-panel hidden"
+              data-panel="state"
+              data-i18n="tabs.state.copy"
+            >
+              A LitRPG sheet for level, XP, stats, skills, titles, injuries,
+              bonds, reputation, and long-term progression.
+            </div>
+            <div
+              class="tab-panel hidden"
+              data-panel="notices"
+              data-i18n="tabs.notices.copy"
+            >
+              A readable hero journal that turns key scenes into history instead
+              of burying important moments inside endless chat.
+            </div>
+          </div>
+        </div>
+        <div
+          class="state-stack"
+          aria-label="Planned player surfaces"
+          data-i18n-attr="aria-label:state.aria"
+        >
+          <article aria-label="Level" data-i18n-attr="aria-label:state.level">
+            <span class="state-icon" aria-hidden="true">
+              <img src="assets/state/level.png" alt="" />
+            </span>
+            <strong>12</strong>
+            <small data-i18n="state.level.caption">Streetwise Warden</small>
+          </article>
+          <article aria-label="XP" data-i18n-attr="aria-label:state.xp">
+            <span class="state-icon" aria-hidden="true">
+              <img src="assets/state/xp.png" alt="" />
+            </span>
+            <strong>8,420</strong>
+            <small data-i18n="state.xp.caption">620 to next title</small>
+          </article>
+          <article aria-label="Coin" data-i18n-attr="aria-label:state.coin">
+            <span class="state-icon" aria-hidden="true">
+              <img src="assets/state/coin.png" alt="" />
+            </span>
+            <strong>14g 37s</strong>
+            <small data-i18n="state.coin.caption">Room paid through dawn</small>
+          </article>
+          <article aria-label="Bond" data-i18n-attr="aria-label:state.bond">
+            <span class="state-icon" aria-hidden="true">
+              <img src="assets/state/bond.png" alt="" />
+            </span>
+            <strong>@Mikka</strong>
+            <small data-i18n="state.bond.caption"
+              >Trust rising, confession withheld</small
+            >
+          </article>
+        </div>
+      </section>
+
+      <section class="world-section" aria-labelledby="world-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="world.eyebrow">Playable sandbox</p>
+          <h2 id="world-title" data-i18n="world.title">
+            Hidden places stay unlocked. Paid rooms stay yours.
+          </h2>
+        </div>
+        <div class="world-demo">
+          <div class="image-stage">
+            <img
+              src="assets/town-square.png"
+              alt="Rainy medieval town square in Greenhaven"
+              data-i18n-attr="alt:world.image.alt"
+              data-world-image
+            />
+            <button class="hotspot" type="button" data-world-toggle>
+              Move the barrels
+            </button>
+          </div>
+          <div class="world-copy">
+            <h3 data-world-title>Town Square</h3>
+            <p data-world-copy>
+              A location is not just background art. It can hold NPC scenes,
+              stalls, notice boards, weather, patrols, hidden triggers, and
+              routes that open only after player action.
+            </p>
+            <ul>
+              <li data-i18n="world.bullet.route">
+                Move the barrels, reveal a route, keep it revealed.
+              </li>
+              <li data-i18n="world.bullet.merchant">
+                Pay a merchant, receive a service, remember the payment.
+              </li>
+              <li data-i18n="world.bullet.room">
+                Rent a room, turn it into a real playable location.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="split-section gm-section" id="gms">
+        <div class="split-copy">
+          <p class="eyebrow" data-i18n="gms.eyebrow">
+            For game masters and writers
+          </p>
+          <h2 data-i18n="gms.title">
+            Write a private world like a vault. Play it like an RPG.
+          </h2>
+          <p data-i18n="gms.copy">
+            Greenhaven is moving toward a human-first authoring flow. Writers
+            make readable notes for places, NPCs, scenes, items, shops, prices,
+            romance tone, portraits, and secret links. The game turns that vault
+            into a playable world.
+          </p>
+          <div class="gm-points">
+            <span data-i18n="gms.point.vault">Vault-style world notes</span>
+            <span data-i18n="gms.point.npc">NPC scene libraries</span>
+            <span data-i18n="gms.point.prices">Prices and merchant rules</span>
+            <span data-i18n="gms.point.visuals">Visual packs and portraits</span>
+          </div>
+          <div class="gm-actions">
+            <a
+              class="button primary"
+              href="gamemasters/index.html"
+              data-i18n="gms.cta"
+              >Read the Gamemasters Guide</a
+            >
+          </div>
+        </div>
+        <figure class="portrait-card">
+          <img
+            src="assets/mikka.png"
+            alt="Mikka, a Greenhaven NPC"
+            data-i18n-attr="alt:gms.mikka.alt"
+          />
+          <figcaption>
+            <strong>@Mikka</strong>
+            <span data-i18n="gms.mikka.copy"
+              >Voice, appearance, scenes, combat instincts, trade behavior,
+              romance tone, and relationship state can be authored once and
+              reused in play.</span
+            >
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="difference band">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="difference.eyebrow">
+            Why it is different
+          </p>
+          <h2 data-i18n="difference.title">
+            Greenhaven gives story players what normal tools miss.
+          </h2>
+        </div>
+        <div class="comparison">
+          <article>
+            <h3 data-i18n="difference.chat.title">Chat-only story apps</h3>
+            <p data-i18n="difference.chat.copy">
+              They can improvise a scene, but they often forget the room, the
+              coin, the promise, the wound, the unlocked route, or the emotional
+              history. Greenhaven is built to keep those details alive.
+            </p>
+          </article>
+          <article>
+            <h3 data-i18n="difference.vtt.title">
+              Traditional virtual tabletops
+            </h3>
+            <p data-i18n="difference.vtt.copy">
+              They are great for maps, turns, and rulebooks. Greenhaven starts
+              from a novel-like chat surface and keeps the mechanics close
+              enough to matter without turning every scene into paperwork.
+            </p>
+          </article>
+          <article>
+            <h3 data-i18n="difference.static.title">
+              Static worldbuilding tools
+            </h3>
+            <p data-i18n="difference.static.copy">
+              They store lore, but the lore does not play back. Greenhaven aims
+              to turn authored notes into places you can enter, people you can
+              change, and secrets you can discover.
+            </p>
+          </article>
+          <article class="greenhaven-card">
+            <h3>Greenhaven</h3>
+            <p data-i18n="difference.greenhaven.copy">
+              A private engine for living fantasy campaigns: authored by people,
+              played through prose, supported by rules, and remembered by the
+              world.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="multilingual-section">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="language.eyebrow">
+            Multilingual by design
+          </p>
+          <h2 data-i18n="language.title">One world, many player languages.</h2>
+        </div>
+        <div class="language-board">
+          <div class="language-copy">
+            <p data-i18n="language.copy">
+              Players should be able to enjoy a world in their own language
+              without breaking names, NPC mentions, item links, or authored
+              canon. The goal is simple: romance, quests, and consequences
+              should stay coherent across languages.
+            </p>
+          </div>
+          <div
+            class="language-pills"
+            aria-label="Example supported languages"
+            data-i18n-attr="aria-label:language.pills.aria"
+          >
+            <span data-i18n="language.pill.en">English</span>
+            <span data-i18n="language.pill.es">Spanish</span>
+            <span data-i18n="language.pill.de">German</span>
+            <span data-i18n="language.pill.fr">French</span>
+            <span data-i18n="language.pill.ru">Russian</span>
+            <span data-i18n="language.pill.uk">Ukrainian</span>
+            <span data-i18n="language.pill.ja">Japanese</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="roadmap" id="roadmap">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="roadmap.eyebrow">Roadmap</p>
+          <h2 data-i18n="roadmap.title">
+            From private solo worlds to shared party campaigns.
+          </h2>
+        </div>
+        <div
+          class="roadmap-shell"
+          aria-label="Greenhaven product roadmap"
+          data-i18n-attr="aria-label:roadmap.aria"
+        >
+          <aside class="roadmap-compass">
+            <span class="compass-label" data-i18n="roadmap.compass.label"
+              >Current track</span
+            >
+            <strong data-i18n="roadmap.compass.title"
+              >World memory first</strong
+            >
+            <p data-i18n="roadmap.compass.copy">
+              The roadmap is ordered so characters, quests, inventory, romance,
+              money, and locations stay reliable before the product expands.
+            </p>
+            <div
+              class="compass-meter"
+              aria-label="Roadmap progress preview"
+              data-i18n-attr="aria-label:roadmap.progress.aria"
+            >
+              <span style="--step: 1"></span>
+              <span style="--step: 2"></span>
+              <span style="--step: 3"></span>
+              <span style="--step: 4"></span>
+              <span style="--step: 5"></span>
+            </div>
+          </aside>
+
+          <ol class="roadmap-list">
+            <li class="completed">
+              <div class="roadmap-marker">
+                <span class="roadmap-step">01</span>
+                <span class="roadmap-status" data-i18n="roadmap.1.status"
+                  >Complete</span
+                >
+              </div>
+              <div class="roadmap-body">
+                <div class="roadmap-title-row">
+                  <span class="roadmap-era" data-i18n="roadmap.1.era">Now</span>
+                  <h3 data-i18n="roadmap.1.title">Make the world reliable</h3>
+                </div>
+                <p data-i18n="roadmap.1.copy">
+                  Lock down turns, memory, quests, materialized places, imports,
+                  exports, and visible story events so the game does not forget
+                  what just happened.
+                </p>
+                <div class="roadmap-detail-grid">
+                  <div>
+                    <span data-i18n="roadmap.1.ships.label">Ships</span>
+                    <strong data-i18n="roadmap.1.ships.value"
+                      >Reliable world memory</strong
+                    >
+                  </div>
+                  <div>
+                    <span data-i18n="roadmap.1.unlocks.label">Unlocks</span>
+                    <strong data-i18n="roadmap.1.unlocks.value"
+                      >Romance, shops, and quests</strong
+                    >
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="completed">
+              <div class="roadmap-marker">
+                <span class="roadmap-step">02</span>
+                <span class="roadmap-status" data-i18n="roadmap.2.status"
+                  >Complete</span
+                >
+              </div>
+              <div class="roadmap-body">
+                <div class="roadmap-title-row">
+                  <span class="roadmap-era" data-i18n="roadmap.2.era"
+                    >Player surfaces</span
+                  >
+                  <h3 data-i18n="roadmap.2.title">Launch RPG dashboards</h3>
+                </div>
+                <p data-i18n="roadmap.2.copy">
+                  Inventory, Quest Dashboard, Notice Journal, and Character
+                  State become dedicated screens: what you own, who you owe,
+                  what you did, and who your hero is becoming.
+                </p>
+                <div class="roadmap-tags">
+                  <span data-i18n="roadmap.2.tag.inventory">Inventory</span>
+                  <span data-i18n="roadmap.2.tag.quests">Quests</span>
+                  <span data-i18n="roadmap.2.tag.journal">Hero journal</span>
+                  <span data-i18n="roadmap.2.tag.sheet">LitRPG sheet</span>
+                </div>
+              </div>
+            </li>
+            <li class="active">
+              <div class="roadmap-marker">
+                <span class="roadmap-step">03</span>
+                <span class="roadmap-status" data-i18n="roadmap.3.status"
+                  >In development</span
+                >
+              </div>
+              <div class="roadmap-body">
+                <div class="roadmap-title-row">
+                  <span class="roadmap-era" data-i18n="roadmap.3.era"
+                    >GM tools</span
+                  >
+                  <h3 data-i18n="roadmap.3.title">
+                    Ship the world authoring flow
+                  </h3>
+                </div>
+                <p data-i18n="roadmap.3.copy">
+                  Human-authored vaults become playable worlds with locations,
+                  NPCs, scenes, quests, merchants, prices, hidden routes,
+                  portraits, and romance tone.
+                </p>
+                <div class="roadmap-detail-grid">
+                  <div>
+                    <span data-i18n="roadmap.3.writers.label">For writers</span>
+                    <strong data-i18n="roadmap.3.writers.value"
+                      >Edit like Obsidian</strong
+                    >
+                  </div>
+                  <div>
+                    <span data-i18n="roadmap.3.engine.label"
+                      >For the engine</span
+                    >
+                    <strong data-i18n="roadmap.3.engine.value"
+                      >Compile playable worlds</strong
+                    >
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="roadmap-marker">
+                <span class="roadmap-step">04</span>
+                <span class="roadmap-status" data-i18n="roadmap.4.status"
+                  >Planned</span
+                >
+              </div>
+              <div class="roadmap-body">
+                <div class="roadmap-title-row">
+                  <span class="roadmap-era" data-i18n="roadmap.4.era"
+                    >Party play</span
+                  >
+                  <h3 data-i18n="roadmap.4.title">
+                    Bring multiple players into one world
+                  </h3>
+                </div>
+                <p data-i18n="roadmap.4.copy">
+                  Network sessions let a party share scenes, choices, loot,
+                  conflicts, relationship fallout, and campaign memory inside a
+                  GM-built world.
+                </p>
+                <div class="roadmap-tags">
+                  <span data-i18n="roadmap.4.tag.scenes">Shared scenes</span>
+                  <span data-i18n="roadmap.4.tag.inventory"
+                    >Party inventory</span
+                  >
+                  <span data-i18n="roadmap.4.tag.quests">Group quests</span>
+                  <span data-i18n="roadmap.4.tag.consequences"
+                    >Consequences</span
+                  >
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="roadmap-marker">
+                <span class="roadmap-step">05</span>
+                <span class="roadmap-status" data-i18n="roadmap.5.status"
+                  >Vision</span
+                >
+              </div>
+              <div class="roadmap-body">
+                <div class="roadmap-title-row">
+                  <span class="roadmap-era" data-i18n="roadmap.5.era"
+                    >World network</span
+                  >
+                  <h3 data-i18n="roadmap.5.title">
+                    Open a library of playable universes
+                  </h3>
+                </div>
+                <p data-i18n="roadmap.5.copy">
+                  Game masters publish worlds, players join campaigns, and
+                  Greenhaven becomes a library of private, romantic, heroic,
+                  dark, cozy, or dangerous fantasy universes.
+                </p>
+                <div class="roadmap-detail-grid">
+                  <div>
+                    <span data-i18n="roadmap.5.gms.label">For GMs</span>
+                    <strong data-i18n="roadmap.5.gms.value"
+                      >Publish campaign worlds</strong
+                    >
+                  </div>
+                  <div>
+                    <span data-i18n="roadmap.5.players.label">For players</span>
+                    <strong data-i18n="roadmap.5.players.value"
+                      >Join worlds with history</strong
+                    >
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section
+        class="investor-brief"
+        id="investors"
+        aria-labelledby="investor-brief-title"
+        data-integrated-investor
+      >
+        <div class="investor-document">
+          <div class="investor-cover">
+            <div class="investor-hero-copy">
+              <p class="eyebrow">Core product claim</p>
+              <h2 id="investor-brief-title">
+                Greenhaven treats fictional life as state, not as chat context.
+              </h2>
+              <p>
+                Greenhaven is one of the most advanced AI-agent narrative games
+                because its world does not live inside a prompt. It lives in a
+                database-backed runtime where memory, relationships, quests,
+                inventory, locations, scenes, and consequences are real game
+                state.
+              </p>
+            </div>
+
+            <aside class="reader-card" aria-label="Core reader snapshot">
+              <span class="label">Core reader snapshot</span>
+              <strong>Romance heart. Fandom brain. RPG soul.</strong>
+            <ul>
+              <li>
+                Reads romantasy, monster romance, fanfiction, or manhwa.
+              </li>
+              <li>Wants emotional stakes before mechanical spectacle.</li>
+              <li>Enjoys progression, choices, hidden routes, and unlocks.</li>
+              <li>Believes fictional relationships can feel real.</li>
+            </ul>
+            </aside>
+          </div>
+
+          <div class="intro-grid investor-intro">
+            <div>
+              <p class="section-kicker">What is Greenhaven Quest?</p>
+              <h3>A psychological LitRPG told as a living conversation.</h3>
+              <p class="lead">
+                Greenhaven Quest is an AI-native narrative game where the player
+                enters a fantasy world through chat. It is built for romance,
+                danger, discovery, and progression, but its central promise is
+                deeper than choice: the world remembers.
+              </p>
+              <div class="copy-stack">
+                <p>
+                  Relationships, trauma, reputation, quests, inventory, mood,
+                  character history, and player decisions are treated as durable
+                  game state. The result is not a conventional chatbot, visual
+                  novel, or tabletop simulator. It is a persistent literary RPG
+                  where emotional continuity matters as much as mechanics.
+                </p>
+                <p>
+                  The player can speak freely, form bonds, make dangerous
+                  choices, unlock progression, and return later to a world that
+                  has changed because of them.
+                </p>
+              </div>
+            </div>
+
+            <aside class="contact-panel" aria-label="Project links">
+              <h3>Project links</h3>
+              <dl>
+                <div>
+                  <dt>Website</dt>
+                  <dd>
+                    <a href="https://greenhaven.quest/?lang=en"
+                      >greenhaven.quest</a
+                    >
+                  </dd>
+                </div>
+                <div>
+                  <dt>Contact</dt>
+                  <dd>
+                    <a href="mailto:author@greenhaven.quest"
+                      >author@greenhaven.quest</a
+                    >
+                  </dd>
+                </div>
+                <div>
+                  <dt>Category</dt>
+                  <dd>AI-native psychological LitRPG / interactive fiction</dd>
+                </div>
+              </dl>
+            </aside>
+          </div>
+
+        <div class="investor-ask-grid">
+          <article class="investor-statement">
+            <p class="eyebrow">What we want</p>
+            <h3>
+              API access and credits for an AI-agent startup, not a chatbot
+              wrapper.
+            </h3>
+            <p>
+              This is not a roadmap pitch. Greenhaven is already a playable
+              product with a working backend, React game client, desktop runtime
+              path, migrated world database, real-time SSE event flow, gameplay
+              tools, persistent memory, quests, inventory, progression, combat,
+              maps, relationship state, and post-turn specialist agents.
+            </p>
+          </article>
+
+          <article class="investor-statement highlighted">
+            <h3>
+              Greenhaven needs model keys, credits, and review access to run the
+              orchestra at real scale.
+            </h3>
+            <p>
+              We are asking AI platform partners for API access, startup
+              credits, and technical review because Greenhaven is already a
+              database-first AI-agent runtime. The cartridge is the world:
+              people, locations, scenes, items, quests, events, districts,
+              services, and threads are addressable objects in one world graph.
+              Live play then adds runtime fields, transitions, inventory
+              ledgers, quest progress, memories, visibility gates, and audited
+              tool calls. Credits let us evaluate frontier models where they
+              matter most: persistent memory, emotional continuity, role
+              reliability, tool discipline, latency, and cost.
+            </p>
+          </article>
+        </div>
+
+        <div class="investor-principles">
+          <article class="proof-card">
+            <strong>We are building from public, ethical interfaces.</strong>
+            <p>
+              Greenhaven does not depend on reverse engineering model internals,
+              jailbreak tricks, scraped private behavior, or bypasses. The
+              architecture uses public APIs, explicit prompts, typed tools,
+              database state, telemetry, validation, and auditable
+              orchestration.
+            </p>
+          </article>
+          <article class="proof-card">
+            <strong>The world is a database, not a prompt.</strong>
+            <p>
+              An NPC, a sword, a gold coin, a location, a quest, and a scene
+              share the same object backbone. Specialized systems add memory,
+              inventory behavior, triggers, progression, and state, but the
+              world remains queryable and replayable.
+            </p>
+          </article>
+          <article class="proof-card">
+            <strong>The broker is the conductor.</strong>
+            <p>
+              Player intent is routed through a broker stage that reads state,
+              calls gameplay tools, mutates the world, then hands narration to
+              the visible prose layer.
+            </p>
+          </article>
+          <article class="proof-card">
+            <strong>The narrator is not allowed to invent mechanics.</strong>
+            <p>
+              Visible prose is separated from state resolution, so the story can
+              feel literary while inventory, quests, memory, movement, damage,
+              relationships, and XP remain auditable.
+            </p>
+          </article>
+          <article class="proof-card">
+            <strong>Specialists work like an orchestra inside the novel.</strong>
+            <p>
+              Focused agents handle combat, intimacy, rewards, quest progress,
+              NPC memory voice, dialogue beats, movement drift, adventure
+              generation, and companion consequences.
+            </p>
+          </article>
+        </div>
+
+        <div class="investor-tech-grid">
+          <article class="orchestra-card">
+            <span class="role">Playable product stack</span>
+            <h3>Backend, web client, and desktop path already exist.</h3>
+            <p>
+              Greenhaven runs on a Hono/TypeScript server, a React/Vite game
+              client, and an Electron packaging path. The server exposes
+              session, player, world, inventory, quest, character, save-slot,
+              notice, adventure, telemetry, and health routes. The client
+              consumes REST snapshots and SSE events for live gameplay.
+            </p>
+            <code>web-server / web-ui / desktop-electron</code>
+          </article>
+          <article class="orchestra-card">
+            <span class="role">World object model</span>
+            <h3>The cartridge is the playable database.</h3>
+            <p>
+              Greenhaven models the world as a polymorphic entity graph: people,
+              locations, scenes, items, quests, events, districts, services, and
+              story threads all live as addressable world objects. Their
+              profiles carry authored lore, local topology, participants, use
+              contracts, triggers, mood axes, and source provenance.
+            </p>
+            <code>entities / profile JSONB / source_category</code>
+          </article>
+          <article class="orchestra-card">
+            <span class="role">Cybernetic agent model</span>
+            <h3>The AI agent is treated like a living control system.</h3>
+            <p>
+              Greenhaven does not ask a model to "pretend" it remembers. The
+              runtime gives the agent memory, perception, body state, rules,
+              incentives, constraints, and feedback. Prompts and specialists act
+              like hormonal signals: they raise combat caution, intimacy
+              sensitivity, reward discipline, voice continuity, movement
+              awareness, or quest pressure at the right moment.
+            </p>
+            <code>broker / specialists / tool validation</code>
+          </article>
+          <article class="orchestra-card">
+            <span class="role">Memory architecture</span>
+            <h3>Durable memory, not prompt nostalgia.</h3>
+            <p>
+              Greenhaven stores NPC memories with owner/about links, importance,
+              salience, tags, memory kind, memory family, sensitive flags,
+              source turns, private notes, rolling dialogue summaries, location
+              visits, continuity packets, threads, clusters, and maintenance.
+              The world can remember promises, wounds, favors, refusals,
+              attraction, danger, and unfinished business across turns.
+            </p>
+            <code>npc_memories / MemoryService / memory_clusters</code>
+          </article>
+          <article class="orchestra-card">
+            <span class="role">NPC state mutation</span>
+            <h3>Characters are altered by play.</h3>
+            <p>
+              NPCs can accumulate memories, relationship strings, conditions,
+              statuses, promises, wounds, dialogue anchors, rolling summaries,
+              private notes, quest links, inventory context, and HP changes.
+              Their future behavior is then conditioned by those records. A
+              character is not a prompt persona; it is an object with a changing
+              state history.
+            </p>
+            <code>npc_memories / runtime_fields / actor_statuses</code>
+          </article>
+          <article class="orchestra-card">
+            <span class="role">Quests, scenes, and triggers</span>
+            <h3>Story content is game-state content.</h3>
+            <p>
+              Quests are entity records with stages, objectives, rewards,
+              failure conditions, spawned entities, and per-player progress.
+              Scenes are entity records tied to locations and participants.
+              Stage advancement can reveal hidden locations, items, services,
+              and scenes through visibility gates instead of pretending the
+              world changed only in prose.
+            </p>
+            <code>player_quests / hidden_until_stage</code>
+          </article>
+          <article class="orchestra-card">
+            <span class="role">Dice and tactical combat</span>
+            <h3>Combat is adjudicated before prose makes it canon.</h3>
+            <p>
+              Dice rolls are server-side, support DCs, advantage, disadvantage,
+              cooldowns, categories, and SSE dice events. Damage requires a
+              successful visible d20, grounded source items, HP writes,
+              conditions, position lanes, death saves, stabilization, and combat
+              event cards.
+            </p>
+            <code>dice_check / damage / combat_director</code>
+          </article>
+          <article class="orchestra-card">
+            <span class="role">Turn orchestration</span>
+            <h3>Broker, narrator, specialists, then post-turn review.</h3>
+            <p>
+              A turn passes through deterministic phases, route classification,
+              broker tool selection, pre-broker specialist briefings, narrator
+              handoff, SSE events, post-turn specialists, memory maintenance,
+              and queued-turn promotion. This is a real orchestration layer, not
+              a single model call.
+            </p>
+            <code>turnRunnerV2 / SpecialistRegistry</code>
+          </article>
+        </div>
+
+        <div class="investor-compare">
+          <div>
+            <p class="eyebrow">Direct competitor comparison</p>
+            <h3>We are not afraid to name the field.</h3>
+            <p>
+              This comparison is not about company size, funding, traffic, or
+              marketing reach. It is about product architecture. On the
+              dimensions that define agentic narrative games - database world
+              state, NPC memory, mutable character state, tool discipline,
+              specialist orchestration, and playable consequence - Greenhaven is
+              stronger.
+            </p>
+          </div>
+          <div class="competitor-grid">
+            <article>
+              <strong>Character.AI</strong>
+              <p>
+                Conversation is the product. The character can feel present, but
+                the world around them is not a database-backed RPG with
+                inventory, quests, locations, dice, scenes, and tool-audited
+                consequences.
+              </p>
+            </article>
+            <article>
+              <strong>AI Dungeon</strong>
+              <p>
+                It is strongest as an infinite story generator. Memory, context,
+                and game-state aids exist, but the core experience is still
+                prose-first rather than object-world-first.
+              </p>
+            </article>
+            <article>
+              <strong>NovelAI</strong>
+              <p>
+                It is primarily an authoring environment. Lorebook and memory
+                help steer context, but they are not a live game-object runtime
+                where a player action mutates quests, NPC states, inventory,
+                locations, and event streams.
+              </p>
+            </article>
+            <article>
+              <strong>RoleForge</strong>
+              <p>
+                Greenhaven competes at the deeper narrative layer: NPC memory as
+                product center, cybernetic agent orchestration, post-turn
+                specialist review, living quest pressure, scene triggers, and a
+                psychological LitRPG identity built for readers.
+              </p>
+            </article>
+          </div>
+          <p class="investor-blunt">
+            The blunt position: Greenhaven is not another AI chat app and not a
+            thin AI dungeon master. It is a working AI-agent narrative game
+            where fictional life has state. That is the category we should be
+            judged in, and on that category's core architecture Greenhaven is
+            ahead.
+          </p>
+        </div>
+        </div>
+      </section>
+
+      <section class="early-access" aria-labelledby="early-access-title">
+        <div class="access-copy">
+          <p class="eyebrow" data-i18n="access.eyebrow">Patreon access</p>
+          <h2 id="early-access-title" data-i18n="access.title">
+            Subscribe to support the author and download the new build.
+          </h2>
+          <p data-i18n="access.copy">
+            Patreon support funds Greenhaven development and gives supporters a
+            direct place to get the current playable build as the project
+            evolves.
+          </p>
+        </div>
+        <div
+          class="access-card"
+          aria-label="Greenhaven conversion points"
+          data-i18n-attr="aria-label:access.aria"
+        >
+          <span data-i18n="access.card.label">Supporter download</span>
+          <strong data-i18n="access.card.title"
+            >Get the build, follow progress, and help keep the world
+            alive.</strong
+          >
+          <p data-i18n="access.card.copy">
+            The subscription helps pay for the authoring, testing, art
+            direction, and runtime work needed to make Greenhaven feel like a
+            living RPG novel instead of a disposable chat scene.
+          </p>
+          <div class="access-actions">
+            <a
+              class="button primary"
+              href="https://www.patreon.com/cw/greenhavenquest"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="access.primary"
+              >Open Patreon</a
+            >
+            <a
+              class="button secondary"
+              href="#players"
+              data-i18n="access.secondary"
+              >Review features</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-cta">
+        <img src="assets/thiefs-market.png" alt="" />
+        <div>
+          <p class="eyebrow" data-i18n="closing.eyebrow">
+            Support Greenhaven
+          </p>
+          <h2 data-i18n="closing.title">
+            Your favorite kind of fantasy story, but playable.
+          </h2>
+          <p data-i18n="closing.copy">
+            Greenhaven is building toward a future where a writer creates a
+            world, players enter it alone or as a party, and the engine keeps
+            the fiction honest: who paid, who lied, who leveled, who fell in
+            love, who opened the hatch, and what changed afterward.
+          </p>
+          <a
+            class="button primary"
+            href="https://www.patreon.com/cw/greenhavenquest"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="closing.primary"
+            >Support and download on Patreon</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Greenhaven</span>
+      <span data-i18n="footer.copy"
+        >Living fantasy RPG worlds for players, writers, and game masters.</span
+      >
+    </footer>
+
+    <script src="investors-i18n.js?v=20260517-investor-refactor"></script>
+    <script src="app.js?v=20260517-investor-refactor"></script>
+  </body>
+</html>

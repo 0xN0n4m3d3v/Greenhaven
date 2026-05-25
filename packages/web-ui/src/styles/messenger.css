@@ -1,0 +1,363 @@
+/*
+ * messenger.css — Greenhaven chat surface re-skinned as a messenger.
+ *
+ * Loaded LAST in main.tsx so its rules win over the existing scroll /
+ * parchment / RPG-frame chrome. Pure override — no JS dependency.
+ *
+ * Direction (operator 2026-05-13):
+ *   - Telegram/WhatsApp-style bubbles.
+ *   - Dark wallpaper with a very subtle dot pattern.
+ *   - Player accent: dark navy blue (was warm ember).
+ *   - Round avatars (existing <Portrait/> already round).
+ *   - All system events become a single centered narrow pill grammar.
+ *   - No decorative Unicode glyphs.
+ */
+
+:root {
+  /* Messenger palette. */
+  --msg-wallpaper:        220 18% 7%;
+  --msg-wallpaper-dot:    220 14% 12%;
+  --msg-surface:          220 14% 14%;
+  --msg-surface-2:        220 14% 18%;
+  --msg-bubble-other:     220 14% 16%;
+  --msg-bubble-self:      218 65% 38%;
+  --msg-bubble-self-edge: 218 70% 32%;
+  --msg-ink:              220 14% 92%;
+  --msg-ink-soft:         220 10% 70%;
+  --msg-ink-dim:          220  8% 55%;
+  --msg-divider:          220 10% 22%;
+  --msg-link:             198 78% 60%;
+  --msg-success:          145 48% 50%;
+  --msg-warn:              38 88% 55%;
+  --msg-danger:             4 70% 55%;
+}
+
+/* -------------------------------------------------------------------------
+ * Wallpaper. Dark base + a single radial-gradient dot, tiled, 16px grid.
+ * Faint enough to read as texture, not pattern.
+ * --------------------------------------------------------------------- */
+
+html, body {
+  background-color: hsl(var(--msg-wallpaper));
+  background-image:
+    radial-gradient(hsl(var(--msg-wallpaper-dot)) 1px, transparent 1.4px);
+  background-size: 18px 18px;
+  background-attachment: fixed;
+  color: hsl(var(--msg-ink));
+}
+
+.game-shell,
+.game-shell::before,
+.game-shell::after {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.game-shell {
+  /* Drop heavy RPG-frame margins/padding that fight the messenger feel. */
+  padding: 0 !important;
+}
+
+/* The chat column should not paint its own gradient — wallpaper does that. */
+.message-flow {
+  background: transparent !important;
+  padding: 14px 18px 22px !important;
+  gap: 4px !important;
+  scrollbar-width: thin;
+}
+
+/* Bubble visual styles live in tg-bubbles.css (loaded last in main.tsx). */
+
+/* Hide RPG-frame ornaments wherever they leak in. */
+.rpg-frame, .rpg-card, .rpg-band, .rpg-divider, .parchment-edge { background-image: none !important; border-color: hsl(var(--msg-divider)) !important; box-shadow: none !important; }
+
+/* Event card pill styles moved to tg-bubbles.css. */
+
+.event-card-actions button:hover:not(:disabled) {
+  background: hsl(var(--msg-link) / 0.28) !important;
+}
+
+/* -------------------------------------------------------------------------
+ * Chat header — flat top bar. avatar + name + status sub + menu icon.
+ * --------------------------------------------------------------------- */
+
+.chat-header {
+  background: hsl(var(--msg-surface) / 0.9) !important;
+  border-bottom: 1px solid hsl(var(--msg-divider)) !important;
+  box-shadow: 0 1px 0 hsl(0 0% 0% / 0.25) !important;
+  padding: 8px 14px !important;
+}
+
+.chat-header h2 {
+  color: hsl(var(--msg-ink)) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-family: var(--font-sans) !important;
+}
+
+/* -------------------------------------------------------------------------
+ * Composer — single rounded textarea-like input + send button.
+ * --------------------------------------------------------------------- */
+
+.action-dock {
+  background: hsl(var(--msg-surface) / 0.92) !important;
+  border-top: 1px solid hsl(var(--msg-divider)) !important;
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  box-shadow: 0 -1px 0 hsl(0 0% 0% / 0.25) !important;
+}
+
+/* Composer rules removed — owned by .composer.composer--tg in
+ * messenger-layout.css (spec 139 v2). */
+
+/* -------------------------------------------------------------------------
+ * Dice strip — collapse into a quiet inline run inside a bubble or as a
+ * minimal pill of its own.
+ * --------------------------------------------------------------------- */
+
+.dice-strip {
+  background: transparent !important;
+  border: none !important;
+  padding: 2px 0 !important;
+}
+
+.dice-strip-row {
+  background: hsl(var(--msg-surface) / 0.5) !important;
+  border: 1px solid hsl(var(--msg-divider)) !important;
+  border-radius: 14px !important;
+  padding: 2px 10px !important;
+  font-size: 11.5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.dice-strip-roll { font-weight: 700; color: hsl(var(--msg-ink)) !important; }
+.dice-strip-outcome.success { color: hsl(var(--msg-success)) !important; }
+.dice-strip-outcome.failure { color: hsl(var(--msg-danger)) !important; }
+
+/* -------------------------------------------------------------------------
+ * Inspiration badge — quieter, navy-tinged.
+ * --------------------------------------------------------------------- */
+
+.bubble.player .typing-indicator span,
+.bubble.self .typing-indicator span { background: hsl(220 30% 90%) !important; }
+
+/* -------------------------------------------------------------------------
+ * Map modal — clean overlay without RPG-frame.
+ * --------------------------------------------------------------------- */
+
+.city-map-modal,
+.city-map-overlay {
+  background: hsl(var(--msg-wallpaper) / 0.96) !important;
+  border: none !important;
+  box-shadow: 0 0 0 1px hsl(var(--msg-divider)) !important;
+}
+
+/* -------------------------------------------------------------------------
+ * Left rail — the .contact-rail aside. Re-skin to messenger surface.
+ *
+ * Before: warm rgba(20,13,9,0.62) with parchment cream text + gold brand
+ * mark. Clashes with the new navy chat. After: cool dark messenger
+ * surface, flat brand chip, quiet typography, location cards as tg-style
+ * list rows.
+ * --------------------------------------------------------------------- */
+
+.contact-rail {
+  background: hsl(var(--msg-surface)) !important;
+  border-right: 1px solid hsl(var(--msg-divider)) !important;
+  backdrop-filter: none !important;
+  padding: 14px 12px !important;
+  color: hsl(var(--msg-ink)) !important;
+}
+
+.contact-rail .brand-block {
+  margin-bottom: 16px !important;
+  padding: 0 4px !important;
+  gap: 12px !important;
+}
+
+.contact-rail .brand-mark {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background:
+    linear-gradient(180deg,
+      hsl(var(--msg-bubble-self)) 0%,
+      hsl(var(--msg-bubble-self-edge)) 100%) !important;
+  color: hsl(220 30% 96%) !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.contact-rail .brand-block h1 {
+  color: hsl(var(--msg-ink)) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  margin: 0 !important;
+}
+
+.contact-rail .eyebrow,
+.contact-rail .section-title {
+  color: hsl(var(--msg-ink-dim)) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  margin: 14px 0 8px !important;
+  padding: 0 4px !important;
+}
+
+.contact-rail .location-list {
+  gap: 2px !important;
+}
+
+.contact-rail .location-card {
+  grid-template-columns: 18px minmax(0, 1fr) auto !important;
+  gap: 10px !important;
+  min-height: 40px !important;
+  padding: 8px 10px !important;
+  color: hsl(var(--msg-ink)) !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 13.5px !important;
+  transition: background-color 140ms ease !important;
+}
+
+.contact-rail .location-card:hover {
+  background: hsl(var(--msg-surface-2)) !important;
+}
+
+.contact-rail .location-card.current,
+.contact-rail .location-card[aria-current="true"] {
+  background: hsl(var(--msg-bubble-self) / 0.15) !important;
+  color: hsl(var(--msg-ink)) !important;
+}
+
+/* HeroVitals + CurrencyBadge + PlayerStateRail + NearbyNPCsRail
+   inner containers — flatten card chrome. */
+.contact-rail .rail-section,
+.contact-rail .rail-card,
+.contact-rail [class*="vitals"],
+.contact-rail [class*="hero-stat"],
+.contact-rail [class*="nearby-list"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 4px 4px !important;
+}
+
+/* Currency / coin chips inline. */
+.contact-rail .currency-icon,
+.contact-rail .currency-chip {
+  background: transparent !important;
+  border: 1px solid hsl(var(--msg-divider)) !important;
+  color: hsl(38 50% 65%) !important;
+  border-radius: 999px !important;
+  padding: 4px 10px !important;
+}
+
+.contact-rail .rail-icon-badge {
+  background: hsl(var(--msg-bubble-self)) !important;
+  color: hsl(220 30% 96%) !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  padding: 1px 5px !important;
+}
+
+/* Reset + Settings buttons at the bottom of the rail. */
+.contact-rail .reset-button,
+.contact-rail .rail-menu-button {
+  background: transparent !important;
+  border: 1px solid hsl(var(--msg-divider)) !important;
+  color: hsl(var(--msg-ink-soft)) !important;
+  border-radius: 10px !important;
+  padding: 8px 12px !important;
+  font-size: 13px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  box-shadow: none !important;
+  transition: background-color 140ms ease, color 140ms ease !important;
+  margin: 4px 4px 0 !important;
+  width: calc(100% - 8px);
+}
+
+.contact-rail .reset-button { margin-top: auto !important; }
+
+.contact-rail .reset-button:hover:not(:disabled),
+.contact-rail .rail-menu-button:hover {
+  background: hsl(var(--msg-surface-2)) !important;
+  color: hsl(var(--msg-ink)) !important;
+}
+
+.contact-rail .rail-icon {
+  background: transparent !important;
+  border: 1px solid hsl(var(--msg-divider)) !important;
+  color: hsl(var(--msg-ink-soft)) !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.contact-rail .rail-icon:hover {
+  background: hsl(var(--msg-surface-2)) !important;
+  color: hsl(var(--msg-ink)) !important;
+}
+
+/* NearbyNPCsRail items — TG contact-row feel. */
+.contact-rail [class*="nearby-row"],
+.contact-rail [class*="npc-row"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 6px 8px !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer;
+  transition: background-color 140ms ease;
+}
+
+.contact-rail [class*="nearby-row"]:hover,
+.contact-rail [class*="npc-row"]:hover {
+  background: hsl(var(--msg-surface-2)) !important;
+}
+
+/* Hero vitals bars — slim flat. */
+.contact-rail [class*="vital-bar"],
+.contact-rail [class*="hp-bar"],
+.contact-rail [class*="progress"] {
+  background: hsl(var(--msg-divider)) !important;
+  border-radius: 999px !important;
+  height: 4px !important;
+  overflow: hidden;
+}
+
+.contact-rail [class*="vital-bar"] > *,
+.contact-rail [class*="hp-bar"] > *,
+.contact-rail [class*="progress"] > * {
+  border-radius: 999px !important;
+}
+
+/* -------------------------------------------------------------------------
+ * Drawers / popovers / tooltips inherit messenger surface.
+ * --------------------------------------------------------------------- */
+
+[data-radix-popper-content-wrapper] [role='tooltip'],
+.tooltip,
+.popover-content,
+.rail-popover-inner {
+  background: hsl(var(--msg-surface-2)) !important;
+  color: hsl(var(--msg-ink)) !important;
+  border: 1px solid hsl(var(--msg-divider)) !important;
+  box-shadow: 0 4px 16px hsl(0 0% 0% / 0.4) !important;
+}

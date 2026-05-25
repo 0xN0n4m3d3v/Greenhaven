@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Materializes: how the world responds — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="In an ordinary game, a door is either open or it is not, and the scenarist decides which before the player arrives. In Greenhaven, a door can appear — not pop out of thin air, but become visible an..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a class="active" href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Mechanics</p>
+          <h1 id="materializes-how-the-world-responds">Materializes: how the world responds</h1>
+<p>In an ordinary game, a door is either open or it is not, and the
+scenarist decides which before the player arrives. In Greenhaven, a
+door can <strong>appear</strong> — not pop out of thin air, but become visible and
+walkable exactly when the hero has done something. Picked up a key.
+Read a note. Earned the harbor scout's trust.</p>
+<p>The mechanism is called <strong>materialization</strong>. If Greenhaven had one
+single most important idea, this would be it. The world is not just
+described — the world <strong>changes from what the player does</strong>.</p>
+<h2 id="what-a-materialization-block-is">What a materialization block is</h2>
+<p>A materialization is a small block of four fields you write directly
+into an ordinary note. Inside a location, inside a character, inside a
+quest, inside a scene, even inside an item — wherever it fits.</p>
+<p>The block answers four questions:</p>
+<ul>
+<li><strong>What appears?</strong> — <code>Entity</code></li>
+<li><strong>What kind of change is this?</strong> — <code>Type</code></li>
+<li><strong>Where does it act?</strong> — <code>Scope</code></li>
+<li><strong>What concretely is the effect?</strong> — <code>Effect</code></li>
+</ul>
+<p>Here is what one looks like:</p>
+<pre><code class="language-markdown">- When the hero asks the way to the center:
+  - Entity: `@Harbor Street`
+  - Type: access / route
+  - Scope: `@Greenhaven Port`
+  - Effect: the route up `@Harbor Street` to `@Greenhaven Main Square`
+    becomes a walkable exit.
+</code></pre>
+<p>Read it slowly. It makes a sentence:</p>
+<blockquote>
+<p>"When the hero asks the way to the center, the route <code>@Harbor
+Street</code> materializes inside the port — it opens as a new exit and
+leads to the main square."</p>
+</blockquote>
+<p>That is the language of Greenhaven. You write a rule, and the engine
+carries it out.</p>
+<h2 id="where-to-write-them">Where to write them</h2>
+<p>Materializations live <strong>inside</strong> existing notes — in a <code>## Materializes</code>
+section. There is no separate file for them. You can put them:</p>
+<ul>
+<li>In a location — what happens when the hero does something at this
+  place.</li>
+<li>In a character — what happens when the hero does something in their
+  presence.</li>
+<li>In a quest — what appears as a consequence of each outcome.</li>
+<li>In a scene — what is left behind after the scene.</li>
+<li>In an item — what happens when the item is used.</li>
+</ul>
+<p>One block — one rule. Several rules — several blocks in a row.</p>
+<h2 id="live-examples">Live examples</h2>
+<h3 id="in-a-location">In a location</h3>
+<p>The port can open the street to the square, the noticeboard's clue,
+and the cellar hatch — depending on what the hero does:</p>
+<pre><code class="language-markdown">## Materializes
+
+- When the hero asks the way to the center:
+  - Entity: `@Harbor Street`
+  - Type: access / route
+  - Scope: `@Greenhaven Port`
+  - Effect: the route up `@Harbor Street` to `@Greenhaven Main Square`
+    becomes a walkable exit.
+
+- When the hero reads the sheet on the arrivals board:
+  - Entity: `@Missing Passenger Notice`
+  - Type: item / clue
+  - Scope: `@Greenhaven Port`
+  - Effect: the notice becomes an inspectable clue, opening the
+    investigation of the missing passenger.
+
+- When the hero opens the hatch under Blue Warehouse:
+  - Entity: `@Blue Warehouse Cellar Door`
+  - Type: access / threat
+  - Scope: `@Greenhaven Port`
+  - Effect: access to the cellar becomes an interactable threat
+    object, opening the rats investigation and the first combat path.
+</code></pre>
+<h3 id="in-a-character">In a character</h3>
+<p>Tessa keeps a "true ledger" — a private notebook of what matters. When
+the hero reveals a particular clue in her presence, the ledger becomes
+a public record:</p>
+<pre><code class="language-markdown">## Materializes
+
+- When the hero reveals the `@Cassian Flintbanner` wax pattern in my
+  presence:
+  - Entity: `@Stolen Guild Seal`
+  - Type: state / public evidence
+  - Scope: cross-hub
+  - Effect: I take out my true ledger and add the seal to the public
+    record.
+</code></pre>
+<h3 id="in-a-quest">In a quest</h3>
+<p>In "Tessa's Compass," one outcome opens an additional possibility with
+a neighboring character:</p>
+<pre><code class="language-markdown">## Materializes
+
+- When the hero returns the compass to its true owner:
+  - Entity: `@Mara Sunledger`
+  - Type: state / square trust
+  - Scope: `@Greenhaven Main Square`
+  - Effect: Mara's underground notice exchange opens to the hero for
+    one favor.
+</code></pre>
+<h2 id="kinds-of-change">Kinds of change</h2>
+<p>The <code>Type</code> field is a word or short phrase that signals to the engine
+(and to you as the author) the kind of change being made. It is not a
+rigidly fixed list — more a vocabulary of common labels. The most
+frequent:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access / route</code></td>
+<td>Opens a new passage, route, or transition</td>
+</tr>
+<tr>
+<td><code>item / clue</code></td>
+<td>A new item or clue appears</td>
+</tr>
+<tr>
+<td><code>state / public evidence</code></td>
+<td>A public state changes, an entry in a registry</td>
+</tr>
+<tr>
+<td><code>state / square trust</code></td>
+<td>A reputation or trust shifts</td>
+</tr>
+<tr>
+<td><code>location / district access</code></td>
+<td>A new district or location opens</td>
+</tr>
+<tr>
+<td><code>quest pointer</code></td>
+<td>A pointer to a follow-up quest activates</td>
+</tr>
+<tr>
+<td><code>access / threat</code></td>
+<td>Access to a threat opens (monsters, enemies)</td>
+</tr>
+</tbody>
+</table>
+<p>Do not over-think the vocabulary. Use what fits. What matters is that
+<strong>what changes</strong> is visible.</p>
+<h2 id="what-scope-is">What Scope is</h2>
+<p>The <code>Scope</code> field is the <strong>area of effect</strong> of the materialization.
+Where it is visible, where it operates.</p>
+<ul>
+<li>If the effect is in a single location, write the name of the
+  location: <code>@Greenhaven Port</code>.</li>
+<li>If the effect spans several places, write <code>cross-hub</code>.</li>
+<li>If the effect is a shift between two characters, write <code>between
+  hero and Tessa</code>.</li>
+</ul>
+<h2 id="inventory-materialization">Inventory materialization</h2>
+<p>A cartridge can also use <code>Materializes</code> to put a real item into an
+inventory. This is not narrator-only prose. At runtime the engine
+creates or reuses the item entity, creates or reuses the inventory
+catalog row, and writes the item into the target holder inventory.</p>
+<p>Use this when a quest gives the hero a key, when an NPC pockets a
+clue for a later scene, when a merchant receives a proof document, or
+when a container should gain a newly revealed object.</p>
+<p>There are two supported inventory scopes:</p>
+<pre><code class="language-markdown">Scope: hero inventory
+Scope: `@Tamara Vey inventory`
+</code></pre>
+<p>The first grants the item to the active hero. The second grants the
+item to the named non-player holder. The named holder can be an NPC,
+a container, or a location that exists in the cartridge. Keep the
+syntax exact: write the <code>@Name</code> immediately followed by <code>inventory</code>.
+Do not invent translated variants or aliases for this contract.</p>
+<p>The item count is optional. If omitted, the engine grants one item.
+If you need more, put the machine token <code>count=N</code> in <code>Scope</code> or
+<code>Effect</code>:</p>
+<pre><code class="language-markdown">## Materializes
+
+- When Tamara accepts the hero as a witness:
+  - Entity: `@Blue Warehouse Key`
+  - Type: item / access-state
+  - Scope: hero inventory
+  - Effect: the hero receives the key to the Blue Warehouse hatch.
+
+- When Tamara prepares the raid:
+  - Entity: `@Dock Pass`
+  - Type: item / clue
+  - Scope: `@Tamara Vey inventory`
+  - Effect: Tamara keeps count=2 dock passes for the next scene.
+</code></pre>
+<p>Currency is intentionally excluded from this materializer path. Coins
+belong to the economy and reward/trade tools, because currencies need
+denomination rules and price math.</p>
+<p>If the <code>Entity</code> item does not exist yet, the runtime creates a
+deterministic materialized item entity for this playthrough. If the
+item already exists in the cartridge, the runtime reuses it. Either
+way, the materializer is still idempotent: the same rule fires only
+once for the hero's current playthrough.</p>
+<h2 id="runtime-creation">Runtime creation</h2>
+<p>Materializers are the official cartridge-side way to create runtime
+state. The <code>Entity</code> field may point to an existing <code>@Name</code> or to a
+new <code>@Name</code> that will be created only when the trigger happens.</p>
+<p>Common runtime creation patterns:</p>
+<pre><code class="language-markdown">## Materializes
+
+- When the hero breaks the cellar lock:
+  - Entity: `@Rats Under The Blue Warehouse`
+  - Type: state / threat
+  - Scope: `@Greenhaven Port`
+  - Effect: the rat threat becomes active under the warehouse.
+
+- When the hero finds the hidden stair:
+  - Entity: `@Blue Warehouse Cellar`
+  - Type: location / hidden-exit
+  - Scope: `@Greenhaven Port`
+  - Effect: a walkable route opens between the port and the cellar.
+
+- When Mikka agrees to travel:
+  - Entity: `@Mikka Companion Contract`
+  - Type: state / service
+  - Scope: between hero and `@Mikka`
+  - Effect: Mikka becomes available as a paid companion for this run.
+</code></pre>
+<p>The author writes the rule in the cartridge. The engine applies it in
+the live world, records that it was applied, and avoids duplicate
+creation on later turns.</p>
+<h2 id="hero-directives">Hero directives</h2>
+<p>Materializers can also change the active hero. This is how a
+cartridge scenarist gives the hero a local starting condition,
+adds a cartridge-specific backstory correction, or lets the hero
+speak a scripted line when the world has earned it.</p>
+<p>For <code>hero / ...</code> materializers, <code>Entity</code> should normally point to
+the existing quest, scene, or location that owns the beat. The runtime
+applies the effect to the active hero; using a brand-new <code>@Hero ...</code>
+entity is usually unnecessary and will make validation ask a create
+question.</p>
+<p>Use these sparingly. The player still owns the hero. A cartridge
+directive should not erase the player's created character; it should
+add the facts this world needs in order to react correctly.</p>
+<h3 id="backstory-and-profile-prompt">Backstory and profile prompt</h3>
+<p>Use <code>hero / backstory</code>, <code>hero / profile</code>, or <code>hero / profile-prompt</code>
+when this cartridge needs to reinterpret part of the hero's origin.
+The effect is saved into the hero profile as a cartridge directive
+and is included in future narrator/player context.</p>
+<pre><code class="language-markdown">## Materializes
+
+- When the hero accepts Tamara's witness contract:
+  - Entity: `@Tamara's First Contract`
+  - Type: hero / backstory
+  - Scope: active hero profile
+  - Effect: Treat the hero as someone whose past contains one
+    unresolved contact with port smuggling. Do not invent the exact
+    crime; use it only as pressure when Blue Warehouse evidence
+    appears.
+</code></pre>
+<p>This does not delete the original backstory. It appends a durable
+cartridge correction. Later NPCs and scenes can react to that
+correction because it is part of the hero context.</p>
+<h3 id="starting-or-scene-status">Starting or scene status</h3>
+<p>Use <code>hero / status</code> when the cartridge needs a compact state on the
+hero: mood, wound, disguise, oath, marked, hunted, blessed, cursed,
+or any other short status your scenes can reference.</p>
+<p>The clearest form is:</p>
+<pre><code class="language-markdown">## Materializes
+
+- When the hero opens the Blue Warehouse hatch:
+  - Entity: `@Rats Under The Blue Warehouse`
+  - Type: hero / status / mood
+  - Scope: active hero
+  - Effect: value=watchful; intensity=0.75; reason=the hatch feels
+    familiar from the hero's corrected port backstory
+</code></pre>
+<p><code>Type: hero / status / mood</code> sets the status kind to <code>mood</code>. The
+<code>Effect</code> may contain <code>value=...</code> and <code>intensity=0.0..1.0</code>. If omitted,
+the engine uses the first sentence of the effect as the status value.</p>
+<h3 id="scripted-hero-voice">Scripted hero voice</h3>
+<p>Use <code>hero / voice</code> when the cartridge gives the hero permission to
+speak without waiting for a typed player command. This is for rare
+authored beats: oaths, involuntary memories, recognition lines,
+ceremonial answers, or a moment where the player's created hero has
+already committed to a role.</p>
+<pre><code class="language-markdown">## Materializes
+
+- When Tamara asks whether the hero recognizes the black ribbon mark:
+  - Entity: `@Arrival With A Revolver`
+  - Type: hero / voice
+  - Scope: active hero speech
+  - Effect: line=I know this mark. Someone used it on the last
+    manifest I was paid to forget.
+</code></pre>
+<p>The line is persisted as a hero chat bubble with source
+<code>cartridge_hero_voice</code>. NPCs present in the location can treat it as
+something the hero actually said. Do not use this to steal ordinary
+player agency; use it only after the player has accepted the scene,
+quest, oath, bond, or consequence that justifies the line.</p>
+<h2 id="a-few-important-rules">A few important rules</h2>
+<p><strong>The entity carries <code>@</code>.</strong> If you materialize <code>@Mara Sunledger</code> and
+she does not yet exist in the cartridge, that is fine — the record
+flags her as a "concept character." But the name must be unified: if
+you create Mara later, the name must match letter for letter.</p>
+<p><strong>Effect — a concrete action.</strong> Not "something changes" but "the
+route opens as a walkable exit." The more precise you are, the less
+the narrator has to guess.</p>
+<p><strong>A materialization fires once.</strong> When the condition is satisfied and
+the effect applies, it does not repeat. This is not a loop, it is a
+move in the story.</p>
+<p><strong>Conditions must be observable.</strong> Not "when the hero behaves
+honestly" but "when the hero publicly refuses the fixer." This rule is
+universal across Greenhaven: write actions, not intentions.</p>
+<h2 id="how-a-materialization-reaches-the-game">How a materialization reaches the game</h2>
+<p>To make the off-stage process clear:</p>
+<ol>
+<li>You write a materialization block in a note.</li>
+<li>When the world is assembled into a cartridge, a script reads those
+   blocks and turns them into a list of rules.</li>
+<li>While the game runs, the engine checks on every turn: has any
+   condition been satisfied?</li>
+<li>If it has, the effect applies and the player sees the result.</li>
+</ol>
+<p>For now, hold onto one idea: you write rules in plain words, and the
+engine carries them out.</p>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../02-reference/item.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Item</span></a>
+<a class="pager-next" href="../03-mechanics/quest-branching.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Quest branching</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

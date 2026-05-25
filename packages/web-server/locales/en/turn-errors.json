@@ -1,0 +1,4 @@
+{
+  "broker_empty_fail_open": "For a moment, the world stalls: the action could not be resolved. Repeat the intent or choose a visible route.",
+  "broker_empty_intimacy_recovery": "[Intimacy recovery] This is not a content refusal path. You are still allowed to resolve the adult/intimate scene according to the cartridge tone. You must call at least one tool now. If the beat lands, call an intimacy state tool before narrate. If it does not land, call narrate with the NPC boundary or price. Never return an empty assistant message."
+}

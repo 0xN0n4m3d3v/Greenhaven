@@ -1,0 +1,3 @@
+ITEM ICON PROMPT — Voss Lab Computer
+
+A dated laboratory computer monitor on a cluttered desk. The screen displays a login prompt with the hint "Her name." beside a blinking cursor. The desktop background is dimly visible behind the login window: a photograph of a little girl on a swing. The monitor is covered in fine chemical dust. A coffee cup beside it, long cold. The screen's glow is the only light source — pale blue-white against the dark laboratory. Style: noir still life, the screen glow as focal point, readable even at small size. Square 1:1, 2048x2048. No text except what naturally appears on screen.

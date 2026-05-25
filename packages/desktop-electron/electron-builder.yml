@@ -1,0 +1,43 @@
+appId: com.greenhaven.game
+productName: GreenHaven
+copyright: Copyright 2026 GreenHaven contributors
+
+directories:
+  output: release
+
+afterPack: scripts/after-pack.cjs
+
+files:
+  - dist/**
+  - web-server/**
+  - '!web-server/default-cartridge/**'
+  - web-ui/**
+  - package.json
+
+extraResources:
+  - from: web-server/default-cartridge
+    to: web-server/default-cartridge
+    filter:
+      - '**/*'
+
+asarUnpack:
+  - node_modules/@electric-sql/pglite/**
+  - node_modules/@electric-sql/pglite/**/*
+  - node_modules/@electric-sql/pglite-vector/**
+  - node_modules/@electric-sql/pglite-vector/**/*
+
+win:
+  icon: build/icon.ico
+  target:
+    - target: nsis
+      arch:
+        - x64
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico

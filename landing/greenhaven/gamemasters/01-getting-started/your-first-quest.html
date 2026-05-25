@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your first quest — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="A quest is not &quot;kill ten rats.&quot; A quest is why the hero is going somewhere right now. It has a beginning (something happens, the hero gets pulled in), a middle (the steps they take), a fork (the mo..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a class="active" href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Getting started</p>
+          <h1 id="your-first-quest">Your first quest</h1>
+<p>A quest is not "kill ten rats." A quest is <strong>why</strong> the hero is going
+somewhere right now. It has a beginning (something happens, the hero
+gets pulled in), a middle (the steps they take), a fork (the moment
+where a choice must be made), and a consequence (the world shifts, and
+the shift is remembered).</p>
+<p><img alt="" src="../img/gemini-generated-image-dygb8hdygb8hdygb.jpg"></p>
+<p>In this chapter we will write Tessa's quest — the one about a brass
+compass found in someone else's crate.</p>
+<h2 id="where-the-quest-lives">Where the quest lives</h2>
+<p>Quests hide inside one of two folders:</p>
+<ul>
+<li><strong>Character-owned quest</strong> — in <code>npc/@Name/quests/Title.md</code>. Tessa's
+  quests live here, because they start from her.</li>
+<li><strong>Location-owned quest</strong> — in <code>quests/Title.md</code> inside the location.
+  These are quests that any random visitor in the port might trigger.</li>
+</ul>
+<p>The file name is the quest title, no <code>@</code>, the <code>.md</code> extension. Ours
+will be:</p>
+<pre><code>npc/@Tessa Wrenlight/quests/Tessa's Compass.md
+</code></pre>
+<h2 id="what-a-quest-is-made-of">What a quest is made of</h2>
+<p><strong>Required:</strong></p>
+<ul>
+<li><strong>Source</strong> — who gives it and under what conditions.</li>
+<li><strong>Hook</strong> — the opening beat, a small scene of inciting incident.</li>
+<li><strong>Objective</strong> — the goal in one line.</li>
+<li><strong>Stages</strong> — the steps.</li>
+</ul>
+<p><strong>Strongly recommended:</strong></p>
+<ul>
+<li><strong>Success Result</strong> — what happens on success.</li>
+<li><strong>Failure Result</strong> — what happens on failure.</li>
+<li><strong>Reward And Consequence</strong> — payouts and long-term shifts.</li>
+<li><strong>Materializes</strong> — what appears in the world afterward.</li>
+<li><strong>Do Not Do Here</strong> — boundaries for the narrator.</li>
+</ul>
+<p>Let's go through them in order.</p>
+<h2 id="source-the-origin">Source — the origin</h2>
+<p>Who gives the quest, where this happens, when the quest becomes
+available. Not prose — short bullet points:</p>
+<pre><code class="language-markdown">## Source
+
+- Giver: `@Tessa Wrenlight`
+- Where it starts: at her usual spot by the crates near
+  `@Blue Warehouse Cellar Door`.
+- Triggered when: the hero has positive strings with Tessa.
+</code></pre>
+<p><code>Triggered when</code> is the condition under which the quest appears. Here
+it is soft ("good relationship needed"). It can be stricter ("only after
+quest X") or more specific ("after the hero publicly refuses the
+fixer").</p>
+<h2 id="hook-the-opening-beat">Hook — the opening beat</h2>
+<p>A small scene that gets the quest going. Written in prose, like a
+location's <code>First Entry Bubble</code>. The player will see this text in chat
+as the quest's first moment.</p>
+<pre><code class="language-markdown">## Hook
+
+Tessa lifts a small straw-wrapped bundle from a cargo crate: a brass
+compass with the letter J on the back — slightly more polished than
+her own. She closes her hand around it. &quot;Joran's had a silver rim.
+This one is plain. But the J is the same maker's mark. The question is
+why it's here.&quot;
+</code></pre>
+<p>Notice: the hook does not explain the quest. It shows it. The player
+does not yet know what to do — they only sense that something has
+begun.</p>
+<h2 id="objective-the-goal">Objective — the goal</h2>
+<p>A single line that answers "what do they want from me?":</p>
+<pre><code class="language-markdown">## Objective
+
+Find out where the compass with the J mark came from, and decide whose
+it should be.
+</code></pre>
+<p>This line appears in the hero's quest log as the title. It needs to be
+short and clear.</p>
+<h2 id="stages-the-steps">Stages — the steps</h2>
+<p>Stages are the steps that lead from the inciting incident to the end.
+Each stage is its own list item. You can number them as <code>1.</code>, <code>1)</code>, or
+use dashes — the engine recognizes any list marker.</p>
+<pre><code class="language-markdown">## Stages
+
+1. Check the crate's manifest with `@Bram Caskbright` at the Blue
+   Warehouse office.
+2. Cross `@Greenhaven Main Square` and ask `@Mara Sunledger` whether a
+   notice has come in about a compass with a J mark.
+3. Trace the maker's stamp inside the lid — it leads to a workshop on
+   Honeybright Lane (concept, not yet active).
+4. Decide: return the compass to Tessa, return it to its true owner
+   (a child whose father went missing a month ago), or sell it to the
+   smuggler for fast coin.
+</code></pre>
+<p>A few rules for stages:</p>
+<ul>
+<li>Every stage contains <code>@</code> names — this anchors the step to specific
+  people and places.</li>
+<li>Stages are written as instructions to the hero. Not "the hero speaks
+  to Bram" but "check the manifest with Bram."</li>
+<li>The final stage is a fork. More on that next.</li>
+</ul>
+<h2 id="the-fork-a-real-choice">The fork — a real choice</h2>
+<p>A linear quest — "1 → 2 → 3 → end" — is fine. But the interesting quest
+is the one where, at some point, the hero chooses <strong>how</strong> the story
+ends.</p>
+<p>Technically, a fork looks like this:</p>
+<pre><code class="language-markdown">5. next_stage:
+   - kind: choice
+   - options:
+     - target_stage_id: return_to_tessa
+       label: Return it to Tessa
+     - target_stage_id: return_to_child
+       label: Return it to the child
+     - target_stage_id: sell_to_fixer
+       label: Sell it to the fixer
+</code></pre>
+<p>It looks unfamiliar at first — almost like code. But the meaning is
+simple: "at this step, give the player three options, and depending on
+which one they pick, the quest branches." <code>target_stage_id</code> is the
+internal name of another stage to jump to. <code>label</code> is the text the
+player sees on the button.</p>
+<p>The full structure of forks has its own chapter:
+<a href="../03-mechanics/quest-branching.html">Quest branching</a>. For your
+first quest you can start linear and add a fork later.</p>
+<h2 id="success-result-and-failure-result">Success Result and Failure Result</h2>
+<p>What good happens if the quest goes well, and what bad happens if it
+goes wrong. This is not only about rewards — it is about how the world
+shifts.</p>
+<pre><code class="language-markdown">## Success Result
+
+If returned to Tessa: positive strings, a quiet evening conversation,
+unlocks `Tessa's Brother's Last Contract`.
+If returned to the child: an ally on the square, respect from
+`@Mara Sunledger`.
+
+## Failure Result
+
+If sold to the fixer: negative strings with Tessa, an entry in her
+hidden ledger.
+If left in the crate: a faction operative collects it, and another
+investigation begins later.
+</code></pre>
+<p>Notice: in a single quest we already have <strong>four</strong> distinct outcomes —
+three flavors of success and two of failure. That is a real choice.
+Every move leaves a mark.</p>
+<h2 id="reward-and-consequence-long-aftermath">Reward And Consequence — long aftermath</h2>
+<p>The long-tail consequences of the quest: doors opened, relationships
+shifted, new quests that will appear later.</p>
+<pre><code class="language-markdown">## Reward And Consequence
+
+- Positive strings with `@Tessa Wrenlight` or with the concept-NPC on
+  the square.
+- Respect from `@Mara Sunledger`.
+</code></pre>
+<h2 id="materializes-what-appears-in-the-world">Materializes — what appears in the world</h2>
+<p>If the quest gives the hero a real item, use <code>Scope: hero inventory</code>.
+If the quest puts an item into an NPC or container for a later scene,
+use <code>Scope: @Name inventory</code>. This is cartridge-controlled runtime
+state, not just flavor text.</p>
+<p>If an outcome of the quest should bring a new person on stage, open a
+new door, or place a new item — write it here.</p>
+<pre><code class="language-markdown">## Materializes
+
+- When the hero returns the compass to its true owner:
+  - Entity: `@Mara Sunledger`
+  - Type: state / square trust
+  - Scope: `@Greenhaven Main Square`
+  - Effect: Mara's underground notice exchange opens to the hero for
+    one favor.
+</code></pre>
+<h2 id="do-not-do-here-boundaries">Do Not Do Here — boundaries</h2>
+<p>Sometimes you have a clear sense of how scenes <strong>should not</strong> unfold.
+For example, you want the maker's stamp to be shown on stage, not
+mentioned offscreen. This section gives the narrator those guardrails:</p>
+<pre><code class="language-markdown">## Do Not Do Here
+
+Do not make the compass an exact copy of Tessa's — the difference
+matters.
+Do not allow the maker's-stamp step to happen offscreen.
+</code></pre>
+<h2 id="a-short-checklist">A short checklist</h2>
+<ul>
+<li>The quest has at least three stages.</li>
+<li>Every stage names <code>@</code> entities.</li>
+<li>There is at least one meaningful fork.</li>
+<li>Both <code>Success Result</code> and <code>Failure Result</code> are written.</li>
+<li>There is at least one <code>Materializes</code> block.</li>
+</ul>
+<h2 id="whats-next">What's next</h2>
+<p>You now have a location, a character, and a quest. That is enough to
+compile and run a tiny world. If you want to go deeper, move on to the
+next step.</p>
+<ul>
+<li>Full references for every entity:
+  <a href="../02-reference/npc.html">NPC reference</a> and the others.</li>
+<li>Deeper mechanics:
+  <a href="../03-mechanics/materializes.html">Materializes</a>,
+  <a href="../03-mechanics/quest-branching.html">Quest branching</a>,
+  <a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a>.</li>
+</ul>
+<hr>
+<h2 id="reference">Reference</h2>
+<p><strong>Required sections</strong></p>
+<ul>
+<li><code>## Source</code></li>
+<li><code>## Hook</code></li>
+<li><code>## Objective</code></li>
+<li><code>## Stages</code></li>
+</ul>
+<p><strong>Recommended</strong></p>
+<ul>
+<li><code>## Success Result</code></li>
+<li><code>## Failure Result</code></li>
+<li><code>## Reward And Consequence</code></li>
+<li><code>## Materializes</code></li>
+<li><code>## Do Not Do Here</code></li>
+</ul>
+<p><strong>Stages:</strong> each is a single line starting with a list marker (<code>1.</code>,
+<code>1)</code>, <code>-</code>, <code>*</code>). Lines without a marker attach to the previous stage.</p>
+<p><strong>Fork:</strong> <code>next_stage:</code> with <code>kind: choice</code> and a list of <code>options</code>,
+each with a <code>target_stage_id</code> and a <code>label</code>.</p>
+<p><strong>Full specification</strong> lives in the
+<a href="../02-reference/quest.html">Quest reference</a>.</p>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../01-getting-started/your-first-npc.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Your first NPC</span></a>
+<a class="pager-next" href="../02-reference/npc.html"><span class="pager-eyebrow">Next</span><span class="pager-title">NPC</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

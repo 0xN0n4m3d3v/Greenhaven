@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Greenhaven: After Hours — mood board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Caveat:wght@400;600&family=JetBrains+Mono&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root {
+    --ink: #f3e9d2;
+    --ink-soft: rgba(243, 233, 210, 0.7);
+    --ink-faint: rgba(243, 233, 210, 0.4);
+    --paper: #ead8b1;
+    --paper-shadow: rgba(60, 40, 20, 0.35);
+    --board-bg: #0e0a07;
+    --serif-prose: "EB Garamond", Georgia, serif;
+    --serif-display: "Cinzel", serif;
+    --hand: "Caveat", cursive;
+    --mono: "JetBrains Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--board-bg);
+    color: var(--ink);
+    font-family: var(--serif-prose);
+  }
+  header {
+    padding: 32px 48px 8px;
+    border-bottom: 1px solid rgba(243, 233, 210, 0.15);
+  }
+  header h1 {
+    font-family: var(--serif-display);
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: 0.08em;
+    margin: 0;
+  }
+  header p {
+    font-family: var(--mono);
+    font-size: 12px;
+    opacity: 0.55;
+    margin: 4px 0 0;
+  }
+  nav {
+    padding: 12px 48px 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 4px 10px;
+    border: 1px solid rgba(243, 233, 210, 0.18);
+    border-radius: 2px;
+  }
+  nav a:hover { color: var(--ink); border-color: var(--ink-soft); }
+
+  .scene {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 0;
+    height: 720px;
+    margin: 0 48px 32px;
+    border: 1px solid rgba(243, 233, 210, 0.12);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+  .scene::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+    background: radial-gradient(ellipse at 30% 50%, transparent 50%, rgba(0, 0, 0, 0.45) 100%);
+  }
+
+  .stage {
+    position: relative;
+    overflow: hidden;
+  }
+  .stage .bg-far,
+  .stage .bg-mid,
+  .stage .bg-near {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .stage .npc {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 540px;
+    z-index: 2;
+  }
+  .stage .npc svg { width: 100%; height: 100%; }
+
+  .stage .props {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    display: flex;
+    gap: 14px;
+    z-index: 3;
+  }
+  .stage .prop {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(243, 233, 210, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+  }
+
+  .stage .stage-tag {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    z-index: 3;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: rgba(243, 233, 210, 0.5);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 6px 10px;
+    border-radius: 2px;
+    border: 1px solid rgba(243, 233, 210, 0.15);
+    backdrop-filter: blur(6px);
+  }
+  .stage .stage-tag span { color: var(--ink); }
+
+  /* Journal pane — sepia paper. */
+  .journal {
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(60, 40, 20, 0.25), transparent 70%),
+      linear-gradient(180deg, #f0deb6 0%, #e6cd96 60%, #d8bb7e 100%);
+    color: #2a1d0d;
+    padding: 48px 56px 40px 64px;
+    position: relative;
+    box-shadow: inset 24px 0 48px rgba(60, 40, 20, 0.35),
+                inset -8px 0 12px rgba(60, 40, 20, 0.25);
+    font-family: var(--serif-prose);
+    font-size: 17px;
+    line-height: 1.65;
+    overflow: hidden;
+  }
+  .journal::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 24px;
+    width: 1px;
+    background: rgba(60, 40, 20, 0.18);
+  }
+  .journal h3 {
+    font-family: var(--serif-display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(60, 40, 20, 0.55);
+    margin: 0 0 18px;
+  }
+  .journal p { margin: 0 0 14px; }
+  .journal .said {
+    font-style: italic;
+    color: var(--persona-ink, #4a3486);
+    border-left: 2px solid var(--persona-ink, #4a3486);
+    padding-left: 12px;
+    margin-left: -16px;
+  }
+  .journal .said .who {
+    display: block;
+    font-style: normal;
+    font-size: 11px;
+    font-family: var(--mono);
+    color: rgba(60, 40, 20, 0.55);
+    margin-bottom: 4px;
+  }
+  .journal .you {
+    color: #2a1d0d;
+  }
+
+  /* Inner-voice margin note. */
+  .journal .voice {
+    position: absolute;
+    right: 16px;
+    width: 110px;
+    font-family: var(--hand);
+    font-size: 18px;
+    color: rgba(60, 40, 20, 0.7);
+    font-style: italic;
+    line-height: 1.2;
+    text-align: right;
+  }
+  .journal .voice .speaker {
+    display: block;
+    font-family: var(--mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(60, 40, 20, 0.5);
+    margin-bottom: 4px;
+  }
+
+  /* Margin string-portrait — round inked stamp. */
+  .journal .string-stamp {
+    position: absolute;
+    left: 12px;
+    width: 32px;
+  }
+  .journal .string-stamp .head {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(60, 40, 20, 0.18);
+    border: 1.5px solid var(--string-color, rgba(60, 40, 20, 0.5));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif-display);
+    font-weight: 600;
+    font-size: 12px;
+    color: rgba(60, 40, 20, 0.85);
+  }
+  .journal .string-stamp .bar {
+    height: 3px;
+    margin-top: 4px;
+    background: var(--string-color, rgba(60, 40, 20, 0.5));
+    border-radius: 2px;
+  }
+
+  /* Composer = pen tip. */
+  .journal .pen {
+    position: absolute;
+    bottom: 32px;
+    left: 64px;
+    right: 56px;
+    border-top: 1px solid rgba(60, 40, 20, 0.25);
+    padding-top: 14px;
+    font-family: var(--hand);
+    font-size: 22px;
+    color: rgba(60, 40, 20, 0.5);
+    font-style: italic;
+  }
+  .journal .pen::after {
+    content: '▌';
+    color: rgba(60, 40, 20, 0.7);
+    margin-left: 4px;
+    animation: blink 1.4s steps(2) infinite;
+  }
+  @keyframes blink { 0%,49%{opacity:1;} 50%,100%{opacity:0;} }
+
+  /* Stains. Trauma + memory marks on the paper. */
+  .stain {
+    position: absolute;
+    pointer-events: none;
+  }
+  .stain-coffee {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    border: 4px solid rgba(80, 40, 20, 0.25);
+    box-shadow: inset 0 0 0 8px transparent;
+  }
+  .stain-tear {
+    width: 30px; height: 50px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(180, 200, 230, 0.4), transparent 70%);
+  }
+  .stain-blood {
+    width: 40px; height: 40px;
+    background: radial-gradient(circle, rgba(150, 30, 30, 0.55), transparent 70%);
+  }
+
+  /* Per-mode skinning. ---------------------------------------------- */
+  .mode-exploration .stage {
+    background: linear-gradient(180deg, #1a2530 0%, #2a3540 50%, #1f2a36 100%);
+  }
+  .mode-exploration .bg-far {
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(180, 200, 220, 0.18), transparent 60%),
+      linear-gradient(180deg, transparent 30%, rgba(40, 30, 20, 0.4) 100%);
+  }
+  .mode-exploration .bg-mid {
+    background: linear-gradient(180deg, transparent 60%, #1a1410 100%);
+  }
+  .mode-exploration .npc { filter: drop-shadow(0 16px 24px rgba(0,0,0,0.6)); }
+  .mode-exploration .journal { --persona-ink: #4a3486; }
+
+  .mode-dialogue .stage {
+    background: linear-gradient(180deg, #2a1f1a 0%, #1a120e 100%);
+  }
+  .mode-dialogue .bg-far {
+    background: radial-gradient(ellipse at 50% 60%, rgba(243, 183, 85, 0.22), transparent 70%);
+  }
+  .mode-dialogue .bg-near {
+    background: radial-gradient(ellipse at 50% 100%, rgba(120, 70, 30, 0.5), transparent 60%);
+  }
+  .mode-dialogue .journal { --persona-ink: #4a3486; }
+
+  .mode-travel .stage {
+    background:
+      linear-gradient(180deg, #0d1820 0%, #142028 60%, #0d1820 100%);
+  }
+  .mode-travel .bg-far {
+    background:
+      repeating-linear-gradient(90deg,
+        transparent 0,
+        transparent 80px,
+        rgba(180, 200, 220, 0.06) 80px,
+        rgba(180, 200, 220, 0.06) 82px);
+    transform: translateX(-20px);
+    opacity: 0.6;
+  }
+  .mode-travel .bg-mid {
+    background: linear-gradient(180deg, transparent 50%, rgba(40, 60, 80, 0.35) 100%);
+  }
+  .mode-travel .journal { --persona-ink: #1f5a78; }
+
+  .mode-rest .stage {
+    background: linear-gradient(180deg, #2a1c12 0%, #1d130a 100%);
+  }
+  .mode-rest .bg-far {
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(243, 200, 120, 0.18), transparent 60%),
+      radial-gradient(ellipse at 30% 80%, rgba(180, 100, 50, 0.25), transparent 60%);
+  }
+  .mode-rest .bg-near {
+    background: radial-gradient(ellipse at 50% 100%, rgba(220, 150, 80, 0.35), transparent 50%);
+  }
+  .mode-rest .journal {
+    --persona-ink: #6a4c20;
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(60, 40, 20, 0.30), transparent 70%),
+      linear-gradient(180deg, #f5e6c2 0%, #e8d4a4 100%);
+  }
+
+  .mode-combat .stage {
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(220, 60, 40, 0.30), transparent 60%),
+      linear-gradient(180deg, #1a0a08 0%, #25100a 60%, #15080a 100%);
+  }
+  .mode-combat .bg-far {
+    background: radial-gradient(ellipse at 50% 50%, rgba(220, 60, 40, 0.18), transparent 70%);
+  }
+  .mode-combat .npc { filter: drop-shadow(0 0 24px rgba(220, 60, 40, 0.4)); }
+  .mode-combat .journal {
+    --persona-ink: #8b1c20;
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(120, 30, 30, 0.25), transparent 70%),
+      linear-gradient(180deg, #e8d4a4 0%, #d6b88a 60%, #c9a877 100%);
+  }
+  .mode-combat .journal::after {
+    content: '';
+    position: absolute;
+    top: 32px;
+    right: 80px;
+    width: 110px;
+    height: 90px;
+    background: radial-gradient(ellipse at 30% 20%, rgba(120, 20, 20, 0.5), transparent 60%);
+    pointer-events: none;
+  }
+
+  .mode-intimacy .stage {
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(200, 80, 130, 0.18), transparent 65%),
+      linear-gradient(180deg, #1a0e1a 0%, #2a1424 60%, #1a0e1a 100%);
+  }
+  .mode-intimacy .bg-far {
+    background: radial-gradient(ellipse at 50% 60%, rgba(200, 100, 150, 0.22), transparent 70%);
+  }
+  .mode-intimacy .bg-near {
+    background: radial-gradient(ellipse at 50% 100%, rgba(120, 40, 80, 0.35), transparent 60%);
+  }
+  .mode-intimacy .npc { filter: drop-shadow(0 0 32px rgba(220, 140, 180, 0.30)) blur(0.4px); }
+  .mode-intimacy .journal {
+    --persona-ink: #7a2d56;
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(120, 50, 90, 0.22), transparent 70%),
+      linear-gradient(180deg, #f0deb6 0%, #e6c8a8 100%);
+  }
+
+  /* Mode-summary intro tile that sits before each scene. */
+  .mode-intro {
+    margin: 0 48px;
+    padding: 20px 24px;
+    border-left: 3px solid var(--accent, rgba(243, 233, 210, 0.3));
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 8px;
+  }
+  .mode-intro h2 {
+    font-family: var(--serif-display);
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    margin: 0;
+  }
+  .mode-intro p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    max-width: 90ch;
+  }
+
+  footer {
+    padding: 32px 48px 64px;
+    color: var(--ink-faint);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  footer code {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 1px 6px;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Greenhaven: After Hours · mood board</h1>
+  <p>visual direction preview · 6 modes · placeholder spine silhouettes · static composition</p>
+</header>
+
+<nav>
+  <a href="#exploration">exploration</a>
+  <a href="#dialogue">dialogue</a>
+  <a href="#travel">travel</a>
+  <a href="#rest">rest</a>
+  <a href="#combat">combat</a>
+  <a href="#intimacy">intimacy</a>
+</nav>
+
+<!-- ========================================================== -->
+<!-- EXPLORATION                                                  -->
+<!-- ========================================================== -->
+<div class="mode-intro" id="exploration" style="--accent: #6090a0;">
+  <h2>Exploration</h2>
+  <p>The room is alive. Background visible, NPC at the edge of the booth, ink steady. The default state.</p>
+</div>
+<section class="scene mode-exploration">
+  <div class="stage">
+    <div class="bg-far"></div>
+    <div class="bg-mid"></div>
+    <div class="bg-near"></div>
+    <div class="npc">
+      <svg viewBox="0 0 280 540" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <linearGradient id="silhouette-explore" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#6e5a80" stop-opacity="0.85" />
+            <stop offset="100%" stop-color="#3a2a40" stop-opacity="0.95" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="140" cy="80" rx="42" ry="50" fill="url(#silhouette-explore)" />
+        <path d="M 90 130 Q 140 110 190 130 L 210 280 Q 200 400 170 510 L 110 510 Q 80 400 70 280 Z"
+          fill="url(#silhouette-explore)" />
+        <path d="M 80 200 Q 50 240 60 320 L 90 310 Q 95 250 100 220 Z" fill="url(#silhouette-explore)" />
+        <path d="M 200 200 Q 230 240 220 320 L 190 310 Q 185 250 180 220 Z" fill="url(#silhouette-explore)" />
+      </svg>
+    </div>
+    <div class="props">
+      <div class="prop" title="quest hook · folded note">✉</div>
+      <div class="prop" title="quest hook · gold coin">●</div>
+    </div>
+    <div class="stage-tag"><span>♪</span> &nbsp; Lullaby for an Empty Booth · solo piano</div>
+  </div>
+  <div class="journal">
+    <h3>liner notes · turn 41</h3>
+    <p>The road wound down into the valley before us, a thin ribbon of pale stone between two walls of pine.
+       Smoke rose from somewhere ahead — a single column, unhurried. We had time, but only just.</p>
+    <p class="said">
+      <span class="who">Mira · indigo ink</span>
+      "We could rest here, before the descent. The horses are tired."
+    </p>
+    <p class="you">"No," I said. "Past the line of pines first. Then we rest."</p>
+
+    <div class="voice" style="top: 200px;">
+      <span class="speaker">— scholar</span>
+      the smoke is too steady. someone tends it.
+    </div>
+    <div class="string-stamp" style="top: 250px; --string-color: #c25080;">
+      <div class="head">M</div>
+      <div class="bar" style="width: 28px;"></div>
+    </div>
+
+    <div class="stain stain-coffee" style="top: 80px; right: 32px;"></div>
+
+    <div class="pen">say something</div>
+  </div>
+</section>
+
+<!-- ========================================================== -->
+<!-- DIALOGUE                                                     -->
+<!-- ========================================================== -->
+<div class="mode-intro" id="dialogue" style="--accent: #a07b5a;">
+  <h2>Dialogue</h2>
+  <p>Focus tightens. World blurs to bokeh, only the booth is sharp. Mira leans in.</p>
+</div>
+<section class="scene mode-dialogue">
+  <div class="stage">
+    <div class="bg-far"></div>
+    <div class="bg-mid"></div>
+    <div class="bg-near"></div>
+    <div class="npc">
+      <svg viewBox="0 0 280 540" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <linearGradient id="silhouette-dialogue" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#9b7a4a" stop-opacity="0.95" />
+            <stop offset="100%" stop-color="#3a2412" stop-opacity="1" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="140" cy="76" rx="44" ry="52" fill="url(#silhouette-dialogue)" />
+        <path d="M 88 128 Q 140 105 192 128 L 214 285 Q 204 410 170 510 L 110 510 Q 76 410 66 285 Z"
+          fill="url(#silhouette-dialogue)" />
+        <path d="M 90 250 Q 60 290 80 360 L 130 350 Q 130 290 120 250 Z" fill="url(#silhouette-dialogue)" />
+        <path d="M 190 250 Q 220 290 200 360 L 150 350 Q 150 290 160 250 Z" fill="url(#silhouette-dialogue)" />
+      </svg>
+    </div>
+    <div class="stage-tag"><span>♪</span> &nbsp; Two Old Friends · piano + double bass</div>
+  </div>
+  <div class="journal">
+    <h3>liner notes · turn 42</h3>
+    <p class="said">
+      <span class="who">Mira · indigo ink</span>
+      "You came back."
+    </p>
+    <p>Her voice was lower than I remembered. The fire caught in her eyes for half a second, and I had to look down.</p>
+    <p class="you">"I told you I would."</p>
+    <p class="said">
+      <span class="who">Mira</span>
+      "Yes. You always do." A breath. "And I always pretend to believe you."
+    </p>
+    <div class="voice" style="top: 220px;">
+      <span class="speaker">— cynic</span>
+      she's testing the rope. don't slip.
+    </div>
+    <div class="string-stamp" style="top: 80px; --string-color: #c25080;">
+      <div class="head">M</div>
+      <div class="bar" style="width: 30px;"></div>
+    </div>
+    <div class="pen">"i know. and i hate that you're right."</div>
+  </div>
+</section>
+
+<!-- ========================================================== -->
+<!-- TRAVEL                                                       -->
+<!-- ========================================================== -->
+<div class="mode-intro" id="travel" style="--accent: #5a7a90;">
+  <h2>Travel</h2>
+  <p>Movement. The booth becomes a coach window — parallax bars slip across the background. The world passes by.</p>
+</div>
+<section class="scene mode-travel">
+  <div class="stage">
+    <div class="bg-far"></div>
+    <div class="bg-mid"></div>
+    <div class="bg-near"></div>
+    <div class="npc">
+      <svg viewBox="0 0 280 540" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <linearGradient id="silhouette-travel" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#5a7892" stop-opacity="0.85" />
+            <stop offset="100%" stop-color="#1f2c3a" stop-opacity="0.95" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="140" cy="80" rx="42" ry="50" fill="url(#silhouette-travel)" />
+        <path d="M 90 130 Q 140 110 190 130 L 210 280 Q 200 400 170 510 L 110 510 Q 80 400 70 280 Z"
+          fill="url(#silhouette-travel)" />
+      </svg>
+    </div>
+    <div class="props">
+      <div class="prop" title="quest hook · torn map">▲</div>
+    </div>
+    <div class="stage-tag"><span>♪</span> &nbsp; The Long Carriage · sax with reverb</div>
+  </div>
+  <div class="journal">
+    <h3>liner notes · turn 58</h3>
+    <p>The miles slid past the window in a rhythm — pine, stone, pine, stone, the occasional flash of a stream
+       turning silver in the afternoon. I did not count them.</p>
+    <p class="said">
+      <span class="who">Jorek · charcoal ink</span>
+      "We'll reach the bridge by dusk. After that — your call."
+    </p>
+    <div class="voice" style="top: 180px;">
+      <span class="speaker">— wanderer</span>
+      farther. always farther. nothing yet.
+    </div>
+    <div class="string-stamp" style="top: 80px; --string-color: #d49830;">
+      <div class="head">J</div>
+      <div class="bar" style="width: 18px;"></div>
+    </div>
+    <div class="pen">say something</div>
+  </div>
+</section>
+
+<!-- ========================================================== -->
+<!-- REST                                                         -->
+<!-- ========================================================== -->
+<div class="mode-intro" id="rest" style="--accent: #d49b50;">
+  <h2>Rest</h2>
+  <p>Dawn bleeds in. The room is paper-warm, page edges glow. The cursor barely blinks. Time slows.</p>
+</div>
+<section class="scene mode-rest">
+  <div class="stage">
+    <div class="bg-far"></div>
+    <div class="bg-mid"></div>
+    <div class="bg-near"></div>
+    <div class="npc">
+      <svg viewBox="0 0 280 540" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <linearGradient id="silhouette-rest" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c4985a" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#5a3a1c" stop-opacity="1" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="140" cy="78" rx="44" ry="52" fill="url(#silhouette-rest)" />
+        <path d="M 90 130 Q 140 110 190 130 L 210 280 Q 200 400 170 510 L 110 510 Q 80 400 70 280 Z"
+          fill="url(#silhouette-rest)" />
+      </svg>
+    </div>
+    <div class="stage-tag"><span>♪</span> &nbsp; Morning Side B · solo guitar with crackle</div>
+  </div>
+  <div class="journal">
+    <h3>liner notes · turn 67</h3>
+    <p>We let the fire burn down to coals. No one spoke for a while. Outside the inn, the first grey was
+       starting to fill the windows like water filling a cup.</p>
+    <p class="said">
+      <span class="who">Mira</span>
+      "Sleep, idiot. I'll keep watch."
+    </p>
+    <div class="voice" style="top: 200px;">
+      <span class="speaker">— child</span>
+      she's tired. you should have noticed.
+    </div>
+    <div class="stain stain-coffee" style="top: 280px; right: 36px;"></div>
+    <div class="stain stain-tear" style="top: 70px; right: 110px;"></div>
+    <div class="pen">"...thank you."</div>
+  </div>
+</section>
+
+<!-- ========================================================== -->
+<!-- COMBAT                                                       -->
+<!-- ========================================================== -->
+<div class="mode-intro" id="combat" style="--accent: #d04030;">
+  <h2>Combat</h2>
+  <p>Lights cut to red. The page bleeds. Ink splatters on hits. Brass takes over.</p>
+</div>
+<section class="scene mode-combat">
+  <div class="stage">
+    <div class="bg-far"></div>
+    <div class="bg-mid"></div>
+    <div class="bg-near"></div>
+    <div class="npc">
+      <svg viewBox="0 0 280 540" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <linearGradient id="silhouette-combat" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c8443a" stop-opacity="0.95" />
+            <stop offset="100%" stop-color="#3a0808" stop-opacity="1" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="140" cy="74" rx="40" ry="48" fill="url(#silhouette-combat)" />
+        <path d="M 92 124 Q 140 102 188 124 L 208 282 Q 198 402 168 510 L 112 510 Q 82 402 72 282 Z"
+          fill="url(#silhouette-combat)" />
+        <path d="M 60 200 L 30 350 L 50 360 L 95 260 Z" fill="url(#silhouette-combat)" />
+      </svg>
+    </div>
+    <div class="stage-tag"><span>♪</span> &nbsp; The Knife Swing · brass combo, broken time</div>
+  </div>
+  <div class="journal">
+    <h3>liner notes · turn 73</h3>
+    <p>The blade came up under my guard before I had time to breathe. Mira shouted something I did not catch.
+       The room was a storm of brass and copper.</p>
+    <p class="said">
+      <span class="who">Bandit · iron ink</span>
+      "Hold him! Just hold him!"
+    </p>
+    <p class="you">I twisted. The bone in my left wrist made a small, bright sound.</p>
+    <div class="voice" style="top: 200px;">
+      <span class="speaker">— predator</span>
+      now. eyes. throat. anywhere.
+    </div>
+    <div class="stain stain-blood" style="top: 60px; right: 24px;"></div>
+    <div class="stain stain-blood" style="top: 130px; right: 90px; opacity: 0.6;"></div>
+    <div class="pen">"shut up — and HOLD"</div>
+  </div>
+</section>
+
+<!-- ========================================================== -->
+<!-- INTIMACY                                                     -->
+<!-- ========================================================== -->
+<div class="mode-intro" id="intimacy" style="--accent: #c87090;">
+  <h2>Intimacy</h2>
+  <p>Light dims. The world steps out. Ink slows, persona-tinted warmer. A lone voice on the stage.</p>
+</div>
+<section class="scene mode-intimacy">
+  <div class="stage">
+    <div class="bg-far"></div>
+    <div class="bg-mid"></div>
+    <div class="bg-near"></div>
+    <div class="npc">
+      <svg viewBox="0 0 280 540" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <linearGradient id="silhouette-intimacy" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d27a98" stop-opacity="0.85" />
+            <stop offset="100%" stop-color="#3a1430" stop-opacity="0.95" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="140" cy="80" rx="44" ry="52" fill="url(#silhouette-intimacy)" />
+        <path d="M 92 132 Q 140 108 188 132 L 210 282 Q 200 400 170 510 L 110 510 Q 80 400 70 282 Z"
+          fill="url(#silhouette-intimacy)" />
+      </svg>
+    </div>
+    <div class="stage-tag"><span>♪</span> &nbsp; If I Knew Then · torch singer, solo</div>
+  </div>
+  <div class="journal">
+    <h3>liner notes · turn 78</h3>
+    <p>She did not look at me. She pulled the shawl from her shoulders and set it across the back of the chair,
+       slowly, the way you do when you are trying to make a thing matter and to not look like you are trying.</p>
+    <p class="said" style="--persona-ink: #7a2d56;">
+      <span class="who">Mira · violet ink</span>
+      "I'm not asking you to stay. I'm asking you to choose."
+    </p>
+    <div class="voice" style="top: 220px;">
+      <span class="speaker">— lover</span>
+      stay. just for tonight stay.
+    </div>
+    <div class="string-stamp" style="top: 80px; --string-color: #c25080;">
+      <div class="head">M</div>
+      <div class="bar" style="width: 38px;"></div>
+    </div>
+    <div class="stain stain-tear" style="top: 320px; right: 120px;"></div>
+    <div class="pen">"i choose."</div>
+  </div>
+</section>
+
+<footer>
+  <p>placeholder silhouettes will be replaced by Spine 2D characters · scene backdrops are gradients today, become PNG-parallax with art</p>
+  <p>journal column = chat (still primary, just bound into a page) · NPC stage = persistent left half · stains accumulate as memory + trauma</p>
+  <p>ghost-tables removed (don't scale to 3000+ NPCs) · strings now appear as <code>marginal portraits</code> only when the NPC is mentioned in current text · full atlas opens from rail as a separate full-screen view</p>
+  <p>inner voices ("— scholar:", "— cynic:") are short italic margin notes per <code>character_aspects</code> assigned during creator · BE-2026-05-05-character-aspects.md spec'd</p>
+  <p>open in browser · adjust scene structure / colors / typography / layout in <code>packages/web-ui/public/mood-board.html</code></p>
+</footer>
+
+</body>
+</html>

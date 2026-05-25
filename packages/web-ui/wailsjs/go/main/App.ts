@@ -1,0 +1,32 @@
+// Shim: replaces wails-generated `App.{ts,js,d.ts}` bindings.
+// Re-exports the bridge implementations so App.tsx imports remain
+// `from '../wailsjs/go/main/App'` and don't need editing.
+export {
+  CancelTurnJob,
+  ClearLocalClientStorage,
+  ContinueLastTurn,
+  ContinueLastTurnAsync,
+  EndDialogue,
+  GetAvailableLanguages,
+  GetGameState,
+  GetTranslations,
+  GetTurnJob,
+  GetUiLanguage,
+  LogFrontendEvent,
+  ResetGame,
+  SetModel,
+  SetUiLanguage,
+  GetModelOverride,
+  GetPendingTurnJobs,
+  ListLocalClientStorage,
+  getBrokerModel,
+  getNarratorModel,
+  setRoleModels,
+  SignOut,
+  StartDialogue,
+  SubmitPlayerAction,
+  SubmitPlayerActionAsync,
+  SubmitPlayerMessage,
+  SubmitPlayerMessageAsync,
+  WaitForTurnJob,
+} from '../../../src/bridge/api';

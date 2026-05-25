@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NPC reference — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="This chapter is thick but not intimidating. It walks through every section that can appear in a character file: what it means, why it exists, how to write it, and what it looks like in practice. If..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a class="active" href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Reference</p>
+          <h1 id="npc-reference">NPC reference</h1>
+<p>This chapter is thick but not intimidating. It walks through every
+section that can appear in a character file: what it means, why it
+exists, how to write it, and what it looks like in practice. If you are
+just starting out, treat this as a lookup: come back from the tutorial,
+need to know what <code>## Routine</code> is, open the matching entry.</p>
+<p>Where it lives we already know: <code>Locations/.../npc/@Name/NPCMind.md</code>.
+The level-one heading is <code># @Name</code>. After that, sections — each a <code>##</code>
+heading with an English service name.</p>
+<h2 id="identity-who-i-am">Identity — who I am</h2>
+<p><img alt="" src="../img/gemini-generated-image-ti9csfti9csfti9c.jpg"></p>
+<p><strong>Why:</strong> the character's voice, a self-portrait. The engine uses it
+twice: it shows it to the player as a short character description, and
+it hands it to the narrator as a preamble for every line of dialogue.</p>
+<p><strong>How to write it:</strong> in the first person. Age, species, profession, the
+main wounds, the main attachments. Do not describe physical appearance
+here — that lives in <code>## Appearance</code>.</p>
+<p><strong>Required:</strong> yes.</p>
+<p>Example from Tessa Wrenlight, our running character:</p>
+<pre><code class="language-markdown">## Identity
+
+I am @Tessa Wrenlight. I am twenty-eight, half-elf, and the port knows
+me as the scout who watches the gangways and the courier route up
+`@Charter Steps`. My father was a smuggler who tried to walk away from
+the trade — they killed him for it. My older brother Joran took a
+newcomer's contract a year ago and never came back. I trust evidence and
+people who protect strangers.
+</code></pre>
+<p>A different voice — Mikka, a gossip merchant:</p>
+<pre><code class="language-markdown">## Identity
+
+I am @Mikka. I am 24. I am a grown goblin on @Town square: I read
+letters, translate notes, sell rumors and small city information. I
+count other people's secrets faster than they realize they have already
+named a price.
+
+I keep a business mask because it is safer. The hero knocks it off: I
+fell in love with him at first sight, but I hide it like a professional
+fault.
+</code></pre>
+<p>Notice the difference in voice. Tessa is clipped, careful. Mikka is
+fast, mocking, with an admission of vulnerability inside the smile.
+That is what Identity does: it sets a <strong>melody</strong> onto which everything
+else gets threaded.</p>
+<h2 id="role-role-in-the-world">Role — role in the world</h2>
+<p><strong>Why:</strong> a reminder to yourself and to the engine of what this
+character is for in the story. Which quests come from them, which
+functions they perform.</p>
+<pre><code class="language-markdown">## Role
+
+- Harbor scout and informal guide along the runner routes.
+- A recruitable companion for the hero.
+- Source of the quest `The Passenger Who Did Not Arrive`.
+- Cross-hub witness: I move between port, square, and guild faster
+  than most.
+</code></pre>
+<h2 id="appearance-how-they-look">Appearance — how they look</h2>
+<p><strong>Why:</strong> first, the narrator will describe the character during
+encounters. Second, the art generator will take this text to draw a
+portrait.</p>
+<p><strong>How to write it:</strong> in detail. Build, skin, hair, eyes, clothing (down
+to the stitching), signature items, posture.</p>
+<p><strong>Required:</strong> yes, especially if a portrait is planned.</p>
+<pre><code class="language-markdown">## Appearance
+
+My skin is pale green, with freckles across the face and shoulders,
+vivid violet eyes, copper-red hair, long pointed ears, and a wide
+predatory smile. I am small, athletic, and very quick on my feet; I
+stand as if I have already chosen where to leap, where to hide a
+letter, and how to cut a path to retreat.
+
+I wear worn dark-brown leather: a short practical corset top, straps,
+pouches, short leather shorts, heavy boots, and fingerless gloves. My
+left shoulder carries an asymmetric metal pauldron with engraving;
+matching pieces sit on the greaves and bracers. A dagger and small
+sheaths ride on the belt.
+</code></pre>
+<h2 id="sexual-appearance-body-in-an-intimate-scene">Sexual Appearance — body in an intimate scene</h2>
+<p><strong>Why:</strong> this section gives the narrator a <strong>body canon</strong> as precise as
+ordinary <code>Appearance</code> gives a face-and-clothing canon. Without it, the
+intimate scene has no firm footing: the narrator will guess, and the
+result will be blurred, false, sometimes contradicting the main
+appearance. With it, the scene becomes part of the same character who
+spoke to the hero at the port: same scar, same character, same melody.</p>
+<p><strong>Where it appears:</strong> only inside intimate scenes. This text never goes
+into the public description the player sees in the ordinary interface,
+never shows up in a portrait, never leaks into a stray line of
+dialogue. The engine keeps it separate and pulls it out only when the
+scene is actually intimate and consent has been earned.</p>
+<p><strong>Important constraints:</strong></p>
+<ul>
+<li><strong>Adults only.</strong> This is unconditional, and the entire system depends
+  on it. Greenhaven is built for 18+ (per Patreon's published rules);
+  any character with this section must be an adult in their own canon:
+  age, biography, behavior. Without that, the section is not written
+  at all.</li>
+<li><strong>It is not "a description for sexiness."</strong> It is canon. Every bit
+  as objective as build and clothing. The point is not to titillate
+  the reader of the note — it is to give the narrator <strong>material</strong> out
+  of which a true-to-world intimate scene can be assembled.</li>
+<li><strong>Consent is part of the canon.</strong> This is also the right place to
+  write down the conditions under which the character actually reaches
+  an intimate scene: what for them is private, what is public, what
+  they require from a partner.</li>
+</ul>
+<p><strong>Example from @Tessa Wrenlight (28, half-elf, harbor scout):</strong></p>
+<pre><code class="language-markdown">## Sexual Appearance
+
+I am an adult woman of age. In an intimate scene my body reads not as
+decoration and not as surprise, but as the continuation of the same
+character the hero met at the port. I am tall and lean; my skin is
+deeply sun-tanned, and faded freckles run across my shoulders and
+forearms from years of sun. My body is taut and wiry: working hands,
+nails kept short and even; shoulders a little broad for my frame from
+years of rowing and lifting; a long back, a narrow waist, small hips,
+abdominal muscles drawn in soft relief, no exaggerated ridges.
+
+My breasts are small, firm, sitting high; the nipples are pale pink,
+small, sharp to respond — which still surprises me. I keep my
+underarms and legs shaved out of seafaring habit; on my pubic mound
+the hair is short, dark with a silver cast — the same line as the
+hair on my head — neatly trimmed. The labia are thin and pressed
+closed, slightly darker than the surrounding skin; the clitoris is
+small and very sensitive, and I prefer slow, soft contact to hard
+pressure. Inside I am narrow and hot, especially when I let myself
+relax.
+
+My body carries the marks of the life I have lived, and I do not hide
+them. A pale scar across the right thigh (an old cut on running
+rigging); a second one above the left shoulder blade (a knife, my
+first year in the port); a small burn under the collarbone where a
+parted rope whipped me. No tattoos. Pale bands on my wrists where I
+keep my gloves on in the sun.
+
+I do not put my body on display in ordinary conversation, in trade,
+or in any public scene. On the square and at the port I am still the
+harbor scout, and my coat is buttoned. What brings me to an intimate
+scene is not flirting and not coin but trust: the hero must first
+stand beside me in real work and first earn my name, and only after
+that — the rest. With me, consent is verified not by the word &quot;yes&quot;
+but by a steady look and by my closing the door myself.
+</code></pre>
+<p>Notice three things about this example.</p>
+<p>First, it opens with a <strong>direct confirmation</strong>: "I am an adult woman
+of age." This is not a stylistic device — it is a signal to the engine
+and to any reviewer that the canon is adult.</p>
+<p>Second, the body is described <strong>in continuity with character</strong>. Tessa
+has working hands because she works with her hands. She has scars
+because she has had that kind of life. She does not have an idealized
+figure — her body is as concrete as her voice. Not "cover model" — the
+<strong>same person</strong> the hero met at the port, just without the coat.</p>
+<p>Third, the last paragraph is about <strong>boundaries and consent</strong>. That is
+not a separate disclaimer — it is part of the canon. Tessa does not
+reach an intimate scene through flirting or payment. She reaches it
+through trust earned in real work. This paragraph is a direct
+instruction to the narrator: do not try to bring her there by the
+short route — she will not go.</p>
+<p>When you write this section for your own character, aim for the same
+trinity: age confirmation, <strong>body as continuation of character</strong>, and
+explicit conditions under which the scene is possible at all.</p>
+<h2 id="voice-voice-and-speech">Voice — voice and speech</h2>
+<p><strong>Why:</strong> decides how the character speaks. The narrator reads the
+first few hundred characters of this section as a speech formula and
+applies it across every line.</p>
+<p><strong>How to write it:</strong> a general description of the speech, plus
+<strong>examples of phrases</strong>.</p>
+<p><strong>Required:</strong> yes.</p>
+<pre><code class="language-markdown">## Voice
+
+I speak quickly, directly, and with mockery. I name the price first.
+If I am paid fairly, I warm up. If someone tries to cheat me, I go
+cold and very precise.
+
+- I speak in short sentences.
+- I love a clean piece of business detail.
+- I joke instead of confessing.
+- I do not say &quot;love&quot; first.
+- I show affection through actions.
+</code></pre>
+<h2 id="want-desire">Want — desire</h2>
+<p><strong>Why:</strong> the character's main motivation. The engine uses it to
+understand <strong>where</strong> this person is reaching. Without <code>Want</code>, the
+character is passive.</p>
+<p><strong>Required:</strong> yes.</p>
+<h2 id="fear-fear">Fear — fear</h2>
+<p><strong>Why:</strong> the other half of the engine. The thing that explains <strong>why</strong>
+the character hesitates, hides, lies, or pulls back.</p>
+<p><strong>Required:</strong> yes.</p>
+<h2 id="secret-pressure-secret-and-leverage-point">Secret / Pressure — secret and leverage point</h2>
+<p><strong>Why:</strong> the thing the character hides or that can be used against
+them. Not every character needs one, but without it characters rarely
+become three-dimensional.</p>
+<h2 id="routine-daily-routine">Routine — daily routine</h2>
+<p><strong>Why:</strong> where this person is at different times of day. The narrator
+uses it to know whether the character is currently available.</p>
+<h2 id="relationship-relationship-with-the-hero">Relationship — relationship with the hero</h2>
+<p><strong>Why:</strong> a deeper version of the relationship than the triggers. This
+is a narrative of <strong>how</strong> the character sees the hero, what they feel,
+how they hide or show it.</p>
+<pre><code class="language-markdown">## Relationship
+
+I fell in love with the hero at first sight, and I consider it a
+dangerous professional fault. I do not confess in words. My rule is
+simple: feelings are not announced, feelings are verified by actions.
+</code></pre>
+<h2 id="relationship-triggers-what-drives-the-relationship">Relationship Triggers — what drives the relationship</h2>
+<p><strong>Why:</strong> the relationship engine. You list actions the player can take
+that <strong>raise</strong> trust and actions that <strong>lower</strong> it.</p>
+<p><strong>How to write it:</strong> two lists, plus and minus. Technically these are
+called <code>+strings</code> and <code>-strings</code> — the positive and negative threads
+of the bond.</p>
+<p><strong>Required:</strong> yes.</p>
+<pre><code class="language-markdown">## Relationship Triggers
+
++strings for me:
+- the hero pays fairly and does not haggle humiliatingly;
+- the hero shields me from surveillance or threats;
+- the hero keeps my secret;
+- the hero asks for consent and respects boundaries;
+- the hero takes my side when it costs something.
+
+-strings for me:
+- the hero claims to have paid already without an actual transfer;
+- the hero sells my secret or my letters;
+- the hero publicly mocks my feelings;
+- the hero tries to force me to confess in words;
+- the hero betrays me after hiring me as a companion.
+
+At high strings, I become not just warm but bonded with the hero:
+quicker to help, willing to take risks for him, willing to share
+closed information and to walk at his side.
+</code></pre>
+<p>The cardinal rule of triggers: they must be <strong>observable</strong>. Not "the
+hero behaves with honor" (what does that mean?) but "the hero publicly
+defends a civilian."</p>
+<h2 id="romance-romantic-arc">Romance — romantic arc</h2>
+<p><strong>Why:</strong> separate from general relationship. This is about love —
+how the character confesses (or refuses to), what counts for them as
+an act of love.</p>
+<pre><code class="language-markdown">## Romance
+
+I do not confess with the ordinary phrase &quot;I love you.&quot; My confession
+is an action. If the hero pays the full price for a long companion
+contract, I close my desk, leave the letter-box key with a trusted
+person, and walk with him.
+</code></pre>
+<h2 id="memory-hooks-what-the-character-will-remember">Memory Hooks — what the character will remember</h2>
+<p><strong>Why:</strong> the key moments the engine will record into the character's
+memory. If you want Tessa to remember forever that the hero lied to
+her about her brother — that goes here.</p>
+<h2 id="companion-rules-companion-contract">Companion Rules — companion contract</h2>
+<p><strong>Why:</strong> if the character can join the hero as a companion, this is
+where it is described: how they join, how they refuse, the conditions
+under which they leave, what they carry.</p>
+<p><strong>Required:</strong> yes, if the character is a potential companion.</p>
+<p>Details in <a href="../03-mechanics/companions.html">Companions</a>.</p>
+<pre><code class="language-markdown">## Companion Rules
+
+- Join condition: the hero must (a) refuse the fixer's offer publicly,
+  (b) bring me at least one matching wax pattern, and (c) ask about
+  Joran by name.
+- Refusal condition: if the hero takes the fixer's offer in front of
+  me, I will pretend to think about it and vanish by morning.
+- Depart condition: if the hero abandons two civilians in a row or
+  sells a witness to the fixer, I leave at the next dawn.
+- Inventory baseline: a short curved blade, three throwing needles, a
+  set of lockpicks, the brass compass, a ledger, 2 silver, 11 copper,
+  a hand mirror.
+</code></pre>
+<h2 id="skills-skills">Skills — skills</h2>
+<p><strong>Why:</strong> what the character is able to do and not able to do. You can
+(and should) list weaknesses too.</p>
+<pre><code class="language-markdown">## Skills
+
+- I read letters, accounts, debt slips, and notes in several
+  languages.
+- I sell city rumors and addresses.
+- I know who owes whom.
+- I fight with a short blade and throwing knives.
+- I can open simple locks, crates, and stashes.
+
+My weaknesses: I am not a mage and not a healer, I hold a long open
+fight poorly, and I lose my composure when the matter touches my own
+feelings.
+</code></pre>
+<h2 id="behavior-behavior">Behavior — behavior</h2>
+<p><strong>Why:</strong> how the character behaves in specific situations: in
+combat, in trade, in intimacy. The narrator reads this section to
+understand what the character will <strong>do</strong> when circumstances press
+on them.</p>
+<p>Example of Mikka's combat behavior:</p>
+<pre><code class="language-markdown">## Behavior
+
+If a fight starts nearby, I do not step between blades and I do not
+try to be a peacemaker. I survive.
+
+1. First I shift out of the line of attack and look for a table, a
+   cart, barrels, a curtain, a doorway, or a crowd as cover.
+2. If there is an open route, I run or hide so I can come back later
+   with information.
+3. If I am cornered but distance is still possible, I use throwing
+   knives.
+4. If it has come to close range, I work the dagger short and dirty.
+</code></pre>
+<h2 id="merchant-merchant-offering">Merchant — merchant offering</h2>
+<p><strong>Why:</strong> if the character sells something. Which services, at what
+prices, in what currency, and what they remember about payments.</p>
+<p><strong>Required:</strong> yes, if the character is a merchant.</p>
+<p><strong>Critical detail about price format.</strong> Prices are written exactly
+like this: a number, a space, the coin name with an <code>@</code>. Coin names
+are hard-coded: <code>@Copper coin</code>, <code>@Silver coin</code>, <code>@Gold coin</code>. Details
+in the <a href="../03-mechanics/economy.html">Economy chapter</a>.</p>
+<pre><code class="language-markdown">## Merchant
+
+I sell letters, translations, rumors, and small city work. I name the
+price before the service, and I consider that the deal exists only
+after an actual transfer of coin.
+
+My prices:
+
+- read a short letter — 2 @Copper coin;
+- translate a short note — 5 @Copper coin;
+- write a clean letter on the hero's behalf — 1 @Silver coin;
+- a low-risk city rumor — 3 @Copper coin;
+- an address, a name, or a dangerous private rumor — 2 @Silver coin;
+- open a simple lock or crate without a fight — 1 @Silver coin;
+- a long companion contract — 25 @Gold coin, paid to me personally
+  and only after direct consent on both sides.
+
+I remember who paid, how much, for what service, whether I gave
+change, whether a debt or advance is outstanding. If the hero claims
+to have already paid, I check that against what I remember, not
+against the confidence in his tone.
+</code></pre>
+<p>Note the last paragraph: it is not just color, it is an instruction to
+the engine to keep a <strong>ledger</strong>. If the hero lies about a payment,
+Mikka will check by the actual coin transfer, not by his words.</p>
+<h2 id="appearance-for-portrait-portrait-brief">Appearance For Portrait — portrait brief</h2>
+<p><strong>Why:</strong> this is not a general description of appearance. It is a
+specific technical brief to the art generator: what to draw, in what
+light, in what style.</p>
+<p>Details in <a href="../03-mechanics/images.html">Images</a>.</p>
+<p>The canonical portrait file lives in the NPC folder:</p>
+<pre><code class="language-text">npc/@Tamara Vey/
+|-- NPCMind.md
+`-- portraits/
+    `-- default.png
+</code></pre>
+<p>You may use <code>default.png</code>, <code>default.jpg</code>, <code>default.webp</code>, or an
+animated square <code>default.webm</code>. Extra expressions can live beside it:
+<code>angry.png</code>, <code>smiling.png</code>, <code>wounded.webm</code>, and so on. The engine will
+import them as cartridge assets; use the default portrait for the main
+visible card.</p>
+<h2 id="media-script-character-music">Media Script — character music</h2>
+<p><strong>Why:</strong> a person can own music too. The script fires when dialogue
+focuses on that NPC, including automatic first encounters and direct
+<code>@Name</code> dialogue. Use it for companion themes, villain stingers,
+merchant shop music, romance motifs, or interrogation pressure.</p>
+<p>Put the audio file inside the character folder:</p>
+<pre><code class="language-text">npc/@Tamara Vey/
+|-- NPCMind.md
+|-- portraits/default.png
+`-- music/
+    `-- tamara-vey.mp3
+</code></pre>
+<p>Then write:</p>
+<pre><code class="language-markdown">## Media Script
+
+switch_music(&quot;music_tamara_vey&quot;, label=&quot;Tamara Vey&quot;, loop=true, volume=0.62)
+</code></pre>
+<p><code>music/tamara-vey.mp3</code> becomes the role <code>music_tamara_vey</code>.
+Use <code>play_music</code> for a one-shot sting, <code>switch_music</code> for a theme,
+<code>pause_music</code> / <code>resume_music</code> for temporary silence, and <code>stop_music</code>
+when the moment should end cleanly.</p>
+<h2 id="materializes-how-the-world-responds">Materializes — how the world responds</h2>
+<p><strong>Why:</strong> what appears in the world from actions involving this
+character. Whether a new location opens, an item appears, a quest
+activates.</p>
+<p>Format — four fields per block:</p>
+<pre><code class="language-markdown">## Materializes
+
+- When [condition]:
+  - Entity: `@Entity name`
+  - Type: [kind of change]
+  - Scope: `@Where it acts`
+  - Effect: [what concretely happens]
+</code></pre>
+<p>Details in <a href="../03-mechanics/materializes.html">Materializes</a>.</p>
+<h2 id="inventory-inventory">Inventory — inventory</h2>
+<p><strong>Why:</strong> what the character carries. Weapons, tools, coin.</p>
+<p>An NPC inventory can also be changed by <code>Materializes</code> from any
+location, quest, scene, item, or NPC note. Use the exact runtime scope
+<code>@NPC Name inventory</code>:</p>
+<pre><code class="language-markdown">## Materializes
+
+- When Tamara prepares the raid:
+  - Entity: `@Dock Pass`
+  - Type: item / clue
+  - Scope: `@Tamara Vey inventory`
+  - Effect: Tamara keeps count=2 dock passes for the next scene.
+</code></pre>
+<p>This creates or reuses the item and writes it into the NPC holder
+inventory. Use <code>hero inventory</code> instead when the item should go to the
+active player.</p>
+<h2 id="full-checklist-for-a-playable-character">Full checklist for a playable character</h2>
+<p>When you fill out a new person, walk this list. You do not have to
+close every box — this is not an exam. It is just a map of where you
+can go deeper if you want to.</p>
+<ul>
+<li>[ ] <code>Identity</code> (first person, with <code>@</code> tokens)</li>
+<li>[ ] <code>Role</code></li>
+<li>[ ] <code>Appearance</code></li>
+<li>[ ] <code>Voice</code> (with phrase examples)</li>
+<li>[ ] <code>Want</code></li>
+<li>[ ] <code>Fear</code></li>
+<li>[ ] <code>Relationship Triggers</code> (<code>+strings</code> and <code>-strings</code>)</li>
+<li>[ ] <code>Routine</code></li>
+<li>[ ] <code>Skills</code> and weaknesses</li>
+<li>[ ] <code>Behavior</code> (in combat, trade, intimacy)</li>
+<li>[ ] <code>Merchant</code> (if merchant, with <code>@Coin</code> prices)</li>
+<li>[ ] <code>Sexual Appearance</code> (if adult content)</li>
+<li>[ ] <code>Romance</code> (if a romantic arc exists)</li>
+<li>[ ] <code>Companion Rules</code> (if a companion)</li>
+<li>[ ] At least one block in <code>Materializes</code></li>
+<li>[ ] <code>Appearance For Portrait</code> (if art is needed)</li>
+<li>[ ] <code>portraits/default.*</code> exists if the NPC has a visible card</li>
+<li>[ ] <code>Media Script</code> exists if the NPC owns a theme or stinger</li>
+<li>[ ] <code>Inventory</code></li>
+</ul>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../01-getting-started/your-first-quest.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Your first quest</span></a>
+<a class="pager-next" href="../02-reference/quest.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Quest</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

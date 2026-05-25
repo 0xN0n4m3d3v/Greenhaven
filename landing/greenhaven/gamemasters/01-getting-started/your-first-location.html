@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your first location — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="A good place in a game is not a guidebook description — it is the sensation that you have actually arrived. When the hero steps into the port, they should feel the warm planks under their boots, he..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a class="active" href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Getting started</p>
+          <h1 id="your-first-location">Your first location</h1>
+<p>A good place in a game is not a guidebook description — it is the
+sensation that you have actually arrived. When the hero steps into the
+port, they should feel the warm planks under their boots, hear the
+customs clerk shouting, notice the two strangers in black armbands
+watching them a little too openly. A location is atmosphere, choice, and
+threat, all packed into a single file.</p>
+<p><img alt="" src="../img/gemini-generated-image-rmvs9rrmvs9rrmvs.jpg"></p>
+<p>In this chapter we will turn the skeleton port you set up in the last
+chapter into a place worth lingering in.</p>
+<h2 id="what-a-location-is-made-of">What a location is made of</h2>
+<p>A location's mind file (your <code>PortMind.md</code>) is divided into sections.
+Each section starts with a level-two heading <code>##</code> and an English service
+name. Do not be alarmed by the count: only one is strictly required; the
+rest are tools you bring in as the place gets more complex.</p>
+<p><strong>Required:</strong></p>
+<ul>
+<li><strong>First Entry Bubble</strong> — the first frame the player sees on arrival.</li>
+</ul>
+<p><strong>Strongly recommended:</strong></p>
+<ul>
+<li><strong>Place Canon</strong> — a quick passport of the place: its character, time of
+  day, mood.</li>
+<li><strong>Sensory Identity</strong> — the five senses: color, sound, smell, texture,
+  motion.</li>
+<li><strong>Visible Exits</strong> — where you can go from here.</li>
+<li><strong>Points Of Interest</strong> — a few key objects or sub-places the hero can
+  approach.</li>
+<li><strong>Immediate Player Actions</strong> — what the player can do in the first few
+  seconds.</li>
+<li><strong>Hostile And Rival Pressure</strong> — who or what threatens the hero here.</li>
+<li><strong>Memory And Consequence Hooks</strong> — what the world will remember about
+  the hero's actions here.</li>
+<li><strong>Materializes</strong> — what appears in the world when the hero does
+  something.</li>
+<li><strong>Do Not Do Here</strong> — a list of "don'ts" for the narrator.</li>
+</ul>
+<p>Let's walk through them — and at the end you will see the finished port.</p>
+<h2 id="first-entry-bubble-the-heart-of-the-place">First Entry Bubble — the heart of the place</h2>
+<p>This is the most important section. The text under it is what the player
+sees in chat as the port's first message. Not a note to yourself as the
+author — the actual sentence with which the world says <em>hello</em>.</p>
+<p>Bad version — this is a memo to yourself:</p>
+<blockquote>
+<p>A port. Sunny. Has a gangway, customs, crates.</p>
+</blockquote>
+<p>Good version — this reads like a living scene:</p>
+<blockquote>
+<p>The wind smells of citrus crates, hot rope, and fish glue. A customs
+clerk in a faded sash is shouting at a dockhand about a missing crate.
+A young woman is pinning a fresh sheet of paper to the arrivals board,
+her teeth caught on her lower lip. Two dockworkers in black armbands
+are watching you a little too openly. The sun is bright enough that
+everything looks like the poster for an adventure novel.</p>
+</blockquote>
+<p>Do you feel the difference? The second one has specific people (clerk,
+woman, dockworkers), specific smells, specific tension (the strangers
+watching the hero). The player immediately sees a choice: approach the
+woman, talk to the clerk, watch the dockworkers. The place is not
+described — it is <em>happening</em>.</p>
+<p>The trick: write as if it were the first sentence of a novel. Not "here
+is what is here," but "here is what is happening as you arrive."</p>
+<h2 id="sensory-identity-the-five-senses">Sensory Identity — the five senses</h2>
+<p>The engine uses this section, between events, to slip in small
+atmospheric beats. If you skip it, the world will speak in flat
+generalities. If you fill it in, it will start smelling, ringing, and
+moving on its own.</p>
+<p>Write one sense per line, with concrete detail in each:</p>
+<pre><code class="language-markdown">## Sensory Identity
+
+- Color: turquoise water, indigo and orange sails, sun-bleached planks,
+  red customs-house tile.
+- Sound: gulls, capstans, cargo bells, the distant horns of skyships.
+- Smell: citrus crates, hot rope, tar, frying fish.
+- Texture: warm planks under your boots, wet rope fiber on the rails.
+- Motion: porters running between nets, a skyship descending on three
+  cables, a courier limping down the stairs.
+</code></pre>
+<p>Notice: I do not say "pleasant smell" or "loud sounds." I name the
+<strong>objects</strong> that produce those smells and sounds. Citrus crates. Bells.
+A courier limping down the stairs. That gives the narrator material to
+shape new sentences out of, every time.</p>
+<h2 id="visible-exits-where-you-can-go">Visible Exits — where you can go</h2>
+<p>Every living place has exits. They are not just arrows on a map — they
+are promises: "you can go that way, and something is happening there
+too."</p>
+<pre><code class="language-markdown">## Visible Exits
+
+- Up @Harbor Street to @Greenhaven Main Square.
+- Up @Charter Steps to @Greenhaven Adventurers' Guild.
+</code></pre>
+<p>Street and square names carry the <code>@</code>. The engine sees them and builds
+the navigation buttons in the interface automatically. The player clicks
+and moves. If <code>@Greenhaven Main Square</code> does not exist yet — no problem,
+you will write it later. What matters is that the name matches when you
+do.</p>
+<h2 id="hostile-and-rival-pressure-the-threats">Hostile And Rival Pressure — the threats</h2>
+<p>Without a threat, a location is a postcard. If nobody in the port is
+getting in anyone's way, the player has nothing to choose. A good threat
+is not necessarily a sword at the throat. It is pressure: "here is a
+situation that will get worse if you do nothing; here are people who
+play on a different side from yours."</p>
+<pre><code class="language-markdown">## Hostile And Rival Pressure
+
+- A rival adventuring team is already in the port. They wear black
+  armbands and laugh at other people's mistakes.
+- A smuggler-fixer circulates between the warehouse and customs offering
+  &quot;help&quot; that always leaves someone else holding the blame.
+- The harbor watch is ready to arrest the wrong person quickly if the
+  crowd pushes them.
+</code></pre>
+<p>Each of these threats creates a fork. The rival team is competition. The
+fixer is temptation. The watch is the pressure of the mob. The player
+will have to choose whose back to turn on.</p>
+<h2 id="materializes-how-the-world-responds">Materializes — how the world responds</h2>
+<p>This is the section in which Greenhaven's central promise actually
+happens: <strong>the world changes because of what the player does.</strong> Here you
+describe what appears in the world after specific actions by the hero.</p>
+<pre><code class="language-markdown">## Materializes
+
+- When the hero asks the way to the center:
+  - Entity: `@Harbor Street`
+  - Type: access / route
+  - Scope: `@Greenhaven Port`
+  - Effect: the route up `@Harbor Street` to `@Greenhaven Main Square`
+    becomes a walkable exit.
+
+- When the hero reads the fresh sheet on the arrivals board:
+  - Entity: `@Missing Passenger Notice`
+  - Type: item / clue
+  - Scope: `@Greenhaven Port`
+  - Effect: the notice becomes an inspectable clue, opening the
+    investigation of the missing passenger.
+</code></pre>
+<p>Each block has the same shape — four fields. What appears, what kind of
+change, where it acts, what the effect is. At first this can feel
+formal, but that is exactly its power: the writer states one simple rule
+and the engine carries it out the moment the hero performs the trigger
+action.</p>
+<p>There is a whole chapter on materializations:
+<a href="../03-mechanics/materializes.html">Materializes</a>. For now remember this:
+if you want the world to change, describe it here.</p>
+<h2 id="a-short-checklist">A short checklist</h2>
+<p>Before you close the location file, ask yourself:</p>
+<ul>
+<li>Does the <code>First Entry Bubble</code> read like game prose, not like a note to
+  yourself?</li>
+<li>Does <code>Sensory Identity</code> cover all five senses?</li>
+<li>Do the <code>Visible Exits</code> lead to real or planned locations?</li>
+<li>Is there at least one threat in <code>Hostile And Rival Pressure</code>?</li>
+<li>Are there at least three blocks in <code>Materializes</code>?</li>
+<li>Are all entity names written with <code>@</code>?</li>
+</ul>
+<p>If everything is "yes" — the location is ready.</p>
+<h2 id="whats-next">What's next</h2>
+<p>The place exists. Time to settle a real person in it. Open
+<a href="../01-getting-started/your-first-npc.html">Your first NPC</a>.</p>
+<hr>
+<h2 id="reference">Reference</h2>
+<p><strong>Required section</strong></p>
+<ul>
+<li><code>## First Entry Bubble</code></li>
+</ul>
+<p><strong>Recommended sections</strong></p>
+<ul>
+<li><code>## Place Canon</code></li>
+<li><code>## Sensory Identity</code></li>
+<li><code>## Visible Exits</code></li>
+<li><code>## Points Of Interest</code></li>
+<li><code>## Immediate Player Actions</code></li>
+<li><code>## Hostile And Rival Pressure</code></li>
+<li><code>## Memory And Consequence Hooks</code></li>
+<li><code>## Materializes</code></li>
+<li><code>## Do Not Do Here</code></li>
+<li><code>## Establishing Image Brief</code> — for generating the location's image.</li>
+</ul>
+<p><strong>Full specification</strong> lives in the
+<a href="../02-reference/location.html">Location reference</a>.</p>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../01-getting-started/creating-the-vault.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Creating the vault</span></a>
+<a class="pager-next" href="../01-getting-started/your-first-npc.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Your first NPC</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

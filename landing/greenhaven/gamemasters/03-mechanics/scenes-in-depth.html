@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scenes in depth: rhythm and impact — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="For most of the game the world improvises. The narrator reads who is present in a location, what their desires and fears are, and decides what to say. But sometimes you need a specific moment. The..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a class="active" href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Mechanics</p>
+          <h1 id="scenes-in-depth-rhythm-and-impact">Scenes in depth: rhythm and impact</h1>
+<p>For most of the game the world improvises. The narrator reads who is
+present in a location, what their desires and fears are, and decides
+what to say. But sometimes you need a <strong>specific moment</strong>. The first
+meeting with Tessa needs to be exactly that. The brawl at the
+gangway needs to advance by beats. The argument on the square needs
+to play out the way you wrote it.</p>
+<p>That is a scene — a prepared sequence with a trigger, beats, and
+choice forks. This chapter is about how to write them.</p>
+<h2 id="two-kinds-of-scenes">Two kinds of scenes</h2>
+<p>Scenes live either "with a character" or "with a place."</p>
+<p><strong>Character-owned scene</strong> belongs to a specific person and lives in
+their folder: <code>npc/@Name/scenes/@Title.md</code>. Use it for anything that
+is <strong>about character</strong>: first meeting, confession, duel, betrayal.</p>
+<p><strong>Location-owned scene</strong> belongs to a location and lives in
+<code>@Location/scenes/@Title.md</code>. Use it for anything <strong>about place</strong>:
+a brawl at the crates, an accusation at the gangway, a hearing at
+the guild. Different participants can be drawn into it depending on
+who is nearby.</p>
+<p>The file name carries <code>@</code>. The level-one heading inside is
+<code># @Scene name</code>.</p>
+<h2 id="where-and-when-the-trigger">Where And When — the trigger</h2>
+<p>This is where you describe the <strong>conditions</strong> under which the scene
+"comes alive."</p>
+<pre><code class="language-markdown">## Where And When
+
+- Owner: `@Tessa Wrenlight`
+- Location: `@Greenhaven Port`
+- Visibility: triggers after `@Dockside Accusation` first beat
+  or when hero approaches the arrivals post for the second time.
+</code></pre>
+<p>There are three parts. <strong>Owner</strong> — who the scene belongs to.
+<strong>Location</strong> — where it takes place. <strong>Visibility</strong> — the condition
+that fires it. The condition must be <strong>specific</strong>: "after the first
+beat of scene X," "when the hero approaches the noticeboard for the
+second time." Not "sometimes," not "by mood."</p>
+<h2 id="hook-opening-beat">Hook — opening beat</h2>
+<p>What the player sees in chat the moment the scene fires. Short,
+precise prose:</p>
+<pre><code class="language-markdown">## Hook
+
+`@Tessa Wrenlight` stands by the crates, brass compass tucked into
+her coat. She does not come over. She watches, decides, and will
+speak first only if the hero looks competent.
+</code></pre>
+<p>Notice: the hook already has a <strong>possibility of choice</strong> baked in.
+Tessa might not speak. It depends on how the hero carries themselves.
+Good hooks leave that crack open.</p>
+<h2 id="beat-by-beat-the-beat-by-beat-script">Beat By Beat — the beat-by-beat script</h2>
+<p>Beats are the scene's skeleton. Each beat is one turn for the
+narrator. They unfold in order, unless the player does something
+unexpected.</p>
+<pre><code class="language-markdown">## Beat By Beat
+
+1. The hero notices her. She does not look away.
+2. If the hero greets her, she answers with an observation, not a
+   name.
+3. She gestures at `@Missing Passenger Notice` — or at
+   `@Blue Warehouse Cellar Door`, if the hero is listening for the
+   cellar.
+4. She lets the hero decide whether to continue the conversation.
+</code></pre>
+<p>The cardinal rule of beats: they are a <strong>skeleton</strong>, not <strong>rails</strong>.
+If the player walks out mid-scene, the narrator is under no
+obligation to drag them back. If the player says something not
+covered by the beats, the narrator improvises — but <strong>in keeping
+with</strong> what the character is.</p>
+<p>Beats are a dotted line. Between the dots is the living tissue, woven
+by the narrator out of the character's voice.</p>
+<h2 id="player-choices-options-for-the-player">Player Choices — options for the player</h2>
+<p>This is a <strong>hint</strong> to the narrator, not a strict list. "Here is what
+the player can do, and here is how the character reacts."</p>
+<pre><code class="language-markdown">## Player Choices
+
+- Insist: ask her name. She gives it.
+- Ask about the port: she answers briefly.
+- Walk past: she watches and remembers.
+- Pay for information: she refuses.
+</code></pre>
+<p>If the player does something not on the list, the narrator works it
+out from the character. This section is not a cage; it is a map of
+the most common moves.</p>
+<h2 id="success-result-and-failure-result">Success Result and Failure Result</h2>
+<p>What counts as "went well" and "went badly":</p>
+<pre><code class="language-markdown">## Success Result
+
+If the hero asked her name and did not try to buy information,
+positive strings with Tessa — the companion track opens.
+
+## Failure Result
+
+If the hero tried to pay or push, negative strings — Tessa closes
+down.
+</code></pre>
+<h2 id="memory-and-string-changes">Memory And String Changes</h2>
+<p>What the world will remember and which relationships will shift:</p>
+<pre><code class="language-markdown">## Memory And String Changes
+
+`@Tessa Wrenlight` writes down the first thing the hero said in her
+mental ledger. This is the first +string or -string entry.
+</code></pre>
+<h2 id="a-combat-scene-an-example">A combat scene — an example</h2>
+<p>Scenes are useful for more than dialogue. Here is how a short combat
+scene is written for Mikka:</p>
+<pre><code class="language-markdown"># @Mikka close combat dagger
+
+## Where And When
+
+- Owner: `@Mikka`
+- Location: `@Town square`
+- Visibility: triggers when an enemy closes to melee range with @Mikka
+  while she is cornered and cannot retreat.
+
+## Beat By Beat
+
+1. @Mikka drops into a low stance, dagger reversed.
+2. She aims for the enemy's weapon hand or belt — not the heart.
+3. If the enemy overcommits, she sidesteps and cuts the back of the knee.
+4. If the enemy retreats a step, she does not pursue.
+5. She fights to open an escape window, not to kill.
+</code></pre>
+<p>Notice: even the fight is written as <strong>character</strong>. Mikka does not
+fight to kill — she fights to break out. That is her voice, carried
+into action. A combat scene is not "a damage mechanic"; it is
+<strong>character by other means</strong>.</p>
+<p><img alt="" src="../img/gemini-generated-image-p4r02jp4r02jp4r0.jpg"></p>
+<h2 id="a-few-rules-to-take-away">A few rules to take away</h2>
+<p><strong>A scene belongs to whoever's folder it sits in.</strong> Character-owned —
+character. Location-owned — atmosphere of the place. This is not just
+administrative: it decides whose <strong>voice</strong> the scene will be in.</p>
+<p><strong>Beats are not dialogue.</strong> They are structure. The narrator picks
+the words from the character's voice.</p>
+<p><strong><code>Materializes</code> inside a scene is a powerful tool.</strong> A scene can
+leave a clue, open a door, shift a relationship. If the moment is
+important, materialize its consequences.</p>
+<p><strong><code>Memory Hooks</code> in a scene are not the same as <code>Memory Hooks</code> on a
+character.</strong> A scene remembers the <strong>fact of the event</strong>. A character
+remembers the <strong>relational stance</strong>. They are two different memories
+and they complement each other.</p>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../03-mechanics/quest-branching.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Quest branching</span></a>
+<a class="pager-next" href="../03-mechanics/companions.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Companions</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

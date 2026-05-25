@@ -1,0 +1,91 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+**/dist/
+build/
+**/build/
+bundle/
+release/
+**/release/
+*.tsbuildinfo
+*.vsix
+
+# Desktop packaged payload copied by release scripts
+packages/desktop-electron/web-server/
+packages/desktop-electron/web-ui/
+packages/desktop-electron/release/
+
+# Local databases and runtime state
+pgdata/
+**/pgdata/
+**/pgdata-*/
+data/
+UserSettings/
+**/postmaster.pid
+
+# Logs, telemetry, run evidence, smoke screenshots
+logs/
+**/logs/
+*.log
+*.jsonl
+packages/web-server/scripts/censor-test/results/
+packages/web-server/scripts/censor-test/results-violence/
+packages/web-server/scripts/censor-test/runtime-results/
+packages/web-server/scripts/censor-test/runtime-violence-results/
+.codex/
+.claude/
+.agent-runtime/
+.tmp/
+temp_agents/
+.backups/
+$out/
+.codex-*.png
+
+# Secrets and machine-local config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+gha-creds-*.json
+claude-autopilot.exe
+**/autopilot_config.json
+**/settings.local.json
+**/superpowers_state.json
+
+# Generated cartridge/Obsidian conversion output
+GreenhavenWorld/.greenhaven-agent-manual/generated/
+GreenhavenWorld/.greenhaven-agent-manual/local/
+GreenhavenWorld/.greenhaven-agent-manual/*work*/
+GreenhavenWorld/.greenhaven-agent-manual/reference-*/
+GreenhavenWorld/.greenhaven-agent-manual/archived-image-assets/
+GreenhavenWorld/.greenhaven-agent-manual/sample-style-images/
+GreenhavenWorld/.greenhaven-agent-manual/triad-work/
+**/.obsidian/
+**/.trash/
+**/__pycache__/
+*.pyc
+
+# Toolchain caches
+.eslintcache
+.pytest_cache/
+.docker/
+.DS_Store
+Thumbs.db
+**/target/
+coverage/
+**/coverage/
+junit.xml
+
+# Internal agent/spec scratch directories
+future-specs/
+plans/
+agent-packs/
+exports/
+techdocs-migration/
+critique-report/

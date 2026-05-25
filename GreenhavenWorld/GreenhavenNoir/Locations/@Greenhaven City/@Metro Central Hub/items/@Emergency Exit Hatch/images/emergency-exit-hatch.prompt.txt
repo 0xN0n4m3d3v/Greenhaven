@@ -1,0 +1,3 @@
+ITEM ICON PROMPT — Emergency Exit Hatch
+
+A heavy industrial metal hatch on a concrete wall, viewed from slightly below — the upper catwalk perspective. An electronic keypad beside the hatch blinks red: LOCKED. A small label beneath reads: "Emergency override — enter employee ID." The hatch is painted safety yellow, but the paint is peeling — rust showing through. Pipes and conduits run along the wall around it. Green emergency lights pulse in the vast shadow of the hub beyond. Style: monumental industrial noir, the red blinking keypad as the focal point in a sea of green-tinted darkness. Square 1:1, 2048x2048. No text except what naturally appears on the label and keypad.

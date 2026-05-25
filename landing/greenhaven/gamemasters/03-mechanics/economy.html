@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Economy: money as character — Greenhaven Gamemasters Guide</title>
+    <meta name="description" content="Money in Greenhaven is not a calculator. The price on a service is a point of character: a merchant who names the price first is different from a merchant who hides it; a character who remembers a..." />
+    <link rel="icon" href="../../assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="../../assets/favicon-32.png" type="image/png" />
+    <link rel="stylesheet" href="../../styles.css?v=20260519-212138" />
+    <link rel="stylesheet" href="../gamemasters.css?v=20260519-212138" />
+  </head>
+  <body class="gm-doc-body">
+    <header class="gm-doc-header">
+      <a class="brand" href="../../index.html" aria-label="Greenhaven home">
+        <img src="../../assets/crest.png" alt="" />
+        <span>Greenhaven</span>
+      </a>
+      <nav class="gm-doc-topnav">
+        <a href="../../index.html#gms">Back to site</a>
+        <a href="../index.html">Guide home</a>
+        <a class="nav-cta" href="https://www.patreon.com/cw/greenhavenquest" target="_blank" rel="noopener noreferrer">Patreon build</a>
+      </nav>
+      <button class="gm-toc-toggle" type="button" aria-expanded="false" aria-controls="gm-sidebar">Contents</button>
+    </header>
+
+    <div class="gm-doc-shell">
+      <aside id="gm-sidebar" class="gm-sidebar" aria-label="Guide contents">
+        <a class="gm-sidebar-title" href="../index.html">Gamemasters Guide</a>
+        <div class="toc-group">
+<p class="toc-label">Welcome</p>
+<ul>
+<li><a href="../index.html">Welcome</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Getting started</p>
+<ul>
+<li><a href="../01-getting-started/what-is-a-cartridge.html">What is a cartridge</a></li>
+<li><a href="../01-getting-started/creating-the-vault.html">Creating the vault</a></li>
+<li><a href="../01-getting-started/your-first-location.html">Your first location</a></li>
+<li><a href="../01-getting-started/your-first-npc.html">Your first NPC</a></li>
+<li><a href="../01-getting-started/your-first-quest.html">Your first quest</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Reference</p>
+<ul>
+<li><a href="../02-reference/npc.html">NPC</a></li>
+<li><a href="../02-reference/quest.html">Quest</a></li>
+<li><a href="../02-reference/scene.html">Scene</a></li>
+<li><a href="../02-reference/location.html">Location</a></li>
+<li><a href="../02-reference/item.html">Item</a></li>
+</ul>
+</div>
+<div class="toc-group">
+<p class="toc-label">Mechanics</p>
+<ul>
+<li><a href="../03-mechanics/materializes.html">Materializes</a></li>
+<li><a href="../03-mechanics/quest-branching.html">Quest branching</a></li>
+<li><a href="../03-mechanics/scenes-in-depth.html">Scenes in depth</a></li>
+<li><a href="../03-mechanics/companions.html">Companions</a></li>
+<li><a class="active" href="../03-mechanics/economy.html">Economy</a></li>
+<li><a href="../03-mechanics/images.html">Images</a></li>
+<li><a href="../03-mechanics/media.html">Media</a></li>
+</ul>
+</div>
+      </aside>
+
+      <main class="gm-doc-main" id="main">
+        <article class="gm-doc-article">
+          <p class="eyebrow">Mechanics</p>
+          <h1 id="economy-money-as-character">Economy: money as character</h1>
+<p>Money in Greenhaven is not a calculator. The price on a service is a
+<strong>point of character</strong>: a merchant who names the price first is
+different from a merchant who hides it; a character who remembers a
+debt is different from one who forgets. This chapter is about how
+the currency system works and, more importantly, <strong>why it is what it
+is</strong>.</p>
+<p><img alt="" src="../img/gemini-generated-image-l1h3tpl1h3tpl1h3.jpg"></p>
+<h2 id="three-coins-and-why-they-are-named-exactly-so">Three coins — and why they are named exactly so</h2>
+<p>The world has three kinds of coin, and their names are
+<strong>hard-coded</strong>:</p>
+<ul>
+<li><code>@Copper coin</code> — copper.</li>
+<li><code>@Silver coin</code> — silver (worth one hundred copper).</li>
+<li><code>@Gold coin</code> — gold (worth one hundred silver, i.e. ten thousand
+  copper).</li>
+</ul>
+<p>Why is the name not allowed to vary? Because the engine searches the
+text for these specific strings when it parses merchant prices. If
+you write "2 cp" or "5 copper" or "25 gold," the engine will not
+recognize them as money. Trade will break.</p>
+<p>So the rule is simple and absolute: coins are always called exactly
+<code>@Copper coin</code>, <code>@Silver coin</code>, <code>@Gold coin</code>. In any other part of
+the world you can write as you please — but coins are sacred.</p>
+<h2 id="where-currency-files-live">Where currency files live</h2>
+<p>Coins are items, and they have their own files. They live not in
+locations but in a dedicated economy folder:</p>
+<pre><code>GreenHavenWorld/
+└── Economy/
+    ├── Currency.md                ← general description of the system
+    └── items/
+        ├── @Copper coin/
+        │   ├── CopperCoinMind.md
+        │   └── images/icon.png
+        ├── @Silver coin/
+        │   ├── SilverCoinMind.md
+        │   └── images/icon.png
+        └── @Gold coin/
+            ├── GoldCoinMind.md
+            └── images/icon.png
+</code></pre>
+<p>The files are built like ordinary items: <code>## Item Canon</code>,
+<code>## Description</code>, <code>## Usage</code>, <code>## Visual Brief</code>. The icon is drawn
+by the art generator — see the <a href="../03-mechanics/images.html">Images chapter</a>.</p>
+<h2 id="how-to-write-prices">How to write prices</h2>
+<p>Prices live in the <code>## Merchant</code> section of a merchant character's
+file. The correct format is <strong>number, space, coin name with <code>@</code></strong>:</p>
+<pre><code class="language-markdown">- read a letter — 2 @Copper coin
+- translate a note — 5 @Copper coin
+- city rumor — 3 @Copper coin
+- dangerous address — 2 @Silver coin
+- companion contract — 25 @Gold coin
+</code></pre>
+<p>Wrong — the engine will not parse these:</p>
+<pre><code class="language-markdown">- read a letter — 2 cp        (no @ name)
+- translate a note — 5 copper (no @ token)
+- dangerous address — 200     (no currency at all)
+</code></pre>
+<h2 id="memory-of-payments">Memory of payments</h2>
+<p>The most interesting detail of Greenhaven economics is <strong>memory</strong>.
+A merchant remembers who paid, how much, for what, and whether they
+have settled. If the hero says "I already paid you," the merchant
+checks against their memory, not against the hero's tone.</p>
+<p>It is not a separate field and not a numerical counter. It is just a
+paragraph in the <code>## Merchant</code> section in which you tell the engine,
+in plain words: "this character keeps the books."</p>
+<pre><code class="language-markdown">I remember who paid, how much, for what service, whether I gave
+change, whether a debt or advance is outstanding. If the hero claims
+to have already paid, I check that against what I remember, not
+against the confidence in his tone.
+</code></pre>
+<p>That paragraph is more than color. The engine sees it and
+understands: every transfer of coin must be <strong>recorded</strong>. Not in
+words, but as an actual transfer of coins from hero to merchant. If
+the player tries to cheat, the merchant catches them.</p>
+<h2 id="trading-contracts">Trading contracts</h2>
+<p>When a character sells a service, it is not "give money, get thing."
+It is a contract with rules the character sets themselves:</p>
+<pre><code class="language-markdown">## Merchant
+
+My rules:
+- I name the price before the service.
+- The deal exists only after a real transfer of coin.
+- I do not give discounts to strangers.
+- I do not forgive debts, but I will accept a service in lieu of
+  coin.
+</code></pre>
+<p>These rules are character. One merchant gives no credit; another
+forgives a debtor once a year; a third will accept a service in
+trade. Through such rules, characters become recognizable <strong>as
+merchants</strong>.</p>
+<h2 id="prices-as-gameplay-not-realism">Prices as gameplay, not realism</h2>
+<p>Prices in Greenhaven do not need to be "plausible" in an economic
+sense. You do not have to compute what a hand-written note really
+cost a medieval scribe. Prices should do <strong>four</strong> things.</p>
+<p><strong>Create a choice.</strong> "Twenty-five gold for a long companion
+contract, or find a way without?" — that is a choice. Not an
+optimization problem.</p>
+<p><strong>Reflect relationship.</strong> Fair payment is positive strings. An
+attempt to cheat is negative strings. Price is a test of respect.</p>
+<p><strong>Open content.</strong> An expensive rumor leads to a hidden location, the
+hidden location to a quest. Money is a key.</p>
+<p><strong>Be memorable.</strong> The merchant remembers. The hero remembers. The
+world remembers. Every deal is a small event, not a hollow
+transaction.</p>
+<h2 id="mikka-as-an-example-of-economy-as-character">Mikka as an example of economy-as-character</h2>
+<p>Take Mikka, our goblin gossip merchant. Her price list is <strong>not a
+price list</strong>. It is character:</p>
+<ul>
+<li><strong>Price first.</strong> She names the price before the hero asks. That
+  is a business habit, and it sets the tone of the relationship
+  immediately.</li>
+<li><strong>Memory of payments.</strong> Every "I already paid" is checked. That
+  is her character: she trusts evidence, not words.</li>
+<li><strong>Services of different risk.</strong> Reading a letter is two copper.
+  A dangerous address is two silver. This is not a table; it is a
+  <strong>risk scale</strong> the player can feel.</li>
+<li><strong>Companion as a contract.</strong> Twenty-five gold, paid to her in
+  person, with consent on both sides. This is not an "expensive
+  service" — it is an <strong>act of trust</strong> dressed in a price.</li>
+</ul>
+<p>When you write a merchant in Greenhaven, try seeing prices through
+the same filter: what does each number <strong>communicate</strong>? What
+character does it draw?</p>
+          <nav class="chapter-pager" aria-label="Chapter navigation">
+<a class="pager-prev" href="../03-mechanics/companions.html"><span class="pager-eyebrow">Previous</span><span class="pager-title">Companions</span></a>
+<a class="pager-next" href="../03-mechanics/images.html"><span class="pager-eyebrow">Next</span><span class="pager-title">Images</span></a>
+</nav>
+        </article>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.gm-toc-toggle');
+        var sidebar = document.getElementById('gm-sidebar');
+        if (!toggle || !sidebar) return;
+        toggle.addEventListener('click', function () {
+          var open = sidebar.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

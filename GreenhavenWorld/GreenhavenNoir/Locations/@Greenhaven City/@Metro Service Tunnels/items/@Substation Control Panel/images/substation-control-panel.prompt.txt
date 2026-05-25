@@ -1,0 +1,3 @@
+ITEM ICON PROMPT — Substation Control Panel
+
+An old analogue electrical control panel mounted on a concrete tunnel wall. Large bakelite dials, a voltage meter with a trembling needle, and a heavy master override switch locked with a small brass combination padlock. The panel is covered in decades of dust. Behind the lock, half-erased chalk marks on the concrete: "7 - 19 - 3." Green emergency lights pulse somewhere off-frame. The air is thick, warm, the walls sweating condensation. Style: industrial horror-noir, the padlock and chalk marks as focal points. Square 1:1, 2048x2048. No text except the chalk marks.
